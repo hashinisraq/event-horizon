@@ -1,0 +1,16 @@
+.bgStyle {
+    background-image: url('../Images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contentStyle {
+    flex: 1;
+    display: flex;
+    align-items: star;
+    justify-content: center;
+}
