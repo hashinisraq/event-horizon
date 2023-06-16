@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Spinner, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col, Form, Button, Spinner, Dropdown, Alert } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import styles from '../../../Assets/Styles/styles.module.css';
+import useFirebase from '../../../hooks/useFirebase';
 
 const Register = () => {
     const [selectedOption, setSelectedOption] = useState('');
@@ -13,9 +14,9 @@ const Register = () => {
     };
 
     const [loginData, setLoginData] = useState({});
-    // const { registerUser, isLoading, authError } = useAuth();
+    const { registerUser, isLoading, authError } = useFirebase();
 
-    // const history = useNavigate();
+    const history = useNavigate();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -31,7 +32,7 @@ const Register = () => {
             return
         }
 
-        // registerUser(loginData.email, loginData.password, loginData.name, history);
+        registerUser(loginData.email, loginData.password, loginData.name, history);
         console.log(loginData.email, loginData.password, loginData.name, loginData.registationNo, loginData.mobileNo);
         e.preventDefault();
     }
@@ -139,7 +140,7 @@ const Register = () => {
 
                                 <div className="pb-5">
                                     <Button className='w-100' variant="dark" onClick={e => handleLoginSubmit(e)}>Sign up</Button>
-                                    {/* {authError && <Alert variant="danger">{authError}</Alert>} */}
+                                    {authError && <Alert variant="danger">{authError}</Alert>}
                                 </div>
 
 
@@ -149,7 +150,7 @@ const Register = () => {
                                     </Link>
                                 </div>
                             </Form>
-                            {/* {isLoading && <div className="d-flex justify-content-center align-items-center"><Spinner animation="border" variant="dark" /></div>} */}
+                            {isLoading && <div className="d-flex justify-content-center align-items-center"><Spinner animation="border" variant="dark" /></div>}
                         </Col>
                     </Row>
                 </Container>

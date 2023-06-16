@@ -11,13 +11,13 @@ const Home = () => {
         <div className={styles.bgStyle}>
             <Header />
             <div className={styles.contentStyle}>
-                <div className='text-center text-white'>
+                <div className='text-center text-white pt-5'>
                     <div className='pb-3'>
                         <h3>Creating Memories! 🙋 </h3>
                         <h3>One Event at a Time 😇 </h3>
                     </div>
-                    <Link to='/login'>
-                        <Button variant='dark'>Login/Sign up</Button>
+                    <Link to='/dashboard'>
+                        <Button variant='dark'>Let's Start</Button>
                     </Link>
                 </div>
             </div>
