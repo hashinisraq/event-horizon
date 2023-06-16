@@ -11,7 +11,7 @@ import useAuth from '../../../hooks/useAuth';
 const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { loginUser, isLoading, authError } = useFirebase();
-    const { signInUsingGooogle } = useAuth();
+    const { signInUsingGooogle, user } = useAuth();
 
     const location = useLocation();
     const history = useNavigate();
@@ -32,6 +32,10 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         history(location.state?.from || '/home');
+
+        if (user.abcd === undefined) {
+            history("/googleRegister")
+        }
     }
 
     return (

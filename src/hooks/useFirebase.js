@@ -14,7 +14,7 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // email password registration
-    const registerUser = (email, password, name, history) => {
+    const registerUser = (email, password, name, history, role, venueRegistationNo, mobileNo) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -22,7 +22,7 @@ const useFirebase = () => {
                 setUser(newUser);
 
                 // save user to the database
-                // saveEmailUser(email, name, mobileNo, venueRegistationNo, 'pending');
+                saveUser(email, name, role, venueRegistationNo, mobileNo, 'pending');
 
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
@@ -56,17 +56,6 @@ const useFirebase = () => {
     }
 
 
-    // email password logout
-    const emailLogOut = () => {
-        setIsLoading(true);
-        signOut(auth).then(() => {
-            // Sign-out successful.
-        }).catch((error) => {
-            // An error happened.
-        })
-            .finally(() => setIsLoading(false));
-    };
-
 
     // google sign in
     const signInUsingGooogle = () => {
@@ -76,9 +65,6 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 setUser(result.user);
-
-                // save user to the database
-                // saveGoogleUser(result.user.email, result.user.displayName, "pending", "0", [], []);
             })
             .catch(error => {
             })
@@ -87,8 +73,8 @@ const useFirebase = () => {
 
 
 
-    // google log out
-    const googleLogOut = () => {
+    // log out
+    const logOut = () => {
         setIsLoading(true);
         signOut(auth)
             .then(() => { })
@@ -112,17 +98,17 @@ const useFirebase = () => {
 
 
 
-    // const saveEmailUser = (email, name, mobileNo, venueRegistationNo, status) => {
-    //     const user = { email, name, mobileNo, venueRegistationNo, status };
-    //     fetch('https://toyshouse-server.onrender.com/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then()
-    // }
+    const saveUser = (email, name, role, venueRegistationNo, mobileNo, status) => {
+        const user = { email, name, role, venueRegistationNo, mobileNo, status };
+        fetch('https://event-horizon-8f3s.onrender.com/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
 
     // const saveGoogleUser = (email, name) => {
@@ -142,10 +128,10 @@ const useFirebase = () => {
         user,
         isLoading,
         registerUser,
+        saveUser,
         loginUser,
-        emailLogOut,
         signInUsingGooogle,
-        googleLogOut,
+        logOut,
         authError
     }
 

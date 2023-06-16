@@ -26,14 +26,16 @@ const Register = () => {
         setLoginData(newLoginData);
     }
 
-    const handleLoginSubmit = e => {
+    const handleRegisterSubmit = e => {
         if (loginData.password !== loginData.password2) {
             alert('Your password did not match');
             return
         }
 
-        registerUser(loginData.email, loginData.password, loginData.name, history);
-        console.log(loginData.email, loginData.password, loginData.name, loginData.registationNo, loginData.mobileNo);
+        if (loginData.registationNo === undefined) {
+            loginData.registationNo = "";
+        }
+        registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.registationNo, loginData.mobileNo);
         e.preventDefault();
     }
 
@@ -87,7 +89,7 @@ const Register = () => {
                                 <Form.Group className='pt-2 pb-3'>
                                     <Dropdown onSelect={handleOptionChange}>
                                         <Dropdown.Toggle variant="dark" id="registration-dropdown">
-                                            Choose Catagory
+                                            Choose Role
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
@@ -124,7 +126,7 @@ const Register = () => {
                                     {selectedOption === 'customer' && (
                                         <div className='pb-4'>
                                             <h5 className='text-center'>Customer Info</h5>
-                                            <Form.Group controlId="customerMobileNo">
+                                            <Form.Group controlId="mobileNo">
                                                 <Form.Label>Mobile No:</Form.Label>
                                                 <Form.Control
                                                     type="text"
@@ -139,7 +141,7 @@ const Register = () => {
 
 
                                 <div className="pb-5">
-                                    <Button className='w-100' variant="dark" onClick={e => handleLoginSubmit(e)}>Sign up</Button>
+                                    <Button className='w-100' variant="dark" onClick={e => handleRegisterSubmit(e)}>Sign up</Button>
                                     {authError && <Alert variant="danger">{authError}</Alert>}
                                 </div>
 

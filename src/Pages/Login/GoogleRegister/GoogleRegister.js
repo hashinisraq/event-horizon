@@ -3,10 +3,22 @@ import styles from '../../../Assets/Styles/styles.module.css';
 import Header from '../../Shared/Header/Header';
 import Footer from '../../Shared/Footer/Footer';
 import { Button, Dropdown, Form } from 'react-bootstrap';
+import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router';
+import useUsers from '../../../hooks/useUsers';
 
 const GoogleRegister = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const [provideData, setProvideData] = useState({});
+    const { saveUser, user } = useAuth();
+
+    const [users] = useUsers();
+    const selectedUser = users?.filter(usr => usr.email === user.email)
+    const history = useNavigate();
+    if (selectedUser[0]?.mobileNo !== undefined) {
+        history("/dashboard")
+    }
+
 
     const handleOptionChange = (eventKey) => {
         setSelectedOption(eventKey);
@@ -20,6 +32,21 @@ const GoogleRegister = () => {
         setProvideData(newLoginData);
     }
 
+
+    const handleInfoSubmit = (e) => {
+        if (provideData.registationNo === undefined) {
+            provideData.registationNo = "";
+        }
+
+        if (provideData.mobileNo === undefined) {
+            alert("Please complete all the field");
+        } else {
+            saveUser(user.email, user.displayName, selectedOption, provideData.registationNo, provideData.mobileNo, 'pending');
+            history("/dashboard");
+        }
+        e.preventDefault();
+    }
+
     return (
         <div className={styles.bgStyle}>
             <Header />
@@ -31,7 +58,7 @@ const GoogleRegister = () => {
                         <Form.Group className='pt-2'>
                             <Dropdown className='py-2' onSelect={handleOptionChange}>
                                 <Dropdown.Toggle variant="dark" id="registration-dropdown">
-                                    Choose Catagory
+                                    Choose Role
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
@@ -64,7 +91,7 @@ const GoogleRegister = () => {
                                     </Form.Group>
 
                                     <div className='text-center py-3'>
-                                        <Button variant='dark'>Submit</Button>
+                                        <Button variant='dark' onClick={handleInfoSubmit}>Submit</Button>
                                     </div>
                                 </div>
                             )}
@@ -82,7 +109,7 @@ const GoogleRegister = () => {
                                             required />
                                     </Form.Group>
                                     <div className='text-center py-3'>
-                                        <Button variant='dark'>Submit</Button>
+                                        <Button variant='dark' onClick={handleInfoSubmit}>Submit</Button>
                                     </div>
                                 </div>
                             )}

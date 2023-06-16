@@ -1,14 +1,11 @@
 import React from 'react';
 import styles from '../../Assets/Styles/styles.module.css';
 import Header from '../Shared/Header/Header';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import Footer from '../Shared/Footer/Footer';
 import useAuth from '../../hooks/useAuth';
 
 const Dashboard = () => {
     const { user } = useAuth();
-    console.log(user.displayName)
 
     return (
         <div className={styles.bgStyle}>
