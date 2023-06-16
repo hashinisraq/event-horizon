@@ -14,7 +14,7 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // email password registration
-    const registerUser = (email, password, name, history, role, venueRegistationNo, mobileNo) => {
+    const registerUser = (email, password, name, history, role, phoneNo, venues) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -22,7 +22,12 @@ const useFirebase = () => {
                 setUser(newUser);
 
                 // save user to the database
-                saveUser(email, name, role, venueRegistationNo, mobileNo, 'pending');
+                if (role === 'customer') {
+                    saveUser(email, name, role, phoneNo, []);
+                }
+                if (role === 'owner') {
+                    saveUser(email, name, role, phoneNo, venues);
+                }
 
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
@@ -98,16 +103,32 @@ const useFirebase = () => {
 
 
 
-    const saveUser = (email, name, role, venueRegistationNo, mobileNo, status) => {
-        const user = { email, name, role, venueRegistationNo, mobileNo, status };
-        fetch('https://event-horizon-8f3s.onrender.com/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then()
+    const saveUser = (email, name, role, phoneNo, venues) => {
+        if (role === 'customer') {
+            const bookings = [];
+            const user = { email, name, role, phoneNo, bookings };
+            fetch('https://event-horizon-8f3s.onrender.com/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then()
+        }
+
+        if (role === 'owner') {
+            const user = { email, name, role, phoneNo, venues };
+            fetch('https://event-horizon-8f3s.onrender.com/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then()
+        }
+
     }
 
 

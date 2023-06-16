@@ -32,10 +32,21 @@ const Register = () => {
             return
         }
 
-        if (loginData.registationNo === undefined) {
-            loginData.registationNo = "";
+        if (selectedOption === 'customer') {
+            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, []);
         }
-        registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.registationNo, loginData.mobileNo);
+
+        if (selectedOption === 'owner') {
+            const venues = [{
+                name: loginData.venueName,
+                location: loginData.venueLocation,
+                capacity: loginData.venueCapacity,
+                amenities: loginData.venueAmenities,
+                avalability: loginData.venueAvailability,
+                status: 'pending'
+            }]
+            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues);
+        }
         e.preventDefault();
     }
 
@@ -89,11 +100,11 @@ const Register = () => {
                                 <Form.Group className='pt-2 pb-3'>
                                     <Dropdown onSelect={handleOptionChange}>
                                         <Dropdown.Toggle variant="dark" id="registration-dropdown">
-                                            Choose Role
+                                            Set Role
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item eventKey="owner">Owner Venue</Dropdown.Item>
+                                            <Dropdown.Item eventKey="owner">Owner</Dropdown.Item>
                                             <Dropdown.Item eventKey="customer">Customer</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
@@ -101,23 +112,63 @@ const Register = () => {
                                     {selectedOption === 'owner' && (
                                         <div className='pb-4'>
                                             <h5 className='text-center'>Owner Venue Info</h5>
-                                            <Form.Group controlId="registrationNo">
-                                                <Form.Label>Venue Registration No:</Form.Label>
+                                            <Form.Group controlId="venueName" className="mb-3">
+                                                <Form.Label>Venue Name:</Form.Label>
                                                 <Form.Control
                                                     type="text"
-                                                    name="registationNo"
+                                                    name="venueName"
                                                     onBlur={handleOnBlur}
-                                                    placeholder='Registration No'
+                                                    placeholder='Venue Name'
                                                     required />
                                             </Form.Group>
 
-                                            <Form.Group controlId="mobileNo">
-                                                <Form.Label>Mobile No:</Form.Label>
+                                            <Form.Group controlId="venueLocation" className="mb-3">
+                                                <Form.Label>Venue Location:</Form.Label>
                                                 <Form.Control
                                                     type="text"
-                                                    name="mobileNo"
+                                                    name="venueLocation"
                                                     onBlur={handleOnBlur}
-                                                    placeholder='Mobile No'
+                                                    placeholder='Venue Location'
+                                                    required />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="venueCapacity" className="mb-3">
+                                                <Form.Label>Venue Capacity:</Form.Label>
+                                                <Form.Control
+                                                    type="number"
+                                                    name="venueCapacity"
+                                                    onBlur={handleOnBlur}
+                                                    placeholder='Venue Capacity'
+                                                    required />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="venueAmenities" className="mb-3">
+                                                <Form.Label>Venue Amenities:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="venueAmenities"
+                                                    onBlur={handleOnBlur}
+                                                    placeholder='Venue Amenities'
+                                                    required />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="venueAvailability" className="mb-3">
+                                                <Form.Label>Venue Availablity:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="venueAvailability"
+                                                    onBlur={handleOnBlur}
+                                                    placeholder='Venue Availibility'
+                                                    required />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="phoneNo" className="mb-3">
+                                                <Form.Label>Phone No:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="phoneNo"
+                                                    onBlur={handleOnBlur}
+                                                    placeholder='Phone No'
                                                     required />
                                             </Form.Group>
                                         </div>
@@ -126,13 +177,13 @@ const Register = () => {
                                     {selectedOption === 'customer' && (
                                         <div className='pb-4'>
                                             <h5 className='text-center'>Customer Info</h5>
-                                            <Form.Group controlId="mobileNo">
-                                                <Form.Label>Mobile No:</Form.Label>
+                                            <Form.Group controlId="phoneNo">
+                                                <Form.Label>Phone No:</Form.Label>
                                                 <Form.Control
                                                     type="text"
-                                                    name="mobileNo"
+                                                    name="phoneNo"
                                                     onBlur={handleOnBlur}
-                                                    placeholder='Mobile No'
+                                                    placeholder='Phone No'
                                                     required />
                                             </Form.Group>
                                         </div>

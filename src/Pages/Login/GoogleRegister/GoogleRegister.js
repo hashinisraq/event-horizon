@@ -34,14 +34,22 @@ const GoogleRegister = () => {
 
 
     const handleInfoSubmit = (e) => {
-        if (provideData.registationNo === undefined) {
-            provideData.registationNo = "";
+        if (selectedOption === 'customer') {
+            saveUser(user.email, user.displayName, selectedOption, provideData.phoneNo, []);
+            history("/dashboard");
         }
 
-        if (provideData.mobileNo === undefined) {
-            alert("Please complete all the field");
-        } else {
-            saveUser(user.email, user.displayName, selectedOption, provideData.registationNo, provideData.mobileNo, 'pending');
+        if (selectedOption === 'owner') {
+            const venues = [{
+                name: provideData.venueName,
+                location: provideData.venueLocation,
+                capacity: provideData.venueCapacity,
+                amenities: provideData.venueAmenities,
+                avalability: provideData.venueAvailability,
+                status: 'pending'
+            }]
+
+            saveUser(user.email, user.displayName, selectedOption, provideData.phoneNo, venues);
             history("/dashboard");
         }
         e.preventDefault();
@@ -58,11 +66,11 @@ const GoogleRegister = () => {
                         <Form.Group className='pt-2'>
                             <Dropdown className='py-2' onSelect={handleOptionChange}>
                                 <Dropdown.Toggle variant="dark" id="registration-dropdown">
-                                    Choose Role
+                                    Set Role
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item eventKey="owner">Owner Venue</Dropdown.Item>
+                                    <Dropdown.Item eventKey="owner">Owner</Dropdown.Item>
                                     <Dropdown.Item eventKey="customer">Customer</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -70,23 +78,63 @@ const GoogleRegister = () => {
                             {selectedOption === 'owner' && (
                                 <div className='pb-4'>
                                     <h5 className='text-center'>Owner Venue Info</h5>
-                                    <Form.Group controlId="registrationNo" className='py-3'>
-                                        <Form.Label>Venue Registration No:</Form.Label>
+                                    <Form.Group controlId="venueName" className='py-3'>
+                                        <Form.Label>Venue Name:</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            name="registationNo"
+                                            name="venueName"
                                             onBlur={handleOnBlur}
-                                            placeholder='Registration No'
+                                            placeholder='Venue Name'
                                             required />
                                     </Form.Group>
 
-                                    <Form.Group controlId="mobileNo">
-                                        <Form.Label>Mobile No:</Form.Label>
+                                    <Form.Group controlId="venueLocation" className='py-3'>
+                                        <Form.Label>Venue Location:</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            name="mobileNo"
+                                            name="venueLocation"
                                             onBlur={handleOnBlur}
-                                            placeholder='Mobile No'
+                                            placeholder='Venue Location'
+                                            required />
+                                    </Form.Group>
+
+                                    <Form.Group controlId="venueCapacity" className='py-3'>
+                                        <Form.Label>Venue Capacity:</Form.Label>
+                                        <Form.Control
+                                            type="number"
+                                            name="venueCapacity"
+                                            onBlur={handleOnBlur}
+                                            placeholder='Venue Capacity'
+                                            required />
+                                    </Form.Group>
+
+                                    <Form.Group controlId="venueAmenities" className='py-3'>
+                                        <Form.Label>Venue Amenities:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="venueAmenities"
+                                            onBlur={handleOnBlur}
+                                            placeholder='Venue Amenities'
+                                            required />
+                                    </Form.Group>
+
+                                    <Form.Group controlId="venueAvailability" className='py-3'>
+                                        <Form.Label>Venue Availablity:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="venueAvailability"
+                                            onBlur={handleOnBlur}
+                                            placeholder='Venue Availibility'
+                                            required />
+                                    </Form.Group>
+
+                                    <Form.Group controlId="phoneNo">
+                                        <Form.Label>Phone No:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="phoneNo"
+                                            onBlur={handleOnBlur}
+                                            placeholder='Phone No'
                                             required />
                                     </Form.Group>
 
@@ -99,13 +147,13 @@ const GoogleRegister = () => {
                             {selectedOption === 'customer' && (
                                 <div className='pb-4'>
                                     <h5 className='text-center'>Customer Info</h5>
-                                    <Form.Group controlId="customerMobileNo" className='py-3'>
-                                        <Form.Label>Mobile No:</Form.Label>
+                                    <Form.Group controlId="phoneNo" className='py-3'>
+                                        <Form.Label>Phone No:</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            name="mobileNo"
+                                            name="phoneNo"
                                             onBlur={handleOnBlur}
-                                            placeholder='Mobile No'
+                                            placeholder='Phone No'
                                             required />
                                     </Form.Group>
                                     <div className='text-center py-3'>
