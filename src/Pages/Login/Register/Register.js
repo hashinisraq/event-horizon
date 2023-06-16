@@ -9,6 +9,27 @@ import useFirebase from '../../../hooks/useFirebase';
 const Register = () => {
     const [selectedOption, setSelectedOption] = useState('');
 
+    const [availability, setAvailability] = useState([{ startTime: '', endTime: '' }]);
+    const handleChange = (e, index) => {
+        const { name, value } = e.target;
+        setAvailability((prevState) => {
+            const updatedAvailability = [...prevState];
+            updatedAvailability[index][name] = value;
+            return updatedAvailability;
+        });
+    };
+    const handleAddSlot = () => {
+        setAvailability((prevState) => [...prevState, { startTime: '', endTime: '' }]);
+    };
+    const handleRemoveSlot = (index) => {
+        setAvailability((prevState) => {
+            const updatedAvailability = [...prevState];
+            updatedAvailability.splice(index, 1);
+            return updatedAvailability;
+        });
+    };
+
+
     const handleOptionChange = (eventKey) => {
         setSelectedOption(eventKey);
     };
@@ -42,7 +63,7 @@ const Register = () => {
                 location: loginData.venueLocation,
                 capacity: loginData.venueCapacity,
                 amenities: loginData.venueAmenities,
-                avalability: loginData.venueAvailability,
+                avalability: availability,
                 status: 'pending'
             }]
             registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues);
@@ -152,15 +173,47 @@ const Register = () => {
                                                     required />
                                             </Form.Group>
 
-                                            <Form.Group controlId="venueAvailability" className="mb-3">
-                                                <Form.Label>Venue Availablity:</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    name="venueAvailability"
-                                                    onBlur={handleOnBlur}
-                                                    placeholder='Venue Availibility'
-                                                    required />
-                                            </Form.Group>
+
+                                            <Form.Label>Venue Availablity:</Form.Label>
+                                            {availability.map((timeSlot, index) => (
+                                                <div key={index}>
+                                                    <div className='d-flex'>
+                                                        <Form.Group className='pe-3' controlId={`startTime-${index}`}>
+                                                            <Form.Label>Start Time</Form.Label>
+                                                            <Form.Control
+                                                                type="time"
+                                                                name="startTime"
+                                                                value={timeSlot.startTime}
+                                                                onChange={(e) => handleChange(e, index)}
+                                                                required
+                                                            />
+                                                        </Form.Group>
+
+                                                        <Form.Group controlId={`endTime-${index}`}>
+                                                            <Form.Label>End Time</Form.Label>
+                                                            <Form.Control
+                                                                type="time"
+                                                                name="endTime"
+                                                                value={timeSlot.endTime}
+                                                                onChange={(e) => handleChange(e, index)}
+                                                                required
+                                                            />
+                                                        </Form.Group>
+                                                    </div>
+
+                                                    {index > 0 && (
+                                                        <Button className='my-2' variant="danger" onClick={() => handleRemoveSlot(index)}>
+                                                            Remove
+                                                        </Button>
+                                                    )}
+
+                                                    <hr />
+                                                </div>
+                                            ))}
+
+                                            <Button className='mb-3' variant="dark" onClick={handleAddSlot}>
+                                                Add Time Slot
+                                            </Button>
 
                                             <Form.Group controlId="phoneNo" className="mb-3">
                                                 <Form.Label>Phone No:</Form.Label>
