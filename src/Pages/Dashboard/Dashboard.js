@@ -11,6 +11,7 @@ import AvailableVenues from './Components/AvailableVenues';
 import RenterVenue from './Components/RenterVenue';
 import './Dashboard.css';
 import DeleteVenue from './Components/DeleteVenue';
+import SetupVenue from './Components/SetupVenue';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -84,7 +85,7 @@ const Dashboard = () => {
                                                 <Profile />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="second">
-                                                {/* <SetupVenue /> */}
+                                                <SetupVenue />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="third">
                                                 {/* <Members /> */} Members
