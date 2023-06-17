@@ -8,6 +8,7 @@ const BookedVenues = () => {
     const { user } = useAuth();
 
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
+
     return (
         <Container>
             <h5 className='text-center pb-3'>Booked Venues</h5>
