@@ -5,6 +5,8 @@ import Footer from '../Shared/Footer/Footer';
 import useAuth from '../../hooks/useAuth';
 import './Dashboard.css';
 import useUsers from '../../hooks/useUsers';
+import Profile from './Components/Profile';
+import VenueInformation from './Components/VenueInformation';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -42,7 +44,7 @@ const Dashboard = () => {
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="fourth">
-                                                    Vanues renter
+                                                    Renter Vanue
                                                 </Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
@@ -70,7 +72,7 @@ const Dashboard = () => {
                                     <Col sm={12} lg={10}>
                                         <Tab.Content>
                                             <Tab.Pane eventKey="first">
-                                                {/* <Orders /> */} Orders
+                                                <Profile />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="second">
                                                 {/* <AskDoubt /> */}AskDoubt
@@ -88,7 +90,7 @@ const Dashboard = () => {
                                                 {/* <AddBlogs /> */} AddBlogs
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="seventh">
-                                                {/* <ChangeRole /> */} ChangeRole
+                                                <VenueInformation />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="eightth">
                                                 {/* <ChangeRole /> */} Approval

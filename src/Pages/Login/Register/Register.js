@@ -63,7 +63,7 @@ const Register = () => {
                 location: loginData.venueLocation,
                 capacity: loginData.venueCapacity,
                 amenities: loginData.venueAmenities,
-                avalability: availability,
+                availability: availability,
                 booked: false,
                 bookedTime: [],
                 status: 'pending'
