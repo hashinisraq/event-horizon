@@ -9,10 +9,11 @@ import VenueInformation from './Components/VenueInformation';
 import BookedVenues from './Components/BookedVenues';
 import AvailableVenues from './Components/AvailableVenues';
 import RenterVenue from './Components/RenterVenue';
-import './Dashboard.css';
 import DeleteVenue from './Components/DeleteVenue';
 import SetupVenue from './Components/SetupVenue';
 import UpdateVenue from './Components/UpdateVenue';
+import Approval from './Components/Approval';
+import './Dashboard.css';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -107,12 +108,13 @@ const Dashboard = () => {
                                                 <DeleteVenue />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="nineth">
-                                                {/* <ChangeRole /> */} Approval
+                                                <Approval />
                                             </Tab.Pane>
                                         </Tab.Content>
                                     </Col>
                                 </Row>
-                            </Tab.Container> :
+                            </Tab.Container>
+                                :
                                 <></>}
                         </Container>
                     </div>
