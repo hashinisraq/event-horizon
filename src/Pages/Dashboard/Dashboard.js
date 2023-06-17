@@ -3,10 +3,13 @@ import { Col, Container, Nav, Row, Tab } from 'react-bootstrap';
 import Header from '../Shared/Header/Header';
 import Footer from '../Shared/Footer/Footer';
 import useAuth from '../../hooks/useAuth';
-import './Dashboard.css';
 import useUsers from '../../hooks/useUsers';
 import Profile from './Components/Profile';
 import VenueInformation from './Components/VenueInformation';
+import BookedVenues from './Components/BookedVenues';
+import AvailableVenues from './Components/AvailableVenues';
+import RenterVenue from './Components/RenterVenue';
+import './Dashboard.css';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -34,7 +37,7 @@ const Dashboard = () => {
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="second">
-                                                    Add/Delete Venue
+                                                    Setup Venue
                                                 </Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
@@ -44,7 +47,7 @@ const Dashboard = () => {
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="fourth">
-                                                    Renter Vanue
+                                                    Renter Venue
                                                 </Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
@@ -64,6 +67,11 @@ const Dashboard = () => {
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="eightth">
+                                                    Delete Veneue
+                                                </Nav.Link>
+                                            </Nav.Item>
+                                            <Nav.Item>
+                                                <Nav.Link className="nav_link" eventKey="nineth">
                                                     Approval
                                                 </Nav.Link>
                                             </Nav.Item>
@@ -75,24 +83,27 @@ const Dashboard = () => {
                                                 <Profile />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="second">
-                                                {/* <AskDoubt /> */}AskDoubt
+                                                {/* <VenueSetup /> */}
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="third">
                                                 {/* <Members /> */} Members
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="fourth">
-                                                {/* <AddFreeContent /> */} AddFreeContent
+                                                <RenterVenue />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="fifth">
-                                                {/* <AddPaidContent /> */} AddPaidContent
+                                                <AvailableVenues />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="sixth">
-                                                {/* <AddBlogs /> */} AddBlogs
+                                                <BookedVenues />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="seventh">
                                                 <VenueInformation />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="eightth">
+                                                {/* <ChangeRole /> */} Delete
+                                            </Tab.Pane>
+                                            <Tab.Pane eventKey="nineth">
                                                 {/* <ChangeRole /> */} Approval
                                             </Tab.Pane>
                                         </Tab.Content>
