@@ -68,6 +68,8 @@ const GoogleRegister = () => {
                 capacity: provideData.venueCapacity,
                 amenities: provideData.venueAmenities,
                 avalability: availability,
+                booked: false,
+                bookedTime: [],
                 status: 'pending'
             }]
 
