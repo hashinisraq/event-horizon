@@ -10,6 +10,7 @@ import BookedVenues from './Components/BookedVenues';
 import AvailableVenues from './Components/AvailableVenues';
 import RenterVenue from './Components/RenterVenue';
 import './Dashboard.css';
+import DeleteVenue from './Components/DeleteVenue';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -83,7 +84,7 @@ const Dashboard = () => {
                                                 <Profile />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="second">
-                                                {/* <VenueSetup /> */}
+                                                {/* <SetupVenue /> */}
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="third">
                                                 {/* <Members /> */} Members
@@ -101,7 +102,7 @@ const Dashboard = () => {
                                                 <VenueInformation />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="eightth">
-                                                {/* <ChangeRole /> */} Delete
+                                                <DeleteVenue />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="nineth">
                                                 {/* <ChangeRole /> */} Approval
