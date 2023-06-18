@@ -4,15 +4,15 @@ import Header from '../Shared/Header/Header';
 import Footer from '../Shared/Footer/Footer';
 import useAuth from '../../hooks/useAuth';
 import useUsers from '../../hooks/useUsers';
-import Profile from './Components/Profile';
-import VenueInformation from './Components/VenueInformation';
-import BookedVenues from './Components/BookedVenues';
-import AvailableVenues from './Components/AvailableVenues';
-import RenterVenue from './Components/RenterVenue';
-import DeleteVenue from './Components/DeleteVenue';
-import SetupVenue from './Components/SetupVenue';
-import UpdateVenue from './Components/UpdateVenue';
-import Approval from './Components/Approval';
+import Profile from './Components/OwnerComponents/Profile';
+import VenueInformation from './Components/OwnerComponents/VenueInformation';
+import BookedVenues from './Components/OwnerComponents/BookedVenues';
+import AvailableVenues from './Components/OwnerComponents/AvailableVenues';
+import RenterVenue from './Components/OwnerComponents/RenterVenue';
+import DeleteVenue from './Components/OwnerComponents/DeleteVenue';
+import SetupVenue from './Components/OwnerComponents/SetupVenue';
+import UpdateVenue from './Components/OwnerComponents/UpdateVenue';
+import Approval from './Components/OwnerComponents/Approval';
 import './Dashboard.css';
 
 const Dashboard = () => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Table } from 'react-bootstrap';
-import useUsers from '../../../hooks/useUsers';
-import useAuth from '../../../hooks/useAuth';
+import useUsers from '../../../../hooks/useUsers';
+import useAuth from '../../../../hooks/useAuth';
 
-const RenterVenue = () => {
+const BookedVenues = () => {
     const [users] = useUsers();
     const { user } = useAuth();
 
@@ -11,14 +11,14 @@ const RenterVenue = () => {
 
     return (
         <Container>
-            <h5 className='text-center pb-3'>Renters of Venue</h5>
+            <h5 className='text-center pb-3'>Booked Venues</h5>
             <Table responsive>
                 <thead>
                     <tr>
                         <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Email</th>
-                        <th style={{ color: "white", background: "transparent" }}>Phone</th>
-                        <th style={{ color: "white", background: "transparent" }}>Venue</th>
+                        <th style={{ color: "white", background: "transparent" }}>Location</th>
+                        <th style={{ color: "white", background: "transparent" }}>Capacity</th>
+                        <th style={{ color: "white", background: "transparent" }}>Amenities</th>
                         <th style={{ color: "white", background: "transparent" }}>Booked</th>
                     </tr>
                 </thead>
@@ -26,12 +26,13 @@ const RenterVenue = () => {
                     {selectedUser?.venues.map(venue => <tr className='py-5'
                         key={venue.name}
                     >
-                        {venue.booked === true ? <>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.bookedTime.customerName}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.bookedTime.customerEmail}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.bookedTime.customerPhone}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
+                        {venue.booked === true ?
                             <td style={{ color: "white", background: "transparent" }}>
+
                                 {
                                     venue?.bookedTime.Slot.map(sl =>
                                         < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
@@ -40,13 +41,13 @@ const RenterVenue = () => {
                                     )
                                 }
                             </td>
-                        </> : <></>
+                            : <td style={{ color: "white", background: "transparent" }}></td>
                         }
                     </tr>)}
                 </tbody>
             </Table>
-        </Container>
+        </Container >
     );
 };
 
-export default RenterVenue;
+export default BookedVenues;

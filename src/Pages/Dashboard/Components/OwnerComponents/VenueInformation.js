@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Table } from 'react-bootstrap';
-import useUsers from '../../../hooks/useUsers';
-import useAuth from '../../../hooks/useAuth';
+import useUsers from '../../../../hooks/useUsers';
+import useAuth from '../../../../hooks/useAuth';
 
-const BookedVenues = () => {
+const VenueInformation = () => {
     const [users] = useUsers();
     const { user } = useAuth();
 
@@ -11,7 +11,7 @@ const BookedVenues = () => {
 
     return (
         <Container>
-            <h5 className='text-center pb-3'>Booked Venues</h5>
+            <h5 className='text-center pb-3'>Venue Information</h5>
             <Table responsive>
                 <thead>
                     <tr>
@@ -19,7 +19,8 @@ const BookedVenues = () => {
                         <th style={{ color: "white", background: "transparent" }}>Location</th>
                         <th style={{ color: "white", background: "transparent" }}>Capacity</th>
                         <th style={{ color: "white", background: "transparent" }}>Amenities</th>
-                        <th style={{ color: "white", background: "transparent" }}>Booked</th>
+                        <th style={{ color: "white", background: "transparent" }}>Availability</th>
+                        <th style={{ color: "white", background: "transparent" }}>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,24 +31,15 @@ const BookedVenues = () => {
                         <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
-                        {venue.booked === true ?
-                            <td style={{ color: "white", background: "transparent" }}>
-
-                                {
-                                    venue?.bookedTime.Slot.map(sl =>
-                                        < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
-                                            <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
-                                        </div>
-                                    )
-                                }
-                            </td>
-                            : <td style={{ color: "white", background: "transparent" }}></td>
-                        }
+                        <td style={{ color: "white", background: "transparent" }}>{venue?.availability.map(vn => <div style={{ color: "white", background: "transparent" }} key={vn.startTime}>
+                            <span>Start Time: {vn.startTime}-End Time: {vn.endTime}</span> <br />
+                        </div>)}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.status}</td>
                     </tr>)}
                 </tbody>
             </Table>
-        </Container >
+        </Container>
     );
 };
 
-export default BookedVenues;
+export default VenueInformation;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
-import useUsers from '../../../hooks/useUsers';
 import { Button, Container, Form } from 'react-bootstrap';
+import useAuth from '../../../../hooks/useAuth';
+import useUsers from '../../../../hooks/useUsers';
 
 const SetupVenue = () => {
     const { user } = useAuth();

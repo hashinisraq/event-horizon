@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
-import useUsers from '../../../hooks/useUsers';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../../hooks/useAuth';
+import useUsers from '../../../../hooks/useUsers';
 
 const Profile = () => {
     const { user } = useAuth();

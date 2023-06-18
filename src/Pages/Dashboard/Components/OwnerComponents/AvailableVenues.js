@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Table } from 'react-bootstrap';
-import useUsers from '../../../hooks/useUsers';
-import useAuth from '../../../hooks/useAuth';
+import useUsers from '../../../../hooks/useUsers';
+import useAuth from '../../../../hooks/useAuth';
 
 const AvailableVenues = () => {
     const [users] = useUsers();
