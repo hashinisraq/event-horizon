@@ -62,6 +62,7 @@ const Register = () => {
                 name: loginData.venueName,
                 location: loginData.venueLocation,
                 capacity: loginData.venueCapacity,
+                size: loginData.venueSize,
                 amenities: loginData.venueAmenities,
                 availability: availability,
                 booked: false,
@@ -162,6 +163,16 @@ const Register = () => {
                                                     name="venueCapacity"
                                                     onBlur={handleOnBlur}
                                                     placeholder='Venue Capacity'
+                                                    required />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="venueSize" className="mb-3">
+                                                <Form.Label>Venue Size:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="venueSize"
+                                                    onBlur={handleOnBlur}
+                                                    placeholder='Big/Small/Medium'
                                                     required />
                                             </Form.Group>
 

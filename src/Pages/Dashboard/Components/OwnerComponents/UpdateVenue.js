@@ -64,6 +64,7 @@ const UpdateVenue = () => {
         //         name: loginData.venueName,
         //         location: loginData.venueLocation,
         //         capacity: loginData.venueCapacity,
+        //         size: loginData.venueSize,
         //         amenities: loginData.venueAmenities,
         //         availability: availability,
         //         booked: false,
@@ -133,6 +134,17 @@ const UpdateVenue = () => {
                                     onBlur={handleOnBlur}
                                     style={{ width: "50%" }}
                                     placeholder={`${selectedVenue.capacity}`}
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group controlId="venueSize" className="mb-3 d-flex justify-content-around align-items-center">
+                                <Form.Label>Venue Size:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="venueSize"
+                                    onBlur={handleOnBlur}
+                                    style={{ width: "50%" }}
+                                    placeholder={`${selectedVenue.size}`}
                                     required />
                             </Form.Group>
 

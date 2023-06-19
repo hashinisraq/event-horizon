@@ -66,6 +66,7 @@ const GoogleRegister = () => {
                 name: provideData.venueName,
                 location: provideData.venueLocation,
                 capacity: provideData.venueCapacity,
+                size: provideData.venueSize,
                 amenities: provideData.venueAmenities,
                 availability: availability,
                 booked: false,
@@ -129,6 +130,16 @@ const GoogleRegister = () => {
                                             name="venueCapacity"
                                             onBlur={handleOnBlur}
                                             placeholder='Venue Capacity'
+                                            required />
+                                    </Form.Group>
+
+                                    <Form.Group controlId="venueSize" className="mb-3">
+                                        <Form.Label>Venue Size:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="venueSize"
+                                            onBlur={handleOnBlur}
+                                            placeholder='Big/Small/Medium'
                                             required />
                                     </Form.Group>
 

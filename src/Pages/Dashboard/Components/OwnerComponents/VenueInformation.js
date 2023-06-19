@@ -18,6 +18,7 @@ const VenueInformation = () => {
                         <th style={{ color: "white", background: "transparent" }}>Name</th>
                         <th style={{ color: "white", background: "transparent" }}>Location</th>
                         <th style={{ color: "white", background: "transparent" }}>Capacity</th>
+                        <th style={{ color: "white", background: "transparent" }}>Size</th>
                         <th style={{ color: "white", background: "transparent" }}>Amenities</th>
                         <th style={{ color: "white", background: "transparent" }}>Availability</th>
                         <th style={{ color: "white", background: "transparent" }}>Status</th>
@@ -30,6 +31,7 @@ const VenueInformation = () => {
                         <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue?.availability.map(vn => <div style={{ color: "white", background: "transparent" }} key={vn.startTime}>
                             <span>Start Time: {vn.startTime}-End Time: {vn.endTime}</span> <br />

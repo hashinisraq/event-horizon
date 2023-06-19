@@ -77,7 +77,7 @@ const Approval = () => {
                         <td style={{ color: "white", background: "transparent" }}>{order.status}</td>
                         <td style={{ color: "white", background: "transparent" }}>
                             <Button variant="dark" className='my-1 w-100'>Reject</Button>
-                            <Button variant="dark" className='my-1 w-100'>Confirm</Button>
+                            <Button variant="dark" className='my-1 w-100'>Accept</Button>
                         </td>
 
                     </tr>

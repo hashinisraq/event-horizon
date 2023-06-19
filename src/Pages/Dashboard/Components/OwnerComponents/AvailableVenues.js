@@ -18,6 +18,7 @@ const AvailableVenues = () => {
                         <th style={{ color: "white", background: "transparent" }}>Name</th>
                         <th style={{ color: "white", background: "transparent" }}>Location</th>
                         <th style={{ color: "white", background: "transparent" }}>Capacity</th>
+                        <th style={{ color: "white", background: "transparent" }}>Size</th>
                         <th style={{ color: "white", background: "transparent" }}>Amenities</th>
                         <th style={{ color: "white", background: "transparent" }}>Availability</th>
                     </tr>
@@ -29,6 +30,7 @@ const AvailableVenues = () => {
                         <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
                         <td style={{ color: "white", background: "transparent" }}>
                             {
