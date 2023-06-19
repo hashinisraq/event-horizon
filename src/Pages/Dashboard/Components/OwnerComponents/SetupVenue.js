@@ -51,7 +51,7 @@ const SetupVenue = () => {
         //         amenities: loginData.venueAmenities,
         //         availability: availability,
         //         booked: false,
-        //         bookedTime: [],
+        //         bookedInfo: [],
         //         status: 'pending'
         //     }]
 

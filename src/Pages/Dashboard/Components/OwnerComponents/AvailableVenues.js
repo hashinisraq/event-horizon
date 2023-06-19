@@ -35,23 +35,24 @@ const AvailableVenues = () => {
                                 venue?.availability.map(vn =>
                                     <div key={vn.startTime}>
                                         {
-                                            venue?.bookedTime.Slot !== undefined ?
-                                                <>
+                                            venue?.bookedInfo.length !== 0 ? <>{
+                                                venue?.bookedInfo.map(data => <div key={data.Day}>
                                                     {
-                                                        venue?.bookedTime.Slot.map(tm => <div key={tm.startTime}>
+                                                        data?.Slot.map(tm => <div key={tm.startTime}>
                                                             {
                                                                 tm.startTime !== vn.startTime ? <>
                                                                     <span>Start Time: {vn.startTime}-End Time: {vn.endTime} <br /></span>
+                                                                </> : <>
                                                                 </>
-                                                                    : <></>
                                                             }
                                                         </div>)
                                                     }
-                                                </>
-                                                :
-                                                <>
-                                                    <div>Start Time: {vn.startTime}-End Time: {vn.endTime}  <br /></div>
-                                                </>
+                                                </div>
+                                                )
+                                            }</> : <>
+                                                <span>Start Time: {vn.startTime}-End Time: {vn.endTime} <br />
+                                                </span>
+                                            </>
                                         }
                                     </div>
                                 )

@@ -19,31 +19,40 @@ const RenterVenue = () => {
                         <th style={{ color: "white", background: "transparent" }}>Email</th>
                         <th style={{ color: "white", background: "transparent" }}>Phone</th>
                         <th style={{ color: "white", background: "transparent" }}>Venue</th>
+                        <th style={{ color: "white", background: "transparent" }}>Day</th>
                         <th style={{ color: "white", background: "transparent" }}>Booked</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {selectedUser?.venues.map(venue => <tr className='py-5'
+                <>
+                    {selectedUser?.venues.map(venue => <tbody style={{ color: "white", background: "transparent" }} className='py-5'
                         key={venue.name}
                     >
                         {venue.booked === true ? <>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.bookedTime.customerName}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.bookedTime.customerEmail}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.bookedTime.customerPhone}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
-                            <td style={{ color: "white", background: "transparent" }}>
-                                {
-                                    venue?.bookedTime.Slot.map(sl =>
-                                        < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
-                                            <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
-                                        </div>
-                                    )
-                                }
-                            </td>
+                            {
+                                venue?.bookedInfo.map(info => <tr key={info.customerEmail}>
+                                    <td style={{ color: "white", background: "transparent" }}>{info.customerName}</td>
+                                    <td style={{ color: "white", background: "transparent" }}>{info.customerEmail}</td>
+                                    <td style={{ color: "white", background: "transparent" }}>{info.customerPhone}</td>
+                                    <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                                    <td style={{ color: "white", background: "transparent" }}>{info.Day}</td>
+                                    <td style={{ color: "white", background: "transparent" }}>
+                                        {
+                                            info?.Slot !== undefined ? <>
+                                                {
+                                                    info?.Slot.map(time => <div style={{ color: "white", background: "transparent" }}
+                                                        key={time.startTime}>
+                                                        <span>Start Time: {time.startTime}-End Time: {time.endTime}</span> <br />
+                                                    </div>)
+                                                }
+                                            </> : <></>
+                                        }
+                                    </td>
+                                </tr>)
+                            }
                         </> : <></>
                         }
-                    </tr>)}
-                </tbody>
+                    </tbody>)}
+                </>
             </Table>
         </Container>
     );

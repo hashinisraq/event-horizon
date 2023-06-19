@@ -65,7 +65,7 @@ const Register = () => {
                 amenities: loginData.venueAmenities,
                 availability: availability,
                 booked: false,
-                bookedTime: [],
+                bookedInfo: [],
                 status: 'pending'
             }]
             registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues);

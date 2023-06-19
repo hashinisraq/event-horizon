@@ -37,7 +37,7 @@ const GoogleRegister = () => {
     const [users] = useUsers();
     const selectedUser = users?.filter(usr => usr.email === user.email)
     const history = useNavigate();
-    if (selectedUser[0]?.mobileNo !== undefined) {
+    if (selectedUser[0]?.email !== undefined) {
         history("/dashboard")
     }
 
@@ -69,7 +69,7 @@ const GoogleRegister = () => {
                 amenities: provideData.venueAmenities,
                 availability: availability,
                 booked: false,
-                bookedTime: [],
+                bookedInfo: [],
                 status: 'pending'
             }]
 

@@ -32,12 +32,16 @@ const BookedVenues = () => {
                         <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
                         {venue.booked === true ?
                             <td style={{ color: "white", background: "transparent" }}>
-
                                 {
-                                    venue?.bookedTime.Slot.map(sl =>
-                                        < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
-                                            <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
-                                        </div>
+                                    venue?.bookedInfo.map(data => <div key={data.Day}>
+                                        {
+                                            data?.Slot.map(sl =>
+                                                < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
+                                                    <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
+                                                </div>
+                                            )
+                                        }
+                                    </div>
                                     )
                                 }
                             </td>
