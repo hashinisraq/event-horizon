@@ -35,7 +35,8 @@ const VenueInformation = () => {
                         <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue?.availability.map(vn => <div style={{ color: "white", background: "transparent" }} key={vn.startTime}>
                             <span>Start Time: {vn.startTime}-End Time: {vn.endTime}</span> <br />
-                        </div>)}</td>
+                        </div>)}
+                        </td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.status}</td>
                     </tr>)}
                 </tbody>

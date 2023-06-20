@@ -29,7 +29,6 @@ const Dashboard = () => {
             <div>
                 <div className='text-center'>
                     <div className='pb-3'>
-                        <h5 className='text-white'>DASHBOARD</h5>
                         <Container className='py-5 text-white'>
                             {role === "owner" ? <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                                 <Row>
