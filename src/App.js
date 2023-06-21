@@ -7,7 +7,6 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import GoogleRegister from "./Pages/Login/GoogleRegister/GoogleRegister";
-import BookingCart from "./Pages/Dashboard/Components/CustomerComponets/BookingCart";
 import VeneueDetails from "./Pages/Dashboard/Components/CustomerComponets/VeneueDetails";
 
 function App() {

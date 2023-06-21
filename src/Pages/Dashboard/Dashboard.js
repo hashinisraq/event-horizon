@@ -14,9 +14,8 @@ import SetupVenue from './Components/OwnerComponents/SetupVenue';
 import UpdateVenue from './Components/OwnerComponents/UpdateVenue';
 import Approval from './Components/OwnerComponents/Approval';
 import Venues from './Components/CustomerComponets/Venues';
-import './Dashboard.css';
-import VenueBooking from './Components/CustomerComponets/VenueBooking';
 import CustomerDashboard from './Components/CustomerComponets/CustomerDashboard';
+import './Dashboard.css';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -130,14 +129,14 @@ const Dashboard = () => {
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="second">
-                                                    Venue Booking
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="third">
                                                     Dashboard
                                                 </Nav.Link>
                                             </Nav.Item>
+                                            {/* <Nav.Item>
+                                                <Nav.Link className="nav_link" eventKey="third">
+                                                    Venue Booking
+                                                </Nav.Link>
+                                            </Nav.Item> */}
                                         </Nav>
                                     </Col>
                                     <Col sm={12} lg={10}>
@@ -146,10 +145,10 @@ const Dashboard = () => {
                                                 <Venues />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="second">
-                                                <VenueBooking />
+                                                <CustomerDashboard />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="third">
-                                                <CustomerDashboard />
+                                                {/* <VenueBooking /> */}
                                             </Tab.Pane>
                                         </Tab.Content>
                                     </Col>

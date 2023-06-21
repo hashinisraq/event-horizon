@@ -18,7 +18,7 @@ const VeneueDetails = () => {
 
     const selectedVenues = users
         ?.filter(item => item.role === 'owner')
-        .map(item => item.venues.filter(venue => venue.status === 'pending'))[0]; // needs to be confirmed
+        .map(item => item.venues.filter(venue => venue.status === 'pending'))[0]; // needs to be "confirmed"
 
 
     const selectedVenue = selectedVenues?.filter(vn => vn.name === venueTitle.venueTitle)[0];
@@ -26,7 +26,14 @@ const VeneueDetails = () => {
 
     const formattedDate = selectedDate ? new Date(selectedDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
-    // console.log(formattedDate) //June 22, 2023
+
+    const isDateBooked = selectedVenue?.bookedInfo.some(info => info.Day === formattedDate);
+
+
+    const handleOnClick = e => {
+        console.log("google");
+        e.preventDefault();
+    }
 
     return (
         <div className={styles.bgStyle}>
@@ -194,13 +201,19 @@ const VeneueDetails = () => {
                                         </div>
                                     ))}
                                 </>
-                            )
-                            }
+                            )}
                         </Form.Group>
 
                         <div className="text-center my-4">
                             {selectedVenue?.availability.length > 0 && (
-                                <Button variant="dark" className='w-50' disabled={!selectedDate}>Place Booking</Button>
+                                <Button
+                                    variant="dark"
+                                    className="w-50"
+                                    disabled={!selectedDate || isDateBooked}
+                                    onClick={handleOnClick}
+                                >
+                                    {isDateBooked ? 'This date is booked' : 'Place Booking'}
+                                </Button>
                             )}
                         </div>
                     </Form>
