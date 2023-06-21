@@ -31,7 +31,16 @@ const VeneueDetails = () => {
 
 
     const handleOnClick = e => {
-        console.log("google");
+        const order = {
+            customerName: selectedUser?.name,
+            customerEmail: selectedUser?.email,
+            customerPhone: selectedUser?.phoneNo,
+            Slot: selectedSlots,
+            Day: formattedDate,
+        };
+
+        // console.log(order)
+
         e.preventDefault();
     }
 
