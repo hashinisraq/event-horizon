@@ -32,6 +32,7 @@ const VeneueDetails = () => {
 
     const handleOnClick = e => {
         const order = {
+            venueName: selectedVenue?.name,
             customerName: selectedUser?.name,
             customerEmail: selectedUser?.email,
             customerPhone: selectedUser?.phoneNo,
@@ -42,16 +43,34 @@ const VeneueDetails = () => {
 
         // console.log(order)
 
+        if (order.venueName !== "" && order.customerName !== "" && order.customerEmail !== "" && order.customerPhone !== "" && order.Slot.length > 0 && order.Day !== "") {
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(order)
+            })
+                .then(res => res.json())
+                .then(result => {
+                })
+
+            alert('Successfully placed your booking. We will confrim you soon!');
+        }
+        else {
+            alert("Please complete all the fields carefully!");
+        }
+
         e.preventDefault();
     }
 
     return (
         <div className={styles.bgStyle}>
             <Header />
-            <h5 className='text-center text-white pb-3'>Venue Details</h5>
+            <h5 className='text-center text-white pb-3 pt-5'>Venue Details</h5>
             <div className={styles.contentStyle}>
                 <Container>
-                    <Form className='text-white'>
+                    <Form className='text-white pb-5'>
                         <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
