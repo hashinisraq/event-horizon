@@ -7,6 +7,8 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import GoogleRegister from "./Pages/Login/GoogleRegister/GoogleRegister";
+import BookingCart from "./Pages/Dashboard/Components/CustomerComponets/BookingCart";
+import VeneueDetails from "./Pages/Dashboard/Components/CustomerComponets/VeneueDetails";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/login" element={<Login />}> </Route>
             <Route path="/register" element={<Register />}> </Route>
             <Route path="/googleRegister" element={<PrivateRoute><GoogleRegister /></PrivateRoute>}> </Route>
+            <Route path="/venueDetails/:venueTitle" element={<VeneueDetails />}>
+            </Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </Router>

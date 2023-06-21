@@ -15,6 +15,8 @@ import UpdateVenue from './Components/OwnerComponents/UpdateVenue';
 import Approval from './Components/OwnerComponents/Approval';
 import Venues from './Components/CustomerComponets/Venues';
 import './Dashboard.css';
+import VenueBooking from './Components/CustomerComponets/VenueBooking';
+import CustomerDashboard from './Components/CustomerComponets/CustomerDashboard';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -128,42 +130,12 @@ const Dashboard = () => {
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="second">
-                                                    Setup Venue
+                                                    Venue Booking
                                                 </Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link className="nav_link" eventKey="third">
-                                                    Update Venue
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="fourth">
-                                                    Renter Venue
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="fifth">
-                                                    Available Venues
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="sixth">
-                                                    Booked Venues
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="seventh">
-                                                    Venue Informtaion
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="eightth">
-                                                    Delete Veneue
-                                                </Nav.Link>
-                                            </Nav.Item>
-                                            <Nav.Item>
-                                                <Nav.Link className="nav_link" eventKey="nineth">
-                                                    Approval
+                                                    Dashboard
                                                 </Nav.Link>
                                             </Nav.Item>
                                         </Nav>
@@ -174,28 +146,10 @@ const Dashboard = () => {
                                                 <Venues />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="second">
-                                                {/* <SetupVenue /> */}
+                                                <VenueBooking />
                                             </Tab.Pane>
                                             <Tab.Pane eventKey="third">
-                                                {/* <UpdateVenue /> */}
-                                            </Tab.Pane>
-                                            <Tab.Pane eventKey="fourth">
-                                                {/* <RenterVenue /> */}
-                                            </Tab.Pane>
-                                            <Tab.Pane eventKey="fifth">
-                                                {/* <AvailableVenues /> */}
-                                            </Tab.Pane>
-                                            <Tab.Pane eventKey="sixth">
-                                                {/* <BookedVenues /> */}
-                                            </Tab.Pane>
-                                            <Tab.Pane eventKey="seventh">
-                                                {/* <VenueInformation /> */}
-                                            </Tab.Pane>
-                                            <Tab.Pane eventKey="eightth">
-                                                {/* <DeleteVenue /> */}
-                                            </Tab.Pane>
-                                            <Tab.Pane eventKey="nineth">
-                                                {/* <Approval /> */}
+                                                <CustomerDashboard />
                                             </Tab.Pane>
                                         </Tab.Content>
                                     </Col>

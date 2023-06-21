@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Pagination, Row, Table } from 'react-bootstrap';
 import useUsers from '../../../../hooks/useUsers';
+import { Link } from 'react-router-dom';
 
 
 const Venues = () => {
@@ -53,6 +54,9 @@ const Venues = () => {
     const currentVenues = filteredVenues.slice(indexOfFirstVenue, indexOfLastVenue);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
+
 
 
     return (
@@ -138,8 +142,8 @@ const Venues = () => {
                                         }
                                     </td>
                                     <td className='d-flex justify-content-center align-items-center' style={{ color: "white", background: "transparent" }}>
-                                        <Button variant="dark" className='w-100 my-2 mx-1'>See Details</Button>
-                                        <Button variant="dark" className='w-100 my-2 mx-1'>Book Now</Button>
+                                        <Link to={`/venueDetails/${venue.name}`}><Button variant="dark" className='my-2 mx-2'>See Details</Button></Link>
+                                        <Link to={`/venueDetails/${venue.name}`}><Button variant="dark" className='my-2 mx-2'>Book Now</Button></Link>
                                     </td>
                                 </tr>
                             ))}
