@@ -44,7 +44,7 @@ const VeneueDetails = () => {
         // console.log(order)
 
         if (order.venueName !== "" && order.customerName !== "" && order.customerEmail !== "" && order.customerPhone !== "" && order.Slot.length > 0 && order.Day !== "") {
-            fetch('', {
+            fetch('https://event-horizon-8f3s.onrender.com/orders', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
