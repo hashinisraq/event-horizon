@@ -37,6 +37,7 @@ const VeneueDetails = () => {
             customerPhone: selectedUser?.phoneNo,
             Slot: selectedSlots,
             Day: formattedDate,
+            status: 'pending',
         };
 
         // console.log(order)
