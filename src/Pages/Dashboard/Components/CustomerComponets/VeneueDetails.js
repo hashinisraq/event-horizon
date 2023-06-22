@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Button, Container, Form } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import useUsers from '../../../../hooks/useUsers';
@@ -30,6 +30,8 @@ const VeneueDetails = () => {
     const isDateBooked = selectedVenue?.bookedInfo.some(info => info.Day === formattedDate);
 
 
+    const navigate = useNavigate();
+
     const handleOnClick = e => {
         const order = {
             venueName: selectedVenue?.name,
@@ -41,8 +43,6 @@ const VeneueDetails = () => {
             status: 'pending',
         };
 
-        // console.log(order)
-
         if (order.venueName !== "" && order.customerName !== "" && order.customerEmail !== "" && order.customerPhone !== "" && order.Slot.length > 0 && order.Day !== "") {
             fetch('https://event-horizon-8f3s.onrender.com/orders', {
                 method: 'POST',
@@ -53,6 +53,9 @@ const VeneueDetails = () => {
             })
                 .then(res => res.json())
                 .then(result => {
+                    if (result.acknowledged === true && result.insertedId !== "") {
+                        navigate("/dashboard")
+                    }
                 })
 
             alert('Successfully placed your booking. We will confrim you soon!');

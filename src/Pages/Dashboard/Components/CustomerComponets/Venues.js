@@ -117,6 +117,13 @@ const Venues = () => {
                                         {
                                             venue?.availability.map(vn =>
                                                 <div key={vn.startTime}>
+                                                    <span>Start Time: {vn.startTime} - End Time: {vn.endTime} <br /></span>
+                                                </div>
+                                            )
+                                        }
+                                        {/* {
+                                            venue?.availability.map(vn =>
+                                                <div key={vn.startTime}>
                                                     {
                                                         venue?.bookedInfo.length !== 0 ? <>{
                                                             venue?.bookedInfo.map(data => <div key={data.Day}>
@@ -124,7 +131,7 @@ const Venues = () => {
                                                                     data?.Slot.map(tm => <div key={tm.startTime}>
                                                                         {
                                                                             tm.startTime !== vn.startTime ? <>
-                                                                                <span>Start Time: {vn.startTime}-End Time: {vn.endTime} <br /></span>
+                                                                                <span>Start Time: {vn.startTime} - End Time: {vn.endTime} <br /></span>
                                                                             </> : <>
                                                                             </>
                                                                         }
@@ -139,7 +146,7 @@ const Venues = () => {
                                                     }
                                                 </div>
                                             )
-                                        }
+                                        } */}
                                     </td>
                                     <td className='d-flex justify-content-center align-items-center' style={{ color: "white", background: "transparent" }}>
                                         <Link to={`/venueDetails/${venue.name}`}><Button variant="dark" className='my-2 mx-2'>See Details</Button></Link>
