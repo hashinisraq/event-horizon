@@ -16,6 +16,9 @@ import Approval from './Components/OwnerComponents/Approval';
 import Venues from './Components/CustomerComponets/Venues';
 import CustomerDashboard from './Components/CustomerComponets/CustomerDashboard';
 import './Dashboard.css';
+import VenueOwners from './Components/AdminComponents/VenueOwners';
+import VenueCustomers from './Components/AdminComponents/VenueCustomers';
+import PendingRequest from './Components/AdminComponents/PendingRequest';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -143,6 +146,46 @@ const Dashboard = () => {
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="second">
                                                     <CustomerDashboard />
+                                                </Tab.Pane>
+                                            </Tab.Content>
+                                        </Col>
+                                    </Row>
+                                </Tab.Container>
+                                :
+                                <></>
+                            }
+                            {role === "admin" ?
+                                <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                                    <Row>
+                                        <Col sm={12} lg={2} className='my-3'>
+                                            <Nav variant="pills" className="flex-column" >
+                                                <Nav.Item>
+                                                    <Nav.Link className="nav_link" eventKey="first">
+                                                        Venue Owners
+                                                    </Nav.Link>
+                                                </Nav.Item>
+                                                <Nav.Item>
+                                                    <Nav.Link className="nav_link" eventKey="second">
+                                                        Venue Customers
+                                                    </Nav.Link>
+                                                </Nav.Item>
+                                                <Nav.Item>
+                                                    <Nav.Link className="nav_link" eventKey="third">
+                                                        Pending Request
+                                                    </Nav.Link>
+                                                </Nav.Item>
+                                            </Nav>
+                                        </Col>
+                                        <Col sm={12} lg={10}>
+                                            <Tab.Content>
+                                                <Tab.Pane eventKey="first">
+                                                    <VenueOwners />
+                                                </Tab.Pane>
+                                                <Tab.Pane eventKey="second">
+                                                    <VenueCustomers />
+                                                </Tab.Pane>
+                                                <Tab.Pane eventKey="third">
+                                                    <PendingRequest />
                                                 </Tab.Pane>
                                             </Tab.Content>
                                         </Col>

@@ -28,9 +28,8 @@ const CustomerDashboard = () => {
         const status = "cancelled";
         const customer = selectedUser.name;
         const data = { customer, timeSlot, day, status };
-        console.log(data)
 
-        fetch('https://event-horizon-8f3s.onrender.com/update_order', {
+        fetch('https://event-horizon-8f3s.onrender.com/cancel_order', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
