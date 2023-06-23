@@ -18,10 +18,39 @@ const Profile = () => {
         setprofileData(newprofileData);
     }
 
-    const handleSubmit = () => {
-        console.log(profileData)
+    const handleSubmit = (email, name, phone) => {
+        const field = "emailAddress"
+        const value = email;
+        const newprofileData = { ...profileData };
+        newprofileData[field] = value;
+        setprofileData(newprofileData);
 
-        handleClose(); // Close the modal
+        if (profileData.name === null) {
+            const newprofileData = { ...profileData };
+            newprofileData["name"] = name;
+            setprofileData(newprofileData);
+        }
+        else if (profileData.phoneNo === null) {
+            const newprofileData = { ...profileData };
+            newprofileData["phoneNo"] = phone;
+            setprofileData(newprofileData);
+        }
+
+
+        if (window.confirm("Are you sure you want to update your details?")) {
+            fetch('https://event-horizon-8f3s.onrender.com/owner_profile', {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(profileData)
+            })
+                .then(res => res.json())
+                .then(result => {
+                })
+            handleClose(); // Close the modal
+        }
+
     }
 
     // Update (Modal)
@@ -141,7 +170,7 @@ const Profile = () => {
                         <div className="text-center">
                             <Button variant="dark" onClick={e => {
                                 e.preventDefault();
-                                handleSubmit();
+                                handleSubmit(selectedUser?.email, selectedUser?.name, selectedUser?.phoneNo);
                             }}>Submit</Button>
                         </div>
                     </Modal.Body>
