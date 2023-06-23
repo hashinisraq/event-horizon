@@ -25,30 +25,23 @@ const Profile = () => {
         newprofileData[field] = value;
         setprofileData(newprofileData);
 
-        if (profileData.name === null) {
-            const newprofileData = { ...profileData };
-            newprofileData["name"] = name;
-            setprofileData(newprofileData);
+        if (profileData.name === "" || profileData.phoneNo === "") {
+            alert("Please complete all the field or type previous data!")
         }
-        else if (profileData.phoneNo === null) {
-            const newprofileData = { ...profileData };
-            newprofileData["phoneNo"] = phone;
-            setprofileData(newprofileData);
-        }
-
-
-        if (window.confirm("Are you sure you want to update your details?")) {
-            fetch('https://event-horizon-8f3s.onrender.com/owner_profile', {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(profileData)
-            })
-                .then(res => res.json())
-                .then(result => {
+        else {
+            if (window.confirm("Are you sure you want to update your details?")) {
+                fetch('https://event-horizon-8f3s.onrender.com/owner_profile', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(profileData)
                 })
-            handleClose(); // Close the modal
+                    .then(res => res.json())
+                    .then(result => {
+                    })
+                handleClose(); // Close the modal
+            }
         }
 
     }

@@ -27,29 +27,34 @@ const BookedVenues = () => {
                     {selectedUser?.venues.map(venue => <tr className='py-5'
                         key={venue.name}
                     >
-                        <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
-                        {venue.booked === true ?
-                            <td style={{ color: "white", background: "transparent" }}>
-                                {
-                                    venue?.bookedInfo.map(data => <div key={data.Day}>
+                        {venue.status === "accepted" ?
+                            <>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
+                                {venue.booked === true ?
+                                    <td style={{ color: "white", background: "transparent" }}>
                                         {
-                                            data?.Slot.map(sl =>
-                                                < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
-                                                    <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
-                                                </div>
+                                            venue?.bookedInfo.map(data => <div key={data.Day}>
+                                                {
+                                                    data?.Slot.map(sl =>
+                                                        < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
+                                                            <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
                                             )
                                         }
-                                    </div>
-                                    )
+                                    </td>
+                                    : <td style={{ color: "white", background: "transparent" }}></td>
                                 }
-                            </td>
-                            : <td style={{ color: "white", background: "transparent" }}></td>
-                        }
-                    </tr>)}
+                            </> : <></>}
+
+                    </tr>
+                    )}
                 </tbody>
             </Table>
         </Container >

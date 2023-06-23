@@ -27,39 +27,24 @@ const AvailableVenues = () => {
                     {selectedUser?.venues.map(venue => <tr className='py-5'
                         key={venue.name}
                     >
-                        <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
-                        <td style={{ color: "white", background: "transparent" }}>
-                            {
-                                venue?.availability.map(vn =>
-                                    <div key={vn.startTime}>
-                                        {
-                                            venue?.bookedInfo.length !== 0 ? <>{
-                                                venue?.bookedInfo.map(data => <div key={data.Day}>
-                                                    {
-                                                        data?.Slot.map(tm => <div key={tm.startTime}>
-                                                            {
-                                                                tm.startTime !== vn.startTime ? <>
-                                                                    <span>Start Time: {vn.startTime}-End Time: {vn.endTime} <br /></span>
-                                                                </> : <>
-                                                                </>
-                                                            }
-                                                        </div>)
-                                                    }
-                                                </div>
-                                                )
-                                            }</> : <>
-                                                <span>Start Time: {vn.startTime}-End Time: {vn.endTime} <br />
-                                                </span>
-                                            </>
-                                        }
-                                    </div>
-                                )
-                            }
-                        </td>
+                        {venue.status === "accepted" ?
+                            <>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
+                                <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
+                                <td style={{ color: "white", background: "transparent" }}>
+                                    {
+                                        venue?.availability.map(vn =>
+                                            <div key={vn.startTime}>
+                                                <span>Start Time: {vn.startTime}-End Time: {vn.endTime}</span>
+                                                <br />
+                                            </div>
+                                        )
+                                    }
+                                </td>
+                            </> : <></>}
                     </tr>
                     )
                     }

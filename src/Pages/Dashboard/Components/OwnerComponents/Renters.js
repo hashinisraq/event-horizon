@@ -3,7 +3,7 @@ import { Container, Table } from 'react-bootstrap';
 import useUsers from '../../../../hooks/useUsers';
 import useAuth from '../../../../hooks/useAuth';
 
-const RenterVenue = () => {
+const Renters = () => {
     const [users] = useUsers();
     const { user } = useAuth();
 
@@ -58,4 +58,4 @@ const RenterVenue = () => {
     );
 };
 
-export default RenterVenue;
+export default Renters;

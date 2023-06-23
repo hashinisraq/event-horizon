@@ -8,7 +8,7 @@ import Profile from './Components/OwnerComponents/Profile';
 import VenueInformation from './Components/OwnerComponents/VenueInformation';
 import BookedVenues from './Components/OwnerComponents/BookedVenues';
 import AvailableVenues from './Components/OwnerComponents/AvailableVenues';
-import RenterVenue from './Components/OwnerComponents/RenterVenue';
+import Renters from './Components/OwnerComponents/Renters';
 import DeleteVenue from './Components/OwnerComponents/DeleteVenue';
 import SetupVenue from './Components/OwnerComponents/SetupVenue';
 import UpdateVenue from './Components/OwnerComponents/UpdateVenue';
@@ -56,7 +56,7 @@ const Dashboard = () => {
                                                 </Nav.Item>
                                                 <Nav.Item>
                                                     <Nav.Link className="nav_link" eventKey="fourth">
-                                                        Renter Venue
+                                                        Renters
                                                     </Nav.Link>
                                                 </Nav.Item>
                                                 <Nav.Item>
@@ -98,7 +98,7 @@ const Dashboard = () => {
                                                     <UpdateVenue />
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="fourth">
-                                                    <RenterVenue />
+                                                    <Renters />
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="fifth">
                                                     <AvailableVenues />
