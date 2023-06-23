@@ -62,7 +62,7 @@ const SetupVenue = () => {
 
 
     return (
-        <Container>
+        <Container style={{ height: "100vh" }}>
             <h5 className='text-center pb-3'>Setup Venue</h5>
 
             <Form>

@@ -9,6 +9,20 @@ const Profile = () => {
 
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
+    const [profileData, setprofileData] = useState({});
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newprofileData = { ...profileData };
+        newprofileData[field] = value;
+        setprofileData(newprofileData);
+    }
+
+    const handleSubmit = () => {
+        console.log(profileData)
+
+        handleClose(); // Close the modal
+    }
 
     // Update (Modal)
     const [show, setShow] = useState(false);
@@ -18,7 +32,7 @@ const Profile = () => {
 
     return (
         <>
-            <Container>
+            <Container style={{ height: "100vh" }}>
                 <h5 className='text-center pb-3'>Profile Information</h5>
                 <Container className='text-start'>
                     <Form>
@@ -87,6 +101,7 @@ const Profile = () => {
                                 <Form.Control
                                     type="name"
                                     name="name"
+                                    onBlur={handleOnBlur}
                                     placeholder={`${selectedUser?.name}`}
                                     style={{ width: "50%" }}
                                     required />
@@ -107,6 +122,7 @@ const Profile = () => {
                                 <Form.Control
                                     type="phoneNo"
                                     name="phoneNo"
+                                    onBlur={handleOnBlur}
                                     placeholder={`${selectedUser?.phoneNo}`}
                                     style={{ width: "50%" }}
                                     required />
@@ -123,7 +139,10 @@ const Profile = () => {
                             </Form.Group>
                         </Form>
                         <div className="text-center">
-                            <Button variant="dark">Submit</Button>
+                            <Button variant="dark" onClick={e => {
+                                e.preventDefault();
+                                handleSubmit();
+                            }}>Submit</Button>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

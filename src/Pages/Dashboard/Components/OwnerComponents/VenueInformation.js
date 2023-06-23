@@ -10,7 +10,7 @@ const VenueInformation = () => {
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
     return (
-        <Container>
+        <Container style={{ height: "100vh" }}>
             <h5 className='text-center pb-3'>Venue Information</h5>
             <Table responsive>
                 <thead>
