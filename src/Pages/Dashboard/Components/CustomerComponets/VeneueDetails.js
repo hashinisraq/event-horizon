@@ -5,6 +5,7 @@ import useAuth from '../../../../hooks/useAuth';
 import useUsers from '../../../../hooks/useUsers';
 import Header from '../../../Shared/Header/Header';
 import styles from '../../../../Assets/Styles/styles.module.css';
+import { Link } from 'react-router-dom';
 
 const VeneueDetails = () => {
     const venueTitle = useParams();
@@ -248,6 +249,10 @@ const VeneueDetails = () => {
                                     {isDateBooked ? 'This date is booked' : 'Place Booking'}
                                 </Button>
                             )}
+
+                        </div>
+                        <div className="text-center">
+                            <Link to="/dashboard"><Button variant='primary'>Go to Dashboard</Button></Link>
                         </div>
                     </Form>
                 </Container>

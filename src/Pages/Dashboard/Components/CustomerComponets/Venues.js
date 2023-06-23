@@ -12,6 +12,8 @@ const Venues = () => {
     const [selectedSize, setSelectedSize] = useState('');
     const [selectedLocation, setSelectedLocation] = useState('');
     const [filteredVenues, setFilteredVenues] = useState([]);
+    const [selectedAvailability, setSelectedAvailability] = useState('');
+
     const [currentPage, setCurrentPage] = useState(1);
     const venuesPerPage = 5;
 
@@ -24,6 +26,10 @@ const Venues = () => {
         setSelectedLocation(event.target.value);
     };
 
+    const handleAvailabilityChange = (event) => {
+        setSelectedAvailability(event.target.value);
+    };
+
     const filterVenues = () => {
         if (selectedSize) {
             selectedVenues = selectedVenues.filter(venue => venue.size === selectedSize);
@@ -32,6 +38,16 @@ const Venues = () => {
         if (selectedLocation) {
             selectedVenues = selectedVenues.filter(venue => venue.location === selectedLocation);
         }
+
+        if (selectedAvailability) {
+            selectedVenues = selectedVenues.filter((venue) => {
+                const availability = venue.availability.find(
+                    (av) => av.startTime === selectedAvailability
+                );
+                return availability !== undefined;
+            });
+        }
+
         selectedVenues = selectedVenues.filter(venue => venue.status === 'accepted');
         return selectedVenues;
     };
@@ -86,6 +102,26 @@ const Venues = () => {
                             </Form.Control>
                         </Form.Group>
                     </Col>
+                    <Col md={4}>
+                        <Form.Group controlId="availabilityFilter">
+                            <Form.Label>Availability:</Form.Label>
+                            <Form.Control
+                                as="select"
+                                value={selectedAvailability}
+                                onChange={handleAvailabilityChange}
+                            >
+                                <option value="">All Availability</option>
+                                {selectedVenues?.flatMap((venue) =>
+                                    venue.availability.map((av) => av.startTime)
+                                ).map((time) => (
+                                    <option key={time} value={time}>
+                                        {time}
+                                    </option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+
                     <Col md={4}>
                         <Button variant="dark w-50" type="submit" className='mt-4'>
                             Search
