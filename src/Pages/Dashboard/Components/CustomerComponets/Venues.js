@@ -32,7 +32,7 @@ const Venues = () => {
         if (selectedLocation) {
             selectedVenues = selectedVenues.filter(venue => venue.location === selectedLocation);
         }
-
+        selectedVenues = selectedVenues.filter(venue => venue.status === 'accepted');
         return selectedVenues;
     };
 
@@ -60,7 +60,7 @@ const Venues = () => {
 
 
     return (
-        <Container>
+        <Container style={{ height: "100vh" }}>
             <h5 className='text-center pb-3'>Venues</h5>
             <Form onSubmit={handleSearch} className='pb-3'>
                 <Row className='d-flex justify-content-center align-items-center'>
@@ -121,32 +121,6 @@ const Venues = () => {
                                                 </div>
                                             )
                                         }
-                                        {/* {
-                                            venue?.availability.map(vn =>
-                                                <div key={vn.startTime}>
-                                                    {
-                                                        venue?.bookedInfo.length !== 0 ? <>{
-                                                            venue?.bookedInfo.map(data => <div key={data.Day}>
-                                                                {
-                                                                    data?.Slot.map(tm => <div key={tm.startTime}>
-                                                                        {
-                                                                            tm.startTime !== vn.startTime ? <>
-                                                                                <span>Start Time: {vn.startTime} - End Time: {vn.endTime} <br /></span>
-                                                                            </> : <>
-                                                                            </>
-                                                                        }
-                                                                    </div>)
-                                                                }
-                                                            </div>
-                                                            )
-                                                        }</> : <>
-                                                            <span>Start Time: {vn.startTime}-End Time: {vn.endTime} <br />
-                                                            </span>
-                                                        </>
-                                                    }
-                                                </div>
-                                            )
-                                        } */}
                                     </td>
                                     <td className='d-flex justify-content-center align-items-center' style={{ color: "white", background: "transparent" }}>
                                         <Link to={`/venueDetails/${venue.name}`}><Button variant="dark" className='my-2 mx-2'>See Details</Button></Link>

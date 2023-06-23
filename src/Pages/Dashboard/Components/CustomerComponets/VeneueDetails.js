@@ -18,7 +18,7 @@ const VeneueDetails = () => {
 
     const selectedVenues = users
         ?.filter(item => item.role === 'owner')
-        .map(item => item.venues.filter(venue => venue.status === 'pending'))[0]; // needs to be "confirmed"
+        .map(item => item.venues.filter(venue => venue.status === 'accepted'))[0];
 
 
     const selectedVenue = selectedVenues?.filter(vn => vn.name === venueTitle.venueTitle)[0];
@@ -43,22 +43,23 @@ const VeneueDetails = () => {
             status: 'pending',
         };
 
-        if (order.venueName !== "" && order.customerName !== "" && order.customerEmail !== "" && order.customerPhone !== "" && order.Slot.length > 0 && order.Day !== "") {
-            fetch('https://event-horizon-8f3s.onrender.com/orders', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(order)
-            })
-                .then(res => res.json())
-                .then(result => {
-                    if (result.acknowledged === true && result.insertedId !== "") {
-                        navigate("/dashboard")
-                    }
+        if (order.Slot.length > 0 && order.Day !== "") {
+            if (window.confirm("Are you sure to place this booking?")) {
+                fetch('https://event-horizon-8f3s.onrender.com/orders', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(order)
                 })
-
-            alert('Successfully placed your booking. We will confrim you soon!');
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.acknowledged === true && result.insertedId !== "") {
+                            navigate("/dashboard")
+                        }
+                    })
+                alert('Successfully placed your booking. We will confrim you soon!');
+            }
         }
         else {
             alert("Please complete all the fields carefully!");

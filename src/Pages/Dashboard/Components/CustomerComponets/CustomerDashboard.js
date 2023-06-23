@@ -29,22 +29,23 @@ const CustomerDashboard = () => {
         const customer = selectedUser.name;
         const data = { customer, timeSlot, day, status };
 
-        fetch('https://event-horizon-8f3s.onrender.com/cancel_order', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
+        if (window.confirm("Are you sure to cancel booking?")) {
+            fetch('https://event-horizon-8f3s.onrender.com/cancel_order', {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
             })
-
+                .then(res => res.json())
+                .then(result => {
+                })
+        }
     }
 
 
     return (
-        <Container>
+        <Container style={{ height: "100vh" }}>
             <h5 className='text-center pb-3'>Dashboard</h5>
             <Table responsive>
                 <thead>

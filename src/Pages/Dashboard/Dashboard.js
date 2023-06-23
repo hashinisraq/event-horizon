@@ -15,10 +15,10 @@ import UpdateVenue from './Components/OwnerComponents/UpdateVenue';
 import Approval from './Components/OwnerComponents/Approval';
 import Venues from './Components/CustomerComponets/Venues';
 import CustomerDashboard from './Components/CustomerComponets/CustomerDashboard';
-import './Dashboard.css';
 import VenueOwners from './Components/AdminComponents/VenueOwners';
 import VenueCustomers from './Components/AdminComponents/VenueCustomers';
 import PendingRequest from './Components/AdminComponents/PendingRequest';
+import './Dashboard.css';
 
 const Dashboard = () => {
     const { user } = useAuth();

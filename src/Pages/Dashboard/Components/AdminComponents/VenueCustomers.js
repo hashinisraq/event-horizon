@@ -1,9 +1,11 @@
-import React from 'react';
-import { Button, Container, Table } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Container, Pagination, Table } from 'react-bootstrap';
 import useUsers from '../../../../hooks/useUsers';
 
 const VenueCustomers = () => {
     const [users] = useUsers();
+    const [currentPage, setCurrentPage] = useState(1);
+    const customersPerPage = 5;
 
     const customers = users.filter(user => user.role === "customer");
 
@@ -22,8 +24,16 @@ const VenueCustomers = () => {
         }
     }
 
+    // Logic for pagination
+    const indexOfLastCustomer = currentPage * customersPerPage;
+    const indexOfFirstCustomer = indexOfLastCustomer - customersPerPage;
+    const currentCustomers = customers.slice(indexOfFirstCustomer, indexOfLastCustomer);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
     return (
-        <Container>
+        <Container style={{ height: "100vh" }}>
             <h5 className='text-center pb-3'>Venue Customers</h5>
             <Table responsive>
                 <thead>
@@ -35,7 +45,7 @@ const VenueCustomers = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {customers?.map(customer => <tr className='py-5'
+                    {currentCustomers?.map(customer => <tr className='py-5'
                         key={customer.name}
                     >
                         <td style={{ color: "white", background: "transparent" }}>{customer.name}</td>
@@ -52,6 +62,19 @@ const VenueCustomers = () => {
                     }
                 </tbody>
             </Table>
+
+            {/* Pagination */}
+            <Pagination className='d-flex align-items-center justify-content-center'>
+                {Array.from({ length: Math.ceil(customers.length / customersPerPage) }).map((_, index) => (
+                    <Pagination.Item
+                        key={index + 1}
+                        active={index + 1 === currentPage}
+                        onClick={() => paginate(index + 1)}
+                    >
+                        {index + 1}
+                    </Pagination.Item>
+                ))}
+            </Pagination>
         </Container>
     );
 };
