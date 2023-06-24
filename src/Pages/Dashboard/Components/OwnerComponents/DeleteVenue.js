@@ -10,79 +10,31 @@ const DeleteVenue = () => {
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
 
-    const handleDelete = e => {
-        // if (venueName.venueName === undefined) {
-        //     alert("Complete the field to delete the venue!");
-        //     return
-        // }
-        // // console.log(venueName.venueName)
-
-        // let fieldValue = document.getElementById("venueName");
-        // fieldValue.value = ""; // field empty
-        // setVenueName({}); // state empty
-
-        e.preventDefault();
-    }
-
-
     const [selectedOption, setSelectedOption] = useState('');
-
-    const [availability, setAvailability] = useState([{ startTime: '', endTime: '' }]);
-    const handleChange = (e, index) => {
-        const { name, value } = e.target;
-        setAvailability((prevState) => {
-            const updatedAvailability = [...prevState];
-            updatedAvailability[index][name] = value;
-            return updatedAvailability;
-        });
-    };
-    const handleAddSlot = () => {
-        setAvailability((prevState) => [...prevState, { startTime: '', endTime: '' }]);
-    };
-    const handleRemoveSlot = (index) => {
-        setAvailability((prevState) => {
-            const updatedAvailability = [...prevState];
-            updatedAvailability.splice(index, 1);
-            return updatedAvailability;
-        });
-    };
-
-
     const handleOptionChange = (eventKey) => {
         setSelectedOption(eventKey);
     };
 
 
-
-    const handleRegisterSubmit = e => {
-        // if (loginData.password !== loginData.password2) {
-        //     alert('Your password did not match');
-        //     return
-        // }
-
-        // if (selectedOption === 'customer') {
-        //     registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, []);
-        // }
-
-        // if (selectedOption === 'owner') {
-        //     const venues = [{
-        //         name: loginData.venueName,
-        //         location: loginData.venueLocation,
-        //         capacity: loginData.venueCapacity,
-        //         size: loginData.venueSize,
-        //         amenities: loginData.venueAmenities,
-        //         availability: availability,
-        //         booked: false,
-        //         bookedInfo: [],
-        //         status: 'pending'
-        //     }]
-        //     registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues);
-        // }
-        e.preventDefault();
-    }
-
     let selectedVenue = selectedUser?.venues.filter(vn => `{${vn.name}}` === selectedOption)[0];
-    // console.log(selectedVenue)
+
+
+    const handleDelete = (venue, email) => {
+        if (window.confirm("Are you sure to delete this venue?")) {
+            fetch("https://event-horizon-8f3s.onrender.com/owner_venue", {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ venue, email })
+            })
+                .then(res => res.json())
+                .then(result => {
+                })
+            setSelectedOption('');
+        }
+
+    }
 
     return (
         <Container style={{ height: "100vh" }}>
@@ -116,7 +68,10 @@ const DeleteVenue = () => {
                             required />
                     </Form.Group>
                     <div className="text-center">
-                        <Button variant="dark" onClick={handleDelete}>Delete</Button>
+                        <Button variant="dark" onClick={e => {
+                            e.preventDefault();
+                            handleDelete(selectedVenue, selectedUser.email)
+                        }}>Delete</Button>
                     </div>
                 </> :
                     <></>
