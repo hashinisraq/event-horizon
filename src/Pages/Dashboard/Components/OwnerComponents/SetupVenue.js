@@ -68,6 +68,7 @@ const SetupVenue = () => {
                 .then(res => res.json())
                 .then(result => {
                 })
+            setProvideData({});
         }
         e.preventDefault();
     }
