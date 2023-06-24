@@ -32,37 +32,50 @@ const SetupVenue = () => {
     };
 
 
-    const [loginData, setLoginData] = useState({});
+    const [provideData, setProvideData] = useState({});
 
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLoginData = { ...loginData };
-        newLoginData[field] = value;
-        setLoginData(newLoginData);
+        const newProvideData = { ...provideData };
+        newProvideData[field] = value;
+        setProvideData(newProvideData);
     }
 
 
     const handleRegisterSubmit = e => {
-        //     const venues = [{
-        //         name: loginData.venueName,
-        //         location: loginData.venueLocation,
-        //         capacity: loginData.venueCapacity,
-        //         size: loginData.venueSize,
-        //         amenities: loginData.venueAmenities,
-        //         availability: availability,
-        //         booked: false,
-        //         bookedInfo: [],
-        //         status: 'pending'
-        //     }]
+        const email = selectedUser.email;
+        const venue = {
+            name: provideData.venueName,
+            location: provideData.venueLocation,
+            capacity: provideData.venueCapacity,
+            size: provideData.venueSize,
+            amenities: provideData.venueAmenities,
+            availability: availability,
+            booked: false,
+            bookedInfo: [],
+            status: 'pending'
+        }
 
+        if (window.confirm("Are you sure to add this venue?")) {
+            fetch('https://event-horizon-8f3s.onrender.com/venue_setup', {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ venue, email })
+            })
+                .then(res => res.json())
+                .then(result => {
+                })
+        }
         e.preventDefault();
     }
 
 
 
     return (
-        <Container style={{ height: "100vh" }}>
+        <Container>
             <h5 className='text-center pb-3'>Setup Venue</h5>
 
             <Form>
@@ -92,7 +105,7 @@ const SetupVenue = () => {
                     <Form.Group controlId="venueCapacity" className="mb-3 d-flex justify-content-around align-items-center">
                         <Form.Label>Venue Capacity:</Form.Label>
                         <Form.Control
-                            type="number"
+                            type="text"
                             name="venueCapacity"
                             onBlur={handleOnBlur}
                             style={{ width: "50%" }}
