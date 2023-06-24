@@ -69,6 +69,7 @@ const SetupVenue = () => {
                 .then(result => {
                 })
             setProvideData({});
+            setAvailability([{ startTime: '', endTime: '' }]);
         }
         e.preventDefault();
     }
