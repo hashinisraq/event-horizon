@@ -79,7 +79,6 @@ const UpdateVenue = () => {
     }
 
     let selectedVenue = selectedUser?.venues.filter(vn => `{${vn.name}}` === selectedOption)[0];
-    // console.log(selectedVenue)
 
 
     return (
