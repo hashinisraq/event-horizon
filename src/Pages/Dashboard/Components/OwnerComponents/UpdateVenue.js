@@ -9,8 +9,6 @@ const UpdateVenue = () => {
 
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
-    // selectedUser?.venues.map(vn => console.log(vn.name))
-
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -39,40 +37,45 @@ const UpdateVenue = () => {
         setSelectedOption(eventKey);
     };
 
-    const [loginData, setLoginData] = useState({});
+    const [provideData, setProvideData] = useState({});
 
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLoginData = { ...loginData };
-        newLoginData[field] = value;
-        setLoginData(newLoginData);
+        const newProvideData = { ...provideData };
+        newProvideData[field] = value;
+        setProvideData(newProvideData);
     }
 
     const handleRegisterSubmit = e => {
-        // if (loginData.password !== loginData.password2) {
-        //     alert('Your password did not match');
-        //     return
-        // }
+        const emailAddress = selectedUser.email;
+        const oldVenue = selectedVenue.name;
+        const venue = {
+            name: provideData.venueName,
+            location: provideData.venueLocation,
+            capacity: provideData.venueCapacity,
+            size: provideData.venueSize,
+            amenities: provideData.venueAmenities,
+            availability: availability,
+        }
 
-        // if (selectedOption === 'customer') {
-        //     registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, []);
-        // }
+        if (window.confirm("Are you sure you want to update your venue?")) {
+            fetch('https://event-horizon-8f3s.onrender.com/venue_update', {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ emailAddress, oldVenue, venue })
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result)
+                })
+            setSelectedOption('');
+            setAvailability([{ startTime: '', endTime: '' }]);
+            setProvideData({});
+        }
 
-        // if (selectedOption === 'owner') {
-        //     const venues = [{
-        //         name: loginData.venueName,
-        //         location: loginData.venueLocation,
-        //         capacity: loginData.venueCapacity,
-        //         size: loginData.venueSize,
-        //         amenities: loginData.venueAmenities,
-        //         availability: availability,
-        //         booked: false,
-        //         bookedInfo: [],
-        //         status: 'pending'
-        //     }]
-        //     registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues);
-        // }
         e.preventDefault();
     }
 
