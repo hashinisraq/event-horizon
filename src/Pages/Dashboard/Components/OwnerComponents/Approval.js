@@ -27,6 +27,41 @@ const Approval = () => {
         setCurrentPage(pageNumber);
     };
 
+
+    const handleClick = (order, action) => {
+        if (action === "rejected") {
+            if (window.confirm("Are you sure you want to reject the order?")) {
+                fetch('https://event-horizon-8f3s.onrender.com/order_action', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ order, action })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                    })
+
+            }
+        }
+
+        else if (action === "accepted") {
+            if (window.confirm("Are you sure you want to accept the order?")) {
+                fetch('https://event-horizon-8f3s.onrender.com/order_action', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ order, action })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                    })
+
+            }
+        }
+    }
+
     return (
         <Container style={{ height: "100vh" }}>
             <h5 className='text-center pb-3'>Approval</h5>
@@ -61,15 +96,32 @@ const Approval = () => {
                             <td style={{ color: "white", background: "transparent" }}>{order.status}</td>
                             <td style={{ color: "white", background: "transparent" }}>
                                 <span className='d-flex align-items-center justify-content-between'>
-                                    <Button variant="dark" className='my-1'>Reject</Button>
-                                    <span className='mx-1' />
-                                    <Button variant="dark" className='my-1'>Accept</Button>
+                                    {order.status === "pending" ? <>
+                                        <Button variant="dark" className='my-1' onClick={e => {
+                                            e.preventDefault();
+                                            handleClick(order, "rejected");
+                                        }}>Reject</Button>
+                                        <span className='mx-1' />
+                                        <Button variant="dark" className='my-1' onClick={e => {
+                                            e.preventDefault();
+                                            handleClick(order, "accepted");
+                                        }}>Accept</Button>
+                                    </>
+                                        :
+                                        <>
+                                            <>
+                                                <Button variant="danger" className='my-1' disabled>Reject</Button>
+                                                <span className='mx-1' />
+                                                <Button variant="danger" className='my-1' disabled>Accept</Button>
+                                            </>
+                                        </>}
                                 </span>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </Table>
+
             {/* Pagination */}
             {matchedElements && matchedElements.length > 0 && (
                 <div className="d-flex justify-content-center mt-4">

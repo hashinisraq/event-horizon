@@ -69,7 +69,6 @@ const UpdateVenue = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result)
                 })
             setSelectedOption('');
             setAvailability([{ startTime: '', endTime: '' }]);
