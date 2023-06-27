@@ -8,6 +8,8 @@ import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import GoogleRegister from "./Pages/Login/GoogleRegister/GoogleRegister";
 import VeneueDetails from "./Pages/Dashboard/Components/CustomerComponets/VeneueDetails";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}> </Route>
+            <Route path="/aboutus" element={<AboutUs />}> </Route>
+            <Route path="/contactus" element={<ContactUs />}> </Route>
             <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}> </Route>
             <Route path="/login" element={<Login />}> </Route>
             <Route path="/register" element={<Register />}> </Route>

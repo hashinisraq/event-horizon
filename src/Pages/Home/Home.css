@@ -1,0 +1,13 @@
+.carousel-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: Add background color to the captions */
+    padding: 20px;
+    color: white;
+}

@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 const Venues = () => {
     const [users] = useUsers();
 
-    let selectedVenues = users?.filter(item => item.role === 'owner').map(item => item.venues)[0];
+    let selectedVenues = users
+        ?.filter((item) => item.role === 'owner')
+        .map((item) => item.venues.filter((venue) => venue.status === 'accepted'))[0];
+
 
     const [selectedSize, setSelectedSize] = useState('');
     const [selectedLocation, setSelectedLocation] = useState('');
