@@ -47,6 +47,7 @@ const SetupVenue = () => {
         const email = selectedUser.email;
         const venue = {
             name: provideData.venueName,
+            venueImgLink: provideData.venueImgLink,
             location: provideData.venueLocation,
             capacity: provideData.venueCapacity,
             size: provideData.venueSize,
@@ -134,6 +135,17 @@ const SetupVenue = () => {
                             onBlur={handleOnBlur}
                             style={{ width: "50%" }}
                             placeholder='Venue Amenities'
+                            required />
+                    </Form.Group>
+
+                    <Form.Group controlId="venueImgLink" className="mb-3 d-flex justify-content-around align-items-center">
+                        <Form.Label>Venue Image Link:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="venueImgLink"
+                            onBlur={handleOnBlur}
+                            style={{ width: "50%" }}
+                            placeholder='Venue Image Link'
                             required />
                     </Form.Group>
 

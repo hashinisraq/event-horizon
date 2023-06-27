@@ -14,7 +14,7 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // email password registration
-    const registerUser = (email, password, name, history, role, phoneNo, venues) => {
+    const registerUser = (email, password, name, history, role, phoneNo, venues, profileImageLink) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -23,10 +23,10 @@ const useFirebase = () => {
 
                 // save user to the database
                 if (role === 'customer') {
-                    saveUser(email, name, role, phoneNo, []);
+                    saveUser(email, name, role, phoneNo, [], profileImageLink);
                 }
                 if (role === 'owner') {
-                    saveUser(email, name, role, phoneNo, venues);
+                    saveUser(email, name, role, phoneNo, venues, profileImageLink);
                 }
 
                 // send name to firebase after creation
@@ -103,10 +103,10 @@ const useFirebase = () => {
 
 
 
-    const saveUser = (email, name, role, phoneNo, venues) => {
+    const saveUser = (email, name, role, phoneNo, venues, profileImageLink) => {
         if (role === 'customer') {
             const bookings = [];
-            const user = { email, name, role, phoneNo, bookings };
+            const user = { email, name, role, phoneNo, bookings, profileImageLink };
             fetch('https://event-horizon-8f3s.onrender.com/users', {
                 method: 'POST',
                 headers: {
@@ -118,7 +118,7 @@ const useFirebase = () => {
         }
 
         if (role === 'owner') {
-            const user = { email, name, role, phoneNo, venues };
+            const user = { email, name, role, phoneNo, venues, profileImageLink };
             fetch('https://event-horizon-8f3s.onrender.com/users', {
                 method: 'POST',
                 headers: {

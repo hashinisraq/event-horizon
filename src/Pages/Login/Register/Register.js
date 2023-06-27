@@ -54,7 +54,7 @@ const Register = () => {
         }
 
         if (selectedOption === 'customer') {
-            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, []);
+            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, [], loginData.profileImageLink);
         }
 
         if (selectedOption === 'owner') {
@@ -69,7 +69,7 @@ const Register = () => {
                 bookedInfo: [],
                 status: 'pending'
             }]
-            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues);
+            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues, loginData.profileImageLink);
         }
         e.preventDefault();
     }
@@ -254,6 +254,16 @@ const Register = () => {
                                             </Form.Group>
                                         </div>
                                     )}
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
+                                    <Form.Label>Your Profile Image Link</Form.Label>
+                                    <Form.Control
+                                        type="test"
+                                        name="profileImageLink"
+                                        onBlur={handleOnBlur}
+                                        placeholder="Profile Image Link"
+                                        required />
                                 </Form.Group>
 
 

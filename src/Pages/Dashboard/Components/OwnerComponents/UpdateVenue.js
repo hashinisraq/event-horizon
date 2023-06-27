@@ -52,6 +52,7 @@ const UpdateVenue = () => {
         const oldVenue = selectedVenue.name;
         const venue = {
             name: provideData.venueName,
+            venueImgLink: provideData.venueImgLink,
             location: provideData.venueLocation,
             capacity: provideData.venueCapacity,
             size: provideData.venueSize,
@@ -157,6 +158,18 @@ const UpdateVenue = () => {
                                     onBlur={handleOnBlur}
                                     style={{ width: "50%" }}
                                     placeholder={`${selectedVenue.amenities}`}
+                                    required />
+                            </Form.Group>
+
+
+                            <Form.Group controlId="venueImgLink" className="mb-3 d-flex justify-content-around align-items-center">
+                                <Form.Label>Venue Image Link:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="venueImgLink"
+                                    onBlur={handleOnBlur}
+                                    style={{ width: "50%" }}
+                                    placeholder={`${selectedVenue.venueImgLink}`}
                                     required />
                             </Form.Group>
 
