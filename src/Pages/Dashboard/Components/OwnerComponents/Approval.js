@@ -58,6 +58,29 @@ const Approval = () => {
                     .then(result => {
                     })
 
+                const userEmail = users?.filter(usr => usr.email === user.email)[0]?.email;
+                const booked = true;
+                const venueName = order.venueName;
+                const bookedInfo = {
+                    customerEmail: order.customerEmail,
+                    customerName: order.customerName,
+                    customerPhone: order.customerPhone,
+                    Slot: order.Slot,
+                    Day: order.Day,
+                }
+
+
+                fetch('http://localhost:5000/add_booking', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ userEmail, booked, venueName, bookedInfo })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result)
+                    })
             }
         }
     }
