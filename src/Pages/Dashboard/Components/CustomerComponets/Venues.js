@@ -152,11 +152,9 @@ const Venues = () => {
                                             <h6>Location: {vn.location}</h6>
                                             <h6>Amenitiy: {vn.amenities}</h6>
                                             <h6 className='text-success'>Price Per Slot: {vn.venuePrice} BDT</h6>
-
                                         </Card.Text>
                                         <div className='text-center'>
                                             <Link to={`/venueDetails/${vn.name}`}><Button variant="warning" className='my-2 mx-2'>See Details</Button></Link>
-                                            {/* <Button variant='warning'>See Details</Button> */}
                                         </div>
                                     </Card.Body>
                                 </Card>
