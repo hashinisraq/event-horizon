@@ -53,6 +53,7 @@ const UpdateVenue = () => {
         const venue = {
             name: provideData.venueName,
             venueRegNo: provideData.venueRegNo,
+            venuePrice: provideData.venuePrice,
             venueImgLink: provideData.venueImgLink,
             location: provideData.venueLocation,
             capacity: provideData.venueCapacity,
@@ -137,6 +138,17 @@ const UpdateVenue = () => {
                                     onBlur={handleOnBlur}
                                     style={{ width: "50%" }}
                                     placeholder={`${selectedVenue?.venueRegNo}`}
+                                    required />
+                            </Form.Group>
+
+                            <Form.Group controlId="venuePrice" className="mb-3">
+                                <Form.Label className='text-dark'>Venue Price:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="venuePrice"
+                                    onBlur={handleOnBlur}
+                                    style={{ width: "50%" }}
+                                    placeholder={`${selectedVenue?.venuePrice}`}
                                     required />
                             </Form.Group>
 
