@@ -10,6 +10,7 @@ import GoogleRegister from "./Pages/Login/GoogleRegister/GoogleRegister";
 import VeneueDetails from "./Pages/Dashboard/Components/CustomerComponets/VeneueDetails";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
+import Venues from "./Pages/Dashboard/Components/CustomerComponets/Venues";
 
 function App() {
   return (
@@ -21,11 +22,12 @@ function App() {
             <Route path="/home" element={<Home />}> </Route>
             <Route path="/aboutus" element={<AboutUs />}> </Route>
             <Route path="/contactus" element={<ContactUs />}> </Route>
+            <Route path="/venues" element={<PrivateRoute><Venues /></PrivateRoute>}> </Route>
             <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}> </Route>
             <Route path="/login" element={<Login />}> </Route>
             <Route path="/register" element={<Register />}> </Route>
             <Route path="/googleRegister" element={<PrivateRoute><GoogleRegister /></PrivateRoute>}> </Route>
-            <Route path="/venueDetails/:venueTitle" element={<VeneueDetails />}>
+            <Route path="/venueDetails/:venueTitle" element={<PrivateRoute><VeneueDetails /></PrivateRoute>}>
             </Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>

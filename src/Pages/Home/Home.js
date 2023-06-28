@@ -99,7 +99,7 @@ const Home = () => {
                     <Row>
                         {selectedVenues?.slice(0, 3).map((venue, index) => (
                             <Col key={index} sm={12} md={4} lg={4} className='py-3'>
-                                <Link to="">
+                                <Link to={`/venueDetails/${venue.name}`}>
                                     <div
                                         style={{
                                             backgroundImage: `url(${venue.venueImgLink})`,
