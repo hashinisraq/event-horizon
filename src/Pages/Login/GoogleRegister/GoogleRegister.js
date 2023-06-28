@@ -64,6 +64,7 @@ const GoogleRegister = () => {
         if (selectedOption === 'owner') {
             const venues = [{
                 name: provideData.venueName,
+                venueRegNo: provideData.venueRegNo,
                 venueImgLink: provideData.venueImgLink,
                 location: provideData.venueLocation,
                 capacity: provideData.venueCapacity,
@@ -130,6 +131,16 @@ const GoogleRegister = () => {
                                             name="venueImgLink"
                                             onBlur={handleOnBlur}
                                             placeholder='Venue Image Link'
+                                            required />
+                                    </Form.Group>
+
+                                    <Form.Group controlId="venueRegNo" className="mb-3">
+                                        <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="venueRegNo"
+                                            onBlur={handleOnBlur}
+                                            placeholder='Venue Registration No'
                                             required />
                                     </Form.Group>
 

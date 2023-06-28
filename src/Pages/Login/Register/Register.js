@@ -65,6 +65,7 @@ const Register = () => {
             const venues = [{
                 name: loginData.venueName,
                 venueImgLink: loginData.venueImgLink,
+                venueRegNo: loginData.venueRegNo,
                 location: loginData.venueLocation,
                 capacity: loginData.venueCapacity,
                 size: loginData.venueSize,
@@ -176,6 +177,16 @@ const Register = () => {
                                                     name="venueImgLink"
                                                     onBlur={handleOnBlur}
                                                     placeholder='Venue Image Link'
+                                                    required />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="venueRegNo" className="mb-3">
+                                                <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="venueRegNo"
+                                                    onBlur={handleOnBlur}
+                                                    placeholder='Venue Registration No'
                                                     required />
                                             </Form.Group>
 

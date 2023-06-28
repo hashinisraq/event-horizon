@@ -16,6 +16,7 @@ const VenueInformation = () => {
                 <thead>
                     <tr>
                         <th style={{ color: "white", background: "transparent" }}>Name</th>
+                        <th style={{ color: "white", background: "transparent" }}>Reg No</th>
                         <th style={{ color: "white", background: "transparent" }}>Location</th>
                         <th style={{ color: "white", background: "transparent" }}>Capacity</th>
                         <th style={{ color: "white", background: "transparent" }}>Size</th>
@@ -29,6 +30,7 @@ const VenueInformation = () => {
                         key={venue.name}
                     >
                         <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                        <td style={{ color: "white", background: "transparent" }}>{venue.venueRegNo}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
                         <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>

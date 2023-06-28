@@ -52,6 +52,7 @@ const UpdateVenue = () => {
         const oldVenue = selectedVenue.name;
         const venue = {
             name: provideData.venueName,
+            venueRegNo: provideData.venueRegNo,
             venueImgLink: provideData.venueImgLink,
             location: provideData.venueLocation,
             capacity: provideData.venueCapacity,
@@ -128,6 +129,17 @@ const UpdateVenue = () => {
                                     required />
                             </Form.Group>
 
+                            <Form.Group controlId="venueRegNo" className="mb-3">
+                                <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="venueRegNo"
+                                    onBlur={handleOnBlur}
+                                    style={{ width: "50%" }}
+                                    placeholder={`${selectedVenue?.venueRegNo}`}
+                                    required />
+                            </Form.Group>
+
                             <Form.Group controlId="venueCapacity" className="mb-3 d-flex justify-content-around align-items-center">
                                 <Form.Label>Venue Capacity:</Form.Label>
                                 <Form.Control
@@ -171,6 +183,8 @@ const UpdateVenue = () => {
                                     placeholder={`${selectedVenue.venueImgLink}`}
                                     required />
                             </Form.Group>
+
+
 
 
                             <div className="py-3">

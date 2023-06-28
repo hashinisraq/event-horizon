@@ -47,6 +47,7 @@ const SetupVenue = () => {
         const email = selectedUser.email;
         const venue = {
             name: provideData.venueName,
+            venueRegNo: provideData.venueRegNo,
             venueImgLink: provideData.venueImgLink,
             location: provideData.venueLocation,
             capacity: provideData.venueCapacity,
@@ -102,6 +103,16 @@ const SetupVenue = () => {
                             onBlur={handleOnBlur}
                             style={{ width: "50%" }}
                             placeholder='Venue Location'
+                            required />
+                    </Form.Group>
+
+                    <Form.Group controlId="venueRegNo" className="mb-3">
+                        <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="venueRegNo"
+                            onBlur={handleOnBlur}
+                            placeholder='Venue Registration No'
                             required />
                     </Form.Group>
 
