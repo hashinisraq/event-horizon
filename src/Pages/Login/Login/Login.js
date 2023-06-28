@@ -4,7 +4,6 @@ import { useLocation } from 'react-router';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../../Shared/Header/Header';
 import Footer from '../../Shared/Footer/Footer';
-import styles from '../../../Assets/Styles/styles.module.css';
 import useFirebase from '../../../hooks/useFirebase';
 import useAuth from '../../../hooks/useAuth';
 
@@ -39,16 +38,16 @@ const Login = () => {
     }
 
     return (
-        <div className={styles.bgStyle}>
+        <div>
             <Header />
-            <div className={styles.contentStyle}>
-                <Container className='px-5 pb-5'>
-                    <Row>
+            <div>
+                <Container className='d-flex align-items-center justify-content-center py-5'>
+                    <Row className='p-2' style={{ width: "50%", border: "1px solid gray", borderRadius: "8px" }}>
                         <Col sm={12} md={12} lg={12} className='text-white'>
-                            <h2 className='text-center'>Login</h2>
+                            <h2 className='text-center text-warning'>Login</h2>
                             {!isLoading && <Form onSubmit={handleLoginSubmit}>
                                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                                    <Form.Label>Email address</Form.Label>
+                                    <Form.Label className='text-dark'>Email</Form.Label>
                                     <Form.Control
                                         type="email"
                                         name="email"
@@ -57,7 +56,7 @@ const Login = () => {
                                         required />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formGroupPassword">
-                                    <Form.Label>Password</Form.Label>
+                                    <Form.Label className='text-dark'>Password</Form.Label>
                                     <Form.Control
                                         type="password"
                                         name="password"
@@ -67,15 +66,19 @@ const Login = () => {
                                 </Form.Group>
 
                                 <div className="pb-2">
-                                    <Button className='w-100' type="submit" variant="dark">Login</Button>
+                                    <Button className='w-100' type="submit" variant="warning">Login</Button>
                                     {authError && <Alert variant="danger">{authError}</Alert>}
                                 </div>
 
+                                <div className='text-center'>
+                                    <h6>OR</h6>
+                                </div>
 
                                 <div className='text-center pt-3 pb-5'>
                                     <Button
-                                        variant='primary'
-                                        className='w-100 h-10'
+                                        variant='transparent'
+                                        style={{ border: "1px solid yellow" }}
+                                        className='text-warning w-100 h-10'
                                         onClick={() => {
                                             signInUsingGooogle();
                                             handleGoogleSignIn();
@@ -86,11 +89,12 @@ const Login = () => {
                                     </Button>
                                 </div>
 
-                                <div className="pt-2 pb-5">
+
+                                {/* <div className="pt-2 pb-5">
                                     <Link to="/register">
                                         <Button className='w-100' variant="light">New User? Please Register</Button>
                                     </Link>
-                                </div>
+                                </div> */}
                             </Form>}
                             {isLoading && <div className="py-2 d-flex justify-content-center align-items-center"><Spinner animation="border" variant="dark" /></div>}
                         </Col>

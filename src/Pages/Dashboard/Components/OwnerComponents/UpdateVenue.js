@@ -162,13 +162,12 @@ const UpdateVenue = () => {
                             </Form.Group>
 
 
-                            <Form.Group controlId="venueImgLink" className="mb-3 d-flex justify-content-around align-items-center">
+                            <Form.Group controlId="venueImgLink" className="mb-3">
                                 <Form.Label>Venue Image Link:</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="venueImgLink"
                                     onBlur={handleOnBlur}
-                                    style={{ width: "50%" }}
                                     placeholder={`${selectedVenue.venueImgLink}`}
                                     required />
                             </Form.Group>

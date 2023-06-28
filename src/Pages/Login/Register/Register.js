@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Spinner, Dropdown, Alert } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
-import styles from '../../../Assets/Styles/styles.module.css';
 import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
+    const { signInUsingGooogle, user } = useAuth();
+    const location = useLocation();
+
+
     const [selectedOption, setSelectedOption] = useState('');
 
     const [availability, setAvailability] = useState([{ startTime: '', endTime: '' }]);
@@ -75,18 +79,26 @@ const Register = () => {
         e.preventDefault();
     }
 
+    const handleGoogleSignIn = () => {
+        history(location.state?.from || '/home');
+
+        if (user.abcd === undefined) {
+            history("/googleRegister")
+        }
+    }
+
 
     return (
-        <div className={styles.bgStyle}>
+        <div>
             <Header />
-            <div className={styles.contentStyle}>
-                <Container className='px-5 pb-5'>
-                    <Row>
+            <div>
+                <Container className='d-flex align-items-center justify-content-center py-5'>
+                    <Row className='p-2' style={{ width: "50%", border: "1px solid gray", borderRadius: "8px" }}>
                         <Col sm={12} md={12} lg={12} className='text-white'>
-                            <h2 className='text-center'>Register</h2>
+                            <h2 className='text-center text-warning'>Register</h2>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formGroupName">
-                                    <Form.Label>Your Name</Form.Label>
+                                    <Form.Label className='text-dark'>Name</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="name"
@@ -95,7 +107,7 @@ const Register = () => {
                                         required />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                                    <Form.Label>Your Email address</Form.Label>
+                                    <Form.Label className='text-dark'>Email</Form.Label>
                                     <Form.Control
                                         type="email"
                                         name="email"
@@ -104,7 +116,7 @@ const Register = () => {
                                         required />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formGroupPassword">
-                                    <Form.Label>Your Password</Form.Label>
+                                    <Form.Label className='text-dark'>Password</Form.Label>
                                     <Form.Control
                                         type="password"
                                         name="password"
@@ -113,12 +125,22 @@ const Register = () => {
                                         required />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formGroupRePassword">
-                                    <Form.Label>Re-type Your Password</Form.Label>
+                                    <Form.Label className='text-dark'>Re-type Password</Form.Label>
                                     <Form.Control
                                         type="password"
                                         name="password2"
                                         onBlur={handleOnBlur}
                                         placeholder="Password"
+                                        required />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
+                                    <Form.Label className='text-dark'>Profile Image Link</Form.Label>
+                                    <Form.Control
+                                        type="test"
+                                        name="profileImageLink"
+                                        onBlur={handleOnBlur}
+                                        placeholder="Profile Image Link"
                                         required />
                                 </Form.Group>
 
@@ -138,7 +160,7 @@ const Register = () => {
                                         <div className='pb-4'>
                                             <h5 className='text-center'>Owner Venue Info</h5>
                                             <Form.Group controlId="venueName" className="mb-3">
-                                                <Form.Label>Venue Name:</Form.Label>
+                                                <Form.Label className='text-dark'>Venue Name:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="venueName"
@@ -147,19 +169,18 @@ const Register = () => {
                                                     required />
                                             </Form.Group>
 
-                                            <Form.Group controlId="venueImgLink" className="mb-3 d-flex justify-content-around align-items-center">
-                                                <Form.Label>Venue Image Link:</Form.Label>
+                                            <Form.Group controlId="venueImgLink" className="mb-3">
+                                                <Form.Label className='text-dark'>Venue Image Link:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="venueImgLink"
                                                     onBlur={handleOnBlur}
-                                                    style={{ width: "50%" }}
                                                     placeholder='Venue Image Link'
                                                     required />
                                             </Form.Group>
 
                                             <Form.Group controlId="venueLocation" className="mb-3">
-                                                <Form.Label>Venue Location:</Form.Label>
+                                                <Form.Label className='text-dark'>Venue Location:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="venueLocation"
@@ -169,7 +190,7 @@ const Register = () => {
                                             </Form.Group>
 
                                             <Form.Group controlId="venueCapacity" className="mb-3">
-                                                <Form.Label>Venue Capacity:</Form.Label>
+                                                <Form.Label className='text-dark'>Venue Capacity:</Form.Label>
                                                 <Form.Control
                                                     type="number"
                                                     name="venueCapacity"
@@ -179,7 +200,7 @@ const Register = () => {
                                             </Form.Group>
 
                                             <Form.Group controlId="venueSize" className="mb-3">
-                                                <Form.Label>Venue Size:</Form.Label>
+                                                <Form.Label className='text-dark'>Venue Size:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="venueSize"
@@ -189,7 +210,7 @@ const Register = () => {
                                             </Form.Group>
 
                                             <Form.Group controlId="venueAmenities" className="mb-3">
-                                                <Form.Label>Venue Amenities:</Form.Label>
+                                                <Form.Label className='text-dark'>Venue Amenities:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="venueAmenities"
@@ -199,12 +220,12 @@ const Register = () => {
                                             </Form.Group>
 
 
-                                            <Form.Label>Venue Availablity:</Form.Label>
+                                            <Form.Label className='text-dark'>Venue Availablity:</Form.Label>
                                             {availability.map((timeSlot, index) => (
                                                 <div key={index}>
                                                     <div className='d-flex'>
                                                         <Form.Group className='pe-3' controlId={`startTime-${index}`}>
-                                                            <Form.Label>Start Time</Form.Label>
+                                                            <Form.Label className='text-dark'>Start Time</Form.Label>
                                                             <Form.Control
                                                                 type="time"
                                                                 name="startTime"
@@ -215,7 +236,7 @@ const Register = () => {
                                                         </Form.Group>
 
                                                         <Form.Group controlId={`endTime-${index}`}>
-                                                            <Form.Label>End Time</Form.Label>
+                                                            <Form.Label className='text-dark'>End Time</Form.Label>
                                                             <Form.Control
                                                                 type="time"
                                                                 name="endTime"
@@ -241,7 +262,7 @@ const Register = () => {
                                             </Button>
 
                                             <Form.Group controlId="phoneNo" className="mb-3">
-                                                <Form.Label>Phone No:</Form.Label>
+                                                <Form.Label className='text-dark'>Phone No:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="phoneNo"
@@ -256,7 +277,7 @@ const Register = () => {
                                         <div className='pb-4'>
                                             <h5 className='text-center'>Customer Info</h5>
                                             <Form.Group controlId="phoneNo">
-                                                <Form.Label>Phone No:</Form.Label>
+                                                <Form.Label className='text-dark'>Phone No:</Form.Label>
                                                 <Form.Control
                                                     type="text"
                                                     name="phoneNo"
@@ -268,28 +289,35 @@ const Register = () => {
                                     )}
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
-                                    <Form.Label>Your Profile Image Link</Form.Label>
-                                    <Form.Control
-                                        type="test"
-                                        name="profileImageLink"
-                                        onBlur={handleOnBlur}
-                                        placeholder="Profile Image Link"
-                                        required />
-                                </Form.Group>
-
-
-                                <div className="pb-5">
-                                    <Button className='w-100' variant="dark" onClick={e => handleRegisterSubmit(e)}>Sign up</Button>
+                                <div className="pb-3">
+                                    <Button className='w-100' variant="warning" onClick={e => handleRegisterSubmit(e)}>Sign up</Button>
                                     {authError && <Alert variant="danger">{authError}</Alert>}
                                 </div>
 
+                                <div className='text-center text-dark'>
+                                    <h6>OR</h6>
+                                </div>
 
                                 <div className='text-center pt-3 pb-5'>
+                                    <Button
+                                        variant='transparent'
+                                        style={{ border: "1px solid yellow" }}
+                                        className='text-warning w-100 h-10'
+                                        onClick={() => {
+                                            signInUsingGooogle();
+                                            handleGoogleSignIn();
+                                        }}
+                                    >
+                                        <img className='pe-2' width="30px" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="google-logo" srcSet="" />
+                                        Sign in with Google
+                                    </Button>
+                                </div>
+
+                                {/* <div className='text-center pt-3 pb-5'>
                                     <Link to="/login">
                                         <Button className='w-100' variant="light">Already A User? Please Login</Button>
                                     </Link>
-                                </div>
+                                </div> */}
                             </Form>
                             {isLoading && <div className="d-flex justify-content-center align-items-center"><Spinner animation="border" variant="dark" /></div>}
                         </Col>
@@ -297,7 +325,7 @@ const Register = () => {
                 </Container>
             </div>
             <Footer />
-        </div>
+        </div >
     );
 };
 

@@ -28,11 +28,15 @@ const Header = () => {
                             <Nav.Link href="#"><Link to="/contactus" style={{ textDecoration: "none", color: "black" }}>Contact us</Link></Nav.Link>
 
                             {!user.email ? <><Nav.Link href="#"><Link to="/login" style={{ textDecoration: "none", color: "black" }}>Login</Link></Nav.Link>
-                                <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
-                                    <Nav.Link>
-                                        <Button variant='warning' className='p-2'>Sign up</Button>
-                                    </Nav.Link>
-                                </Link></> : <></>}
+
+                                <Nav.Link>
+                                    <Button variant='warning' className='p-2'>
+                                        <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+                                            Sign up
+                                        </Link>
+                                    </Button>
+                                </Nav.Link>
+                            </> : <></>}
 
                             {selectedUser?.name !== undefined ? <NavDropdown title={<DropdownOptionImage />} id="collasible-nav-dropdown">
                                 <NavDropdown.Item>
