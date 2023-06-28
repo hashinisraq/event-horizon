@@ -65,13 +65,13 @@ const Login = () => {
                                         required />
                                 </Form.Group>
 
-                                <div className="pb-2">
+                                <div className="pb-3">
                                     <Button className='w-100' type="submit" variant="warning">Login</Button>
                                     {authError && <Alert variant="danger">{authError}</Alert>}
                                 </div>
 
                                 <div className='text-center'>
-                                    <h6>OR</h6>
+                                    <h6 className='text-dark'>OR</h6>
                                 </div>
 
                                 <div className='text-center pt-3 pb-5'>
