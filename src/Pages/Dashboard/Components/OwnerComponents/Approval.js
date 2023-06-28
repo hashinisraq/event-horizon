@@ -95,6 +95,7 @@ const Approval = () => {
                         <th style={{ color: "white", background: "transparent" }}>Email</th>
                         <th style={{ color: "white", background: "transparent" }}>Phone</th>
                         <th style={{ color: "white", background: "transparent" }}>Venue</th>
+                        <th style={{ color: "white", background: "transparent" }}>Price</th>
                         <th style={{ color: "white", background: "transparent" }}>Size</th>
                         <th style={{ color: "white", background: "transparent" }}>Day</th>
                         <th style={{ color: "white", background: "transparent" }}>Slot</th>
@@ -110,6 +111,7 @@ const Approval = () => {
                             <td style={{ color: "white", background: "transparent" }}>{order.customerEmail}</td>
                             <td style={{ color: "white", background: "transparent" }}>{order.customerPhone}</td>
                             <td style={{ color: "white", background: "transparent" }}>{order.venueName}</td>
+                            <td style={{ color: "white", background: "transparent" }}>{order.venuePrice}</td>
                             <td style={{ color: "white", background: "transparent" }}>{order.venueCapacity}</td>
                             <td style={{ color: "white", background: "transparent" }}>{order.Day}</td>
                             <td style={{ color: "white", background: "transparent" }}>

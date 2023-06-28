@@ -109,9 +109,19 @@ const VeneueDetails = () => {
                         <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                             <Form.Label>Venue Name</Form.Label>
                             <Form.Control
-                                type="venueName"
+                                type="text"
                                 name="venueName"
                                 placeholder={`${selectedVenue?.name}`}
+                                style={{ width: "50%" }}
+                                disabled />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
+                            <Form.Label>Venue Price</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="venuePrice"
+                                placeholder={`${selectedVenue?.venuePrice}`}
                                 style={{ width: "50%" }}
                                 disabled />
                         </Form.Group>

@@ -139,6 +139,7 @@ const Venues = () => {
                     <thead>
                         <tr>
                             <th style={{ color: "white", background: "transparent" }}>Name</th>
+                            <th style={{ color: "white", background: "transparent" }}>Price</th>
                             <th style={{ color: "white", background: "transparent" }}>Location</th>
                             <th style={{ color: "white", background: "transparent" }}>Size</th>
                             <th style={{ color: "white", background: "transparent" }}>Availability</th>
@@ -150,6 +151,7 @@ const Venues = () => {
                             {currentVenues?.map(venue => (
                                 <tr key={venue.name}>
                                     <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
+                                    <td style={{ color: "white", background: "transparent" }}>{venue.venuePrice} BDT</td>
                                     <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
                                     <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
                                     <td style={{ color: "white", background: "transparent" }}>
