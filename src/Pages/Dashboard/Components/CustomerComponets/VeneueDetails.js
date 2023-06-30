@@ -4,7 +4,6 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import useUsers from '../../../../hooks/useUsers';
 import Header from '../../../Shared/Header/Header';
-import { Link } from 'react-router-dom';
 import Footer from '../../../Shared/Footer/Footer';
 
 const VeneueDetails = () => {

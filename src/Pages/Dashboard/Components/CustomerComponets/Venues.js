@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Col, Container, Form, Pagination, Row, Table } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, Pagination, Row } from 'react-bootstrap';
 import useUsers from '../../../../hooks/useUsers';
 import { Link } from 'react-router-dom';
 import Header from '../../../Shared/Header/Header';
