@@ -11,6 +11,7 @@ import VeneueDetails from "./Pages/Dashboard/Components/CustomerComponets/Veneue
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import Venues from "./Pages/Dashboard/Components/CustomerComponets/Venues";
+import CustomerDashboard from "./Pages/Dashboard/Components/CustomerComponets/CustomerDashboard";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/contactus" element={<ContactUs />}> </Route>
             <Route path="/venues" element={<PrivateRoute><Venues /></PrivateRoute>}> </Route>
             <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}> </Route>
+            <Route path="/customerdashboard" element={<PrivateRoute><CustomerDashboard /></PrivateRoute>}> </Route>
             <Route path="/login" element={<Login />}> </Route>
             <Route path="/register" element={<Register />}> </Route>
             <Route path="/googleRegister" element={<PrivateRoute><GoogleRegister /></PrivateRoute>}> </Route>

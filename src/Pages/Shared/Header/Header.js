@@ -39,9 +39,13 @@ const Header = () => {
                             </> : <></>}
 
                             {selectedUser?.name !== undefined ? <NavDropdown title={<DropdownOptionImage />} id="collasible-nav-dropdown">
-                                <NavDropdown.Item>
-                                    <Link to="/dashboard" style={{ textDecoration: "none", color: "black" }}>My profile</Link>
-                                </NavDropdown.Item>
+                                {
+                                    selectedUser?.role === "customer" ?
+                                        <NavDropdown.Item>
+                                            <Link to="/customerdashboard" style={{ textDecoration: "none", color: "black" }}>My profile</Link>
+                                        </NavDropdown.Item>
+                                        : <></>
+                                }
                                 <NavDropdown.Item>
                                     <Button variant='light' onClick={logOut}>Log out</Button>
                                 </NavDropdown.Item>

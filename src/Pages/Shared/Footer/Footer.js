@@ -26,7 +26,7 @@ const Footer = () => {
                     <Col sm={3} className='pt-2'>
                         <h6 className='text-warning pb-1'>NEWSLETTER</h6>
                         <Form>
-                            <Row className="align-items-end">
+                            <Row className="align-items-end px-3">
                                 <Col sm={8} className='m-0 p-0'>
                                     <Form.Group controlId="formEmail">
                                         <Form.Control
