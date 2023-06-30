@@ -92,12 +92,12 @@ const GoogleRegister = () => {
 
                     <Form>
                         <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
-                            <Form.Label>Your Profile Image Link</Form.Label>
+                            <Form.Label>Your Profile Banner Link</Form.Label>
                             <Form.Control
                                 type="test"
                                 name="profileImageLink"
                                 onBlur={handleOnBlur}
-                                placeholder="Profile Image Link"
+                                placeholder="Profile Banner Link"
                                 required />
                         </Form.Group>
                         <Form.Group className='pt-2'>

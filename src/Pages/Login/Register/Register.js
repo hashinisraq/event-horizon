@@ -137,12 +137,12 @@ const Register = () => {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
-                                    <Form.Label className='text-dark'>Profile Image Link</Form.Label>
+                                    <Form.Label className='text-dark'>Profile Banner Link</Form.Label>
                                     <Form.Control
                                         type="test"
                                         name="profileImageLink"
                                         onBlur={handleOnBlur}
-                                        placeholder="Profile Image Link"
+                                        placeholder="Profile Banner Link"
                                         required />
                                 </Form.Group>
 
