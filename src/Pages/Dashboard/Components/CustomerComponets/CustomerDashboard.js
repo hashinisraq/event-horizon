@@ -48,6 +48,7 @@ const CustomerDashboard = () => {
 
     return (
         <div>
+            <Header />
             <Container style={{ height: "100vh" }}>
                 <Container className='py-5 px-5'>
                     <Row>
@@ -64,57 +65,60 @@ const CustomerDashboard = () => {
                     </Row>
                 </Container>
                 <h5 className='text-center pb-3'>Booking Status</h5>
-                <Table responsive>
-                    <thead>
-                        <tr>
-                            <th style={{ color: "dark", background: "transparent" }}>Venue Name</th>
-                            <th style={{ color: "dark", background: "transparent" }}>Day</th>
-                            <th style={{ color: "dark", background: "transparent" }}>Slot</th>
-                            <th style={{ color: "dark", background: "transparent" }}>Status</th>
-                            <th style={{ color: "dark", background: "transparent" }}>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            selectedOrders?.map(order => <tr key={order._id}>
-                                <td style={{ color: "dark", background: "transparent" }}>{order.venueName}</td>
-                                <td style={{ color: "dark", background: "transparent" }}>{order.Day}</td>
-                                <td style={{ color: "dark", background: "transparent" }}>
-                                    {
-                                        order.Slot?.map(tm => <span key={tm.startTime} style={{ color: "dark", background: "transparent" }}>
-                                            Start Time: {tm.startTime} - End Time: {tm.endTime} <br />
-                                        </span>)
-                                    }
-                                </td>
-                                <td style={{ color: "dark", background: "transparent" }}>{order.status}</td>
-                                <td style={{ color: "dark", background: "transparent" }}>
-                                    {order.status === "cancelled" ? <>
-                                        <Button
-                                            variant="danger"
-                                            className='my-2 mx-2'
-                                            disabled
-                                        >
-                                            Cancel Now
-                                        </Button>
-                                    </> : <>
-                                        <Button
-                                            variant="dark"
-                                            className='my-2 mx-2'
-                                            disabled={!isCancelEnabled(new Date(order.Day))}
-                                            onClick={e => {
-                                                e.preventDefault();
-                                                handleCancel(order.Slot, order.Day);
-                                            }}
-                                        >
-                                            Cancel Now
-                                        </Button>
-                                    </>}
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </Table>
+                <div className="pb-5">
+                    <Table responsive >
+                        <thead>
+                            <tr>
+                                <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Venue Name</th>
+                                <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Day</th>
+                                <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Slot</th>
+                                <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Status</th>
+                                <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                selectedOrders?.map(order => <tr key={order._id}>
+                                    <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{order.venueName}</td>
+                                    <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{order.Day}</td>
+                                    <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>
+                                        {
+                                            order.Slot?.map(tm => <span key={tm.startTime} style={{ color: "dark", background: "transparent" }}>
+                                                Start Time: {tm.startTime} - End Time: {tm.endTime} <br />
+                                            </span>)
+                                        }
+                                    </td>
+                                    <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{order.status}</td>
+                                    <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>
+                                        {order.status === "cancelled" ? <>
+                                            <Button
+                                                variant="danger"
+                                                className='my-2 mx-2'
+                                                disabled
+                                            >
+                                                Cancel Now
+                                            </Button>
+                                        </> : <>
+                                            <Button
+                                                variant="dark"
+                                                className='my-2 mx-2'
+                                                disabled={!isCancelEnabled(new Date(order.Day))}
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    handleCancel(order.Slot, order.Day);
+                                                }}
+                                            >
+                                                Cancel Now
+                                            </Button>
+                                        </>}
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </Table>
+                </div>
             </Container>
+            <Footer />
         </div>
     );
 };
