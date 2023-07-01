@@ -48,13 +48,15 @@ const CustomerDashboard = () => {
 
     return (
         <div>
-            <Header />
             <Container style={{ height: "100vh" }}>
                 <Container className='py-5 px-5'>
                     <Row>
                         <Col sm={12} md={6} className='px-5'>
                             <h5 className='text-dark'>{selectedUser?.name}</h5>
-                            <p className='text-dark'>Email: {selectedUser?.email} <br />Phone: {selectedUser?.phoneNo}</p>
+                            <p className='text-dark'>Email: {selectedUser?.email} <br />
+                                Phone: {selectedUser?.phoneNo} <br />
+                                Address: {selectedUser?.address}
+                            </p>
                         </Col>
                         <Col sm={12} md={6} className='px-5 text-center'>
                             <img style={{ borderRadius: "50%", width: "100px" }} src={`${selectedUser?.profileImageLink}`} alt="profile pic" srcSet="" />
@@ -113,7 +115,6 @@ const CustomerDashboard = () => {
                     </tbody>
                 </Table>
             </Container>
-            <Footer />
         </div>
     );
 };
