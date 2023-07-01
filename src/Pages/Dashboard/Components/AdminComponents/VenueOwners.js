@@ -33,24 +33,38 @@ const VenueOwners = () => {
 
     return (
         <Container style={{ height: "100vh" }}>
-            <h5 className='text-center pb-3'>Venue Owners</h5>
+            <h5 className='text-center pb-3'>Owners</h5>
             <Table responsive>
                 <thead>
                     <tr>
-                        <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Email</th>
-                        <th style={{ color: "white", background: "transparent" }}>Phone</th>
-                        <th style={{ color: "white", background: "transparent" }}>Action</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Name</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Email</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Phone</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Venue Name-Reg. ID</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {currentOwners?.map(owner => <tr className='py-5'
                         key={owner.name}
                     >
-                        <td style={{ color: "white", background: "transparent" }}>{owner.name}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{owner.email}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{owner.phoneNo}</td>
-                        <td style={{ color: "white", background: "transparent" }}>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{owner.name}</td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{owner.email}</td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{owner.phoneNo}</td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>
+                            {
+                                owner.venues?.map(vn => <div className='p-0 m-0' key={vn.venueRegNo}>
+                                    {
+                                        vn.status === "accepted" ? <>
+                                            {vn.name}-{vn.venueRegNo} <br />
+                                        </>
+                                            :
+                                            <></>
+                                    }
+                                </div>)
+                            }
+                        </td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>
                             <Button variant="dark" onClick={e => {
                                 handleDelete(owner.email);
                                 e.preventDefault();

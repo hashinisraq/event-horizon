@@ -28,13 +28,13 @@ const PendingRequest = () => {
             <Table responsive>
                 <thead>
                     <tr>
-                        <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Email</th>
-                        <th style={{ color: "white", background: "transparent" }}>Phone</th>
-                        <th style={{ color: "white", background: "transparent" }}>Venue Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Venue Reg No</th>
-                        <th style={{ color: "white", background: "transparent" }}>Status</th>
-                        <th style={{ color: "white", background: "transparent" }}>Action</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Name</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Email</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Phone</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Venue Name</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Venue Reg No</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Status</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Action</th>
                     </tr>
                 </thead>
                 <>
@@ -42,13 +42,13 @@ const PendingRequest = () => {
                         key={owner.name}
                     >
                         {owner.venues?.map(vn => <tr key={vn.name}>
-                            <td style={{ color: "white", background: "transparent" }}>{owner.name}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{owner.email}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{owner.phoneNo}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{vn.name}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{vn.venueRegNo}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{vn.status}</td>
-                            <td style={{ color: "white", background: "transparent" }}>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{owner.name}</td>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{owner.email}</td>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{owner.phoneNo}</td>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{vn.name}</td>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{vn.venueRegNo}</td>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{vn.status}</td>
+                            <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>
                                 {vn.status === "pending" ? <> <Button variant="dark" className='mx-2' onClick={e => {
                                     handleAction(vn.name, "accepted");
                                     e.preventDefault();

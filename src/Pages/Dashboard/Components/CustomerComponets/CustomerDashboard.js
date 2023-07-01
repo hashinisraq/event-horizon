@@ -57,7 +57,7 @@ const CustomerDashboard = () => {
                             <p className='text-dark'>Email: {selectedUser?.email} <br />Phone: {selectedUser?.phoneNo}</p>
                         </Col>
                         <Col sm={12} md={6} className='px-5 text-center'>
-                            <img style={{ borderRadius: "50%", width: "100px" }} src={`${selectedUser?.profileImageLink}`} alt="profile pic" srcset="" />
+                            <img style={{ borderRadius: "50%", width: "100px" }} src={`${selectedUser?.profileImageLink}`} alt="profile pic" srcSet="" />
                         </Col>
                     </Row>
                 </Container>

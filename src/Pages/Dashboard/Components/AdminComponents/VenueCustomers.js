@@ -34,24 +34,24 @@ const VenueCustomers = () => {
 
     return (
         <Container style={{ height: "100vh" }}>
-            <h5 className='text-center pb-3'>Venue Customers</h5>
+            <h5 className='text-center pb-3'>Customers</h5>
             <Table responsive>
                 <thead>
                     <tr>
-                        <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Email</th>
-                        <th style={{ color: "white", background: "transparent" }}>Phone</th>
-                        <th style={{ color: "white", background: "transparent" }}>Action</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Name</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Email</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Phone</th>
+                        <th style={{ color: "dark", background: "transparent", border: "1px solid black" }}>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {currentCustomers?.map(customer => <tr className='py-5'
                         key={customer.name}
                     >
-                        <td style={{ color: "white", background: "transparent" }}>{customer.name}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{customer.email}</td>
-                        <td style={{ color: "white", background: "transparent" }}>{customer.phoneNo}</td>
-                        <td style={{ color: "white", background: "transparent" }}>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{customer.name}</td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{customer.email}</td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>{customer.phoneNo}</td>
+                        <td style={{ color: "dark", background: "transparent", border: "1px solid black" }}>
                             <Button variant="dark" onClick={e => {
                                 handleDelete(customer.email);
                                 e.preventDefault();

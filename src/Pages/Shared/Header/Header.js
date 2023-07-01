@@ -46,6 +46,13 @@ const Header = () => {
                                         </NavDropdown.Item>
                                         : <></>
                                 }
+                                {
+                                    selectedUser?.role === "admin" ?
+                                        <NavDropdown.Item>
+                                            <Link to="/dashboard" style={{ textDecoration: "none", color: "black" }}>Dashboard</Link>
+                                        </NavDropdown.Item>
+                                        : <></>
+                                }
                                 <NavDropdown.Item>
                                     <Button variant='light' onClick={logOut}>Log out</Button>
                                 </NavDropdown.Item>

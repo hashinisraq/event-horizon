@@ -1,11 +1,5 @@
-.holder {
-    background-image: url('../../Assets/Images/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 .nav_link {
-    color: white;
+    color: black;
 }
 
 .nav_link:hover {

@@ -13,11 +13,11 @@ import DeleteVenue from './Components/OwnerComponents/DeleteVenue';
 import SetupVenue from './Components/OwnerComponents/SetupVenue';
 import UpdateVenue from './Components/OwnerComponents/UpdateVenue';
 import Approval from './Components/OwnerComponents/Approval';
-import Venues from './Components/CustomerComponets/Venues';
 import CustomerDashboard from './Components/CustomerComponets/CustomerDashboard';
 import VenueOwners from './Components/AdminComponents/VenueOwners';
 import VenueCustomers from './Components/AdminComponents/VenueCustomers';
 import PendingRequest from './Components/AdminComponents/PendingRequest';
+import MyProfile from './Components/AdminComponents/MyProfile';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -28,7 +28,7 @@ const Dashboard = () => {
     const role = selectedUser[0]?.role;
 
     return (
-        <div className="holder">
+        <div>
             <Header />
             <div>
                 <div className='text-center'>
@@ -162,16 +162,21 @@ const Dashboard = () => {
                                             <Nav variant="pills" className="flex-column" >
                                                 <Nav.Item>
                                                     <Nav.Link className="nav_link" eventKey="first">
-                                                        Venue Owners
+                                                        My Profile
                                                     </Nav.Link>
                                                 </Nav.Item>
                                                 <Nav.Item>
                                                     <Nav.Link className="nav_link" eventKey="second">
-                                                        Venue Customers
+                                                        Owners
                                                     </Nav.Link>
                                                 </Nav.Item>
                                                 <Nav.Item>
                                                     <Nav.Link className="nav_link" eventKey="third">
+                                                        Customers
+                                                    </Nav.Link>
+                                                </Nav.Item>
+                                                <Nav.Item>
+                                                    <Nav.Link className="nav_link" eventKey="fourth">
                                                         Pending Request
                                                     </Nav.Link>
                                                 </Nav.Item>
@@ -180,12 +185,15 @@ const Dashboard = () => {
                                         <Col sm={12} lg={10}>
                                             <Tab.Content>
                                                 <Tab.Pane eventKey="first">
-                                                    <VenueOwners />
+                                                    <MyProfile />
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="second">
-                                                    <VenueCustomers />
+                                                    <VenueOwners />
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="third">
+                                                    <VenueCustomers />
+                                                </Tab.Pane>
+                                                <Tab.Pane eventKey="fourth">
                                                     <PendingRequest />
                                                 </Tab.Pane>
                                             </Tab.Content>
