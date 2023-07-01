@@ -57,7 +57,7 @@ const GoogleRegister = () => {
 
     const handleInfoSubmit = (e) => {
         if (selectedOption === 'customer') {
-            saveUser(user.email, user.displayName, selectedOption, provideData.phoneNo, [], provideData.profileImageLink);
+            saveUser(user.email, user.displayName, selectedOption, provideData.phoneNo, [], provideData.profileImageLink, provideData.address);
             history("/dashboard");
         }
 
@@ -77,7 +77,7 @@ const GoogleRegister = () => {
                 status: 'pending'
             }]
 
-            saveUser(user.email, user.displayName, selectedOption, provideData.phoneNo, venues, provideData.profileImageLink);
+            saveUser(user.email, user.displayName, selectedOption, provideData.phoneNo, venues, provideData.profileImageLink, provideData.address);
             history("/dashboard");
         }
         e.preventDefault();
@@ -100,6 +100,19 @@ const GoogleRegister = () => {
                                 placeholder="Profile Banner Link"
                                 required />
                         </Form.Group>
+
+
+                        <Form.Group className="mb-3" controlId="formGroupAddress">
+                            <Form.Label className='text-dark'>Address</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="address"
+                                onBlur={handleOnBlur}
+                                placeholder="Address"
+                                required />
+                        </Form.Group>
+
+
                         <Form.Group className='pt-2'>
                             <Dropdown className='py-2' onSelect={handleOptionChange}>
                                 <Dropdown.Toggle variant="dark" id="registration-dropdown">

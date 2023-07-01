@@ -58,7 +58,7 @@ const Register = () => {
         }
 
         if (selectedOption === 'customer') {
-            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, [], loginData.profileImageLink);
+            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, [], loginData.profileImageLink, loginData.address);
         }
 
         if (selectedOption === 'owner') {
@@ -76,7 +76,7 @@ const Register = () => {
                 bookedInfo: [],
                 status: 'pending'
             }]
-            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues, loginData.profileImageLink);
+            registerUser(loginData.email, loginData.password, loginData.name, history, selectedOption, loginData.phoneNo, venues, loginData.profileImageLink, loginData.address);
         }
         e.preventDefault();
     }
@@ -139,10 +139,20 @@ const Register = () => {
                                 <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
                                     <Form.Label className='text-dark'>Profile Banner Link</Form.Label>
                                     <Form.Control
-                                        type="test"
+                                        type="text"
                                         name="profileImageLink"
                                         onBlur={handleOnBlur}
                                         placeholder="Profile Banner Link"
+                                        required />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formGroupAddress">
+                                    <Form.Label className='text-dark'>Address</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="address"
+                                        onBlur={handleOnBlur}
+                                        placeholder="Address"
                                         required />
                                 </Form.Group>
 

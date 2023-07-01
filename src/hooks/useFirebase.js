@@ -14,7 +14,7 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // email password registration
-    const registerUser = (email, password, name, history, role, phoneNo, venues, profileImageLink) => {
+    const registerUser = (email, password, name, history, role, phoneNo, venues, profileImageLink, address) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -23,10 +23,10 @@ const useFirebase = () => {
 
                 // save user to the database
                 if (role === 'customer') {
-                    saveUser(email, name, role, phoneNo, [], profileImageLink);
+                    saveUser(email, name, role, phoneNo, [], profileImageLink, address);
                 }
                 if (role === 'owner') {
-                    saveUser(email, name, role, phoneNo, venues, profileImageLink);
+                    saveUser(email, name, role, phoneNo, venues, profileImageLink, address);
                 }
 
                 // send name to firebase after creation
@@ -103,10 +103,10 @@ const useFirebase = () => {
 
 
 
-    const saveUser = (email, name, role, phoneNo, venues, profileImageLink) => {
+    const saveUser = (email, name, role, phoneNo, venues, profileImageLink, address) => {
         if (role === 'customer') {
             const bookings = [];
-            const user = { email, name, role, phoneNo, bookings, profileImageLink };
+            const user = { email, name, role, phoneNo, bookings, profileImageLink, address };
             fetch('https://event-horizon-8f3s.onrender.com/users', {
                 method: 'POST',
                 headers: {
@@ -118,7 +118,7 @@ const useFirebase = () => {
         }
 
         if (role === 'owner') {
-            const user = { email, name, role, phoneNo, venues, profileImageLink };
+            const user = { email, name, role, phoneNo, venues, profileImageLink, address };
             fetch('https://event-horizon-8f3s.onrender.com/users', {
                 method: 'POST',
                 headers: {
@@ -130,19 +130,6 @@ const useFirebase = () => {
         }
 
     }
-
-
-    // const saveGoogleUser = (email, name) => {
-    //     const user = { email, name };
-    //     fetch('https://toyshouse-server.onrender.com/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then()
-    // }
 
 
     return {
