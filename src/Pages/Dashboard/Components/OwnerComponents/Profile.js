@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Form, Modal } from 'react-bootstrap';
+import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import useUsers from '../../../../hooks/useUsers';
 
@@ -25,7 +25,7 @@ const Profile = () => {
         newprofileData[field] = value;
         setprofileData(newprofileData);
 
-        if (profileData.name === "" || profileData.phoneNo === "") {
+        if (profileData.name === "" && profileData.phoneNo === "" && profileData.address === "") {
             alert("Please complete all the field or type previous data!")
         }
         else {
@@ -54,8 +54,8 @@ const Profile = () => {
 
     return (
         <>
-            <Container style={{ height: "100vh" }}>
-                <h5 className='text-center pb-3'>Profile Information</h5>
+            <div style={{ height: "100vh" }}>
+                {/* <h5 className='text-center pb-3'>Profile Information</h5>
                 <Container className='text-start'>
                     <Form>
                         <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
@@ -91,9 +91,19 @@ const Profile = () => {
                         <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                             <Form.Label>Role </Form.Label>
                             <Form.Control
-                                type="role"
+                                type="text"
                                 name="role"
                                 placeholder={`${selectedUser?.role}`}
+                                style={{ width: "50%" }}
+                                disabled />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
+                            <Form.Label>Address </Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="address"
+                                placeholder={`${selectedUser?.address}`}
                                 style={{ width: "50%" }}
                                 disabled />
                         </Form.Group>
@@ -101,8 +111,58 @@ const Profile = () => {
                     <div className="text-center">
                         <Button variant="dark" onClick={handleShow}>Update</Button>
                     </div>
-                </Container>
-            </Container>
+                </Container> */}
+
+                <div
+                    style={{
+                        backgroundImage: 'linear-gradient(to right, #000000, #ffffff)'
+                    }}
+                    className='py-5'
+                >
+                    <Row>
+                        <Col sm={12} md={6} className='text-start px-5'>
+                            <h5 className='text-dark'>{selectedUser?.name}</h5>
+                            <p className='text-dark'>Email: {selectedUser?.email} <br />
+                                Phone: {selectedUser?.phoneNo} <br />
+                                Address: {selectedUser?.address}
+                            </p>
+                        </Col>
+                        <Col sm={12} md={6} className='px-5 text-center'>
+                            <img style={{ borderRadius: "50%", width: "100px" }} src={`${selectedUser?.profileImageLink}`} alt="profile pic" srcSet="" />
+                        </Col>
+                    </Row>
+                    <div className="text-center">
+                        <Button variant="warning" onClick={handleShow}>Update Profile</Button>
+                    </div>
+                </div>
+
+                <div className='p-3'>
+                    <Row className='my-2'>
+                        {selectedUser?.venues.map(venue => <Col sm={12} md={4} lg={4}
+                            key={venue.name}
+                        >
+                            <div className='p-3 text-start' style={{ border: "1px solid grey", borderRadius: "12px" }}>
+                                <h6 className='text-warning py-2'>{venue?.name}</h6>
+                                <Container className='text-dark'>
+                                    <p><img className='pb-1' width="14px" src="https://i.ibb.co/w4cRFqk/location.png" alt="location" srcset="" /> {venue?.location}</p>
+                                    <p>🏠 Amenity: <br />
+                                        <span className='ps-5'>
+                                            {venue?.amenities}
+                                        </span>
+                                    </p>
+                                    <p>📔 Number of Bookings: {venue?.bookedInfo.length} </p>
+                                    <p>🎰 Available Slots: {venue?.availability.length}</p>
+                                    <p className="text-success">💸 Price: {venue?.venuePrice} BDT</p>
+                                </Container>
+                                <div className="text-center">
+                                    <Button variant='warning'>See details</Button>
+                                </div>
+                            </div>
+                        </Col>
+                        )}
+                    </Row>
+                </div>
+            </div>
 
 
             <Modal
@@ -112,14 +172,14 @@ const Profile = () => {
                 keyboard={false}
                 centered
             >
-                <Container style={{ "backgroundColor": "white", "color": "#4B4870", "borderRadius": "10px" }}>
+                <Container style={{ "backgroundColor": "dark", "color": "#4B4870", "borderRadius": "10px" }}>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter" className='text-center'>Update your information</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                                <Form.Label>Name</Form.Label>
+                                <Form.Label className="text-dark">Name</Form.Label>
                                 <Form.Control
                                     type="name"
                                     name="name"
@@ -130,7 +190,7 @@ const Profile = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label className="text-dark">Email</Form.Label>
                                 <Form.Control
                                     type="email"
                                     name="email"
@@ -140,7 +200,7 @@ const Profile = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                                <Form.Label>Phone</Form.Label>
+                                <Form.Label className="text-dark">Phone</Form.Label>
                                 <Form.Control
                                     type="phoneNo"
                                     name="phoneNo"
@@ -151,7 +211,7 @@ const Profile = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                                <Form.Label>Role </Form.Label>
+                                <Form.Label className="text-dark">Role </Form.Label>
                                 <Form.Control
                                     type="role"
                                     name="role"
@@ -159,9 +219,21 @@ const Profile = () => {
                                     style={{ width: "50%" }}
                                     disabled />
                             </Form.Group>
+
+
+                            <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
+                                <Form.Label className="text-dark">Address </Form.Label>
+                                <Form.Control
+                                    type="address"
+                                    name="address"
+                                    placeholder={`${selectedUser?.address}`}
+                                    style={{ width: "50%" }}
+                                    required />
+                            </Form.Group>
+
                         </Form>
                         <div className="text-center">
-                            <Button variant="dark" onClick={e => {
+                            <Button variant="warning" onClick={e => {
                                 e.preventDefault();
                                 handleSubmit(selectedUser?.email, selectedUser?.name, selectedUser?.phoneNo);
                             }}>Submit</Button>

@@ -80,16 +80,11 @@ const Dashboard = () => {
                                                                 </Nav.Item>
                                                                 <Nav.Item>
                                                                     <Nav.Link className="nav_link" eventKey="seventh">
-                                                                        Venue Informtaion
+                                                                        Delete Venue
                                                                     </Nav.Link>
                                                                 </Nav.Item>
                                                                 <Nav.Item>
                                                                     <Nav.Link className="nav_link" eventKey="eightth">
-                                                                        Delete Veneue
-                                                                    </Nav.Link>
-                                                                </Nav.Item>
-                                                                <Nav.Item>
-                                                                    <Nav.Link className="nav_link" eventKey="nineth">
                                                                         Approval
                                                                     </Nav.Link>
                                                                 </Nav.Item>
@@ -116,12 +111,9 @@ const Dashboard = () => {
                                                                     <BookedVenues />
                                                                 </Tab.Pane>
                                                                 <Tab.Pane eventKey="seventh">
-                                                                    <VenueInformation />
-                                                                </Tab.Pane>
-                                                                <Tab.Pane eventKey="eightth">
                                                                     <DeleteVenue />
                                                                 </Tab.Pane>
-                                                                <Tab.Pane eventKey="nineth">
+                                                                <Tab.Pane eventKey="eightth">
                                                                     <Approval />
                                                                 </Tab.Pane>
                                                             </Tab.Content>
