@@ -86,58 +86,52 @@ const Approval = () => {
 
     return (
         <Container style={{ height: "100vh" }}>
-            <h5 className='text-center pb-3'>Approval</h5>
+            <h5 className='text-center text-dark pb-3'>Approval</h5>
             <Table responsive>
                 {/* Table header */}
                 <thead>
                     <tr>
-                        <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Email</th>
-                        <th style={{ color: "white", background: "transparent" }}>Phone</th>
-                        <th style={{ color: "white", background: "transparent" }}>Venue</th>
-                        <th style={{ color: "white", background: "transparent" }}>Price</th>
-                        <th style={{ color: "white", background: "transparent" }}>Size</th>
-                        <th style={{ color: "white", background: "transparent" }}>Day</th>
-                        <th style={{ color: "white", background: "transparent" }}>Slot</th>
-                        <th style={{ color: "white", background: "transparent" }}>Status</th>
-                        <th style={{ color: "white", background: "transparent" }}>Action</th>
+                        <th style={{ border: "1px solid grey" }}>Name</th>
+                        <th style={{ border: "1px solid grey" }}>Email</th>
+                        <th style={{ border: "1px solid grey" }}>Phone</th>
+                        <th style={{ border: "1px solid grey" }}>Venue</th>
+                        <th style={{ border: "1px solid grey" }}>Day</th>
+                        <th style={{ border: "1px solid grey" }}>Slot</th>
+                        <th style={{ border: "1px solid grey" }}>Status</th>
+                        <th style={{ border: "1px solid grey" }}>Action</th>
                     </tr>
                 </thead>
                 {/* Table body */}
                 <tbody>
                     {currentItems?.map(order => (
                         <tr className='py-5' key={order._id}>
-                            <td style={{ color: "white", background: "transparent" }}>{order.customerName}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.customerEmail}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.customerPhone}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.venueName}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.venuePrice}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.venueCapacity}</td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.Day}</td>
-                            <td style={{ color: "white", background: "transparent" }}>
+                            <td style={{ border: "1px solid grey" }}>{order.customerName}</td>
+                            <td style={{ border: "1px solid grey" }}>{order.customerEmail}</td>
+                            <td style={{ border: "1px solid grey" }}>{order.customerPhone}</td>
+                            <td style={{ border: "1px solid grey" }}>{order.venueName}</td>
+                            <td style={{ border: "1px solid grey" }}>{order.Day}</td>
+                            <td style={{ border: "1px solid grey" }}>
                                 Start time: {order?.Slot.startTime} - End time: {order?.Slot.endTime}
                             </td>
-                            <td style={{ color: "white", background: "transparent" }}>{order.status}</td>
-                            <td style={{ color: "white", background: "transparent" }}>
-                                <span className='d-flex align-items-center justify-content-between'>
+                            <td style={{ border: "1px solid grey" }}>{order.status}</td>
+                            <td style={{ border: "1px solid grey" }}>
+                                <span className='d-flex align-items-center justify-content-center'>
                                     {order.status === "pending" ? <>
-                                        <Button variant="dark" className='my-1' onClick={e => {
+                                        <Button className='bg-transparent' style={{ border: "none" }} onClick={e => {
                                             e.preventDefault();
                                             handleClick(order, "rejected");
-                                        }}>Reject</Button>
-                                        <span className='mx-1' />
-                                        <Button variant="dark" className='my-1' onClick={e => {
+                                        }}>❌</Button>
+                                        <span className='mx-1'>|</span>
+                                        <Button className='bg-transparent' style={{ border: "none" }} onClick={e => {
                                             e.preventDefault();
                                             handleClick(order, "accepted");
-                                        }}>Accept</Button>
+                                        }}>✅</Button>
                                     </>
                                         :
                                         <>
-                                            <>
-                                                <Button variant="danger" className='my-1' disabled>Reject</Button>
-                                                <span className='mx-1' />
-                                                <Button variant="danger" className='my-1' disabled>Accept</Button>
-                                            </>
+                                            <Button className='bg-transparent' style={{ border: "none" }} disabled>
+                                                🏴󠁧󠁢󠁷󠁬󠁳󠁿
+                                            </Button>
                                         </>}
                                 </span>
                             </td>

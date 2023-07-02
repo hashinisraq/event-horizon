@@ -11,16 +11,17 @@ const BookedVenues = () => {
 
     return (
         <Container style={{ height: "100vh" }}>
-            <h5 className='text-center pb-3'>Booked Venues</h5>
+            <h5 className='text-center text-dark pb-3'>Currently  Booked Venues</h5>
             <Table responsive>
                 <thead>
                     <tr>
-                        <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Location</th>
-                        <th style={{ color: "white", background: "transparent" }}>Capacity</th>
-                        <th style={{ color: "white", background: "transparent" }}>Size</th>
-                        <th style={{ color: "white", background: "transparent" }}>Amenities</th>
-                        <th style={{ color: "white", background: "transparent" }}>Booked</th>
+                        <th style={{ border: "1px solid grey" }}>Name</th>
+                        <th style={{ border: "1px solid grey" }}>Location</th>
+                        <th style={{ border: "1px solid grey" }}>Capacity</th>
+                        <th style={{ border: "1px solid grey" }}>Size</th>
+                        <th style={{ border: "1px solid grey" }}>Amenities</th>
+                        <th style={{ border: "1px solid grey" }}>Day</th>
+                        <th style={{ border: "1px solid grey" }}>Time</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,18 +30,26 @@ const BookedVenues = () => {
                     >
                         {venue.status === "accepted" ?
                             <>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
-                                {venue.booked === true ?
-                                    <td style={{ color: "white", background: "transparent" }}>
+                                {venue.booked === true && <>
+                                    <td style={{ border: "1px solid grey" }}>{venue.name}</td>
+                                    <td style={{ border: "1px solid grey" }}>{venue.location}</td>
+                                    <td style={{ border: "1px solid grey" }}>{venue.capacity}</td>
+                                    <td style={{ border: "1px solid grey" }}>{venue.size}</td>
+                                    <td style={{ border: "1px solid grey" }}>{venue.amenities}</td>
+                                    <td style={{ border: "1px solid grey" }}>
+                                        {
+                                            venue?.bookedInfo.map(data => <div key={data.Day}>
+                                                {data.Day}
+                                            </div>
+                                            )
+                                        }
+                                    </td>
+                                    <td style={{ border: "1px solid grey" }}>
                                         {
                                             venue?.bookedInfo.map(data => <div key={data.Day}>
                                                 {
                                                     data?.Slot.map(sl =>
-                                                        < div style={{ color: "white", background: "transparent" }} key={sl.startTime}>
+                                                        < div key={sl.startTime}>
                                                             <span>Start Time: {sl.startTime}-End Time: {sl.endTime}</span> <br />
                                                         </div>
                                                     )
@@ -49,7 +58,7 @@ const BookedVenues = () => {
                                             )
                                         }
                                     </td>
-                                    : <td style={{ color: "white", background: "transparent" }}></td>
+                                </>
                                 }
                             </> : <></>}
 

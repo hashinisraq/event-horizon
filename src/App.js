@@ -7,11 +7,12 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import GoogleRegister from "./Pages/Login/GoogleRegister/GoogleRegister";
-import VeneueDetails from "./Pages/Dashboard/Components/CustomerComponets/VeneueDetails";
+import VenueDetails from "./Pages/Dashboard/Components/CustomerComponets/VenueDetails";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import Venues from "./Pages/Dashboard/Components/CustomerComponets/Venues";
 import CustomerDashboard from "./Pages/Dashboard/Components/CustomerComponets/CustomerDashboard";
+import VenueOwnerDetails from "./Pages/Dashboard/Components/OwnerComponents/VenueOwnerDetails";
 
 function App() {
   return (
@@ -29,8 +30,8 @@ function App() {
             <Route path="/login" element={<Login />}> </Route>
             <Route path="/register" element={<Register />}> </Route>
             <Route path="/googleRegister" element={<PrivateRoute><GoogleRegister /></PrivateRoute>}> </Route>
-            <Route path="/venueDetails/:venueTitle" element={<PrivateRoute><VeneueDetails /></PrivateRoute>}>
-            </Route>
+            <Route path="/venueDetails/:venueTitle" element={<PrivateRoute><VenueDetails /></PrivateRoute>}></Route>
+            <Route path="/venueOwnerDetails/:venueTitle" element={<PrivateRoute><VenueOwnerDetails /></PrivateRoute>}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </Router>

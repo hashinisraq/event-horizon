@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import useUsers from '../../../../hooks/useUsers';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
     const { user } = useAuth();
@@ -121,8 +122,8 @@ const Profile = () => {
                 >
                     <Row>
                         <Col sm={12} md={6} className='text-start px-5'>
-                            <h5 className='text-dark'>{selectedUser?.name}</h5>
-                            <p className='text-dark'>Email: {selectedUser?.email} <br />
+                            <h5 className='text-white'>{selectedUser?.name}</h5>
+                            <p className='text-white'>Email: {selectedUser?.email} <br />
                                 Phone: {selectedUser?.phoneNo} <br />
                                 Address: {selectedUser?.address}
                             </p>
@@ -155,7 +156,7 @@ const Profile = () => {
                                     <p className="text-success">💸 Price: {venue?.venuePrice} BDT</p>
                                 </Container>
                                 <div className="text-center">
-                                    <Button variant='warning'>See details</Button>
+                                    <Link to={`/venueOwnerDetails/${venue.name}`}><Button variant="warning" className='my-2 mx-2'>See Details</Button></Link>
                                 </div>
                             </div>
                         </Col>

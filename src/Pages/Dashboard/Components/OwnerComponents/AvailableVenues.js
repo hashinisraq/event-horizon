@@ -11,16 +11,16 @@ const AvailableVenues = () => {
 
     return (
         <Container style={{ height: "100vh" }}>
-            <h5 className='text-center pb-3'>Available Venues</h5>
+            <h5 className='text-center text-dark pb-3'>Currently Available Venues</h5>
             <Table responsive>
                 <thead>
                     <tr>
-                        <th style={{ color: "white", background: "transparent" }}>Name</th>
-                        <th style={{ color: "white", background: "transparent" }}>Location</th>
-                        <th style={{ color: "white", background: "transparent" }}>Capacity</th>
-                        <th style={{ color: "white", background: "transparent" }}>Size</th>
-                        <th style={{ color: "white", background: "transparent" }}>Amenities</th>
-                        <th style={{ color: "white", background: "transparent" }}>Availability</th>
+                        <th style={{ border: "1px solid grey" }}>Name</th>
+                        <th style={{ border: "1px solid grey" }}>Location</th>
+                        <th style={{ border: "1px solid grey" }}>Capacity</th>
+                        <th style={{ border: "1px solid grey" }}>Size</th>
+                        <th style={{ border: "1px solid grey" }}>Amenities</th>
+                        <th style={{ border: "1px solid grey" }}>Availability</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,12 +29,12 @@ const AvailableVenues = () => {
                     >
                         {venue.status === "accepted" ?
                             <>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.capacity}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
-                                <td style={{ color: "white", background: "transparent" }}>{venue.amenities}</td>
-                                <td style={{ color: "white", background: "transparent" }}>
+                                <td style={{ border: "1px solid grey" }}>{venue.name}</td>
+                                <td style={{ border: "1px solid grey" }}>{venue.location}</td>
+                                <td style={{ border: "1px solid grey" }}>{venue.capacity}</td>
+                                <td style={{ border: "1px solid grey" }}>{venue.size}</td>
+                                <td style={{ border: "1px solid grey" }}>{venue.amenities}</td>
+                                <td style={{ border: "1px solid grey" }}>
                                     {
                                         venue?.availability.map(vn =>
                                             <div key={vn.startTime}>

@@ -6,7 +6,7 @@ import useUsers from '../../../../hooks/useUsers';
 import Header from '../../../Shared/Header/Header';
 import Footer from '../../../Shared/Footer/Footer';
 
-const VeneueDetails = () => {
+const VenueDetails = () => {
     const venueTitle = useParams();
     const [selectedSlots, setSelectedSlots] = useState([]);
     const [selectedDate, setSelectedDate] = useState('');
@@ -271,16 +271,22 @@ const VeneueDetails = () => {
 
             <div
                 style={{
-                    backgroundImage: `url(${selectedUser?.profileImageLink})`,
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
+                    backgroundImage: 'linear-gradient(to right, #000000, #ffffff)'
                 }}
                 className='py-5'
             >
                 <Container className='text-white'>
-                    <h4>{selectedVenue?.name}</h4>
-                    <p>Email: {selectedVenueOwner?.email} <br />
-                        Phone: {selectedVenueOwner?.phoneNo}</p>
+                    <Row>
+                        <Col sm={12} md={6} className='text-start px-5'>
+                            <h4>{selectedVenue?.name}</h4>
+                            <p>Email: {selectedVenueOwner?.email} <br />
+                                Phone: {selectedVenueOwner?.phoneNo}<br />
+                                Address: {selectedVenueOwner?.address}</p>
+                        </Col>
+                        <Col sm={12} md={6} className='px-5 text-center'>
+                            <img style={{ borderRadius: "50%", width: "100px" }} src={`${selectedVenueOwner?.profileImageLink}`} alt="profile pic" srcSet="" />
+                        </Col>
+                    </Row>
                 </Container>
             </div>
             <div>
@@ -414,4 +420,4 @@ const VeneueDetails = () => {
     );
 };
 
-export default VeneueDetails;
+export default VenueDetails;

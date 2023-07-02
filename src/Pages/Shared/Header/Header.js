@@ -49,7 +49,7 @@ const Header = () => {
                                 {
                                     selectedUser?.role === "admin" ?
                                         <NavDropdown.Item>
-                                            <Link to="/dashboard" style={{ textDecoration: "none", color: "black" }}>Dashboard</Link>
+                                            <Link to="/dashboard" style={{ textDecoration: "none", color: "black" }}>Admin Panel</Link>
                                         </NavDropdown.Item>
                                         : <></>
                                 }

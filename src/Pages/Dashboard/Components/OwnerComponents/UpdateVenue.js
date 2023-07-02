@@ -85,9 +85,8 @@ const UpdateVenue = () => {
 
 
     return (
-        <Container style={{ height: "100vh" }}>
-            <h5 className='text-center pb-3'>Update Venue</h5>
-
+        <Container>
+            <h5 className='text-center pb-3 text-dark'>Update Venue</h5>
 
             <Form>
                 <Form.Group className='pt-2 pb-3'>
@@ -192,6 +191,7 @@ const UpdateVenue = () => {
                                     type="text"
                                     name="venueImgLink"
                                     onBlur={handleOnBlur}
+                                    style={{ width: "50%" }}
                                     placeholder={`${selectedVenue.venueImgLink}`}
                                     required />
                             </Form.Group>
@@ -242,7 +242,7 @@ const UpdateVenue = () => {
                                 </Button>
                             </div>
                             <div className="pb-5">
-                                <Button className='w-50' variant="dark" onClick={e => handleRegisterSubmit(e)}>Update</Button>
+                                <Button className='w-50' variant="warning" onClick={e => handleRegisterSubmit(e)}>Update</Button>
                             </div>
                         </div>
                     )}
