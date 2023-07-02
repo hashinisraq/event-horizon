@@ -109,7 +109,7 @@ const UpdateVenue = () => {
                     {selectedOption !== "" && (
                         <div className='pb-4'>
                             <Form.Group controlId="venueName" className="mb-3 d-flex justify-content-around align-items-center">
-                                <Form.Label className="pt-3">Venue Name:</Form.Label>
+                                <Form.Label className="pt-3 text-dark">Venue Name:</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="venueName"
@@ -120,7 +120,7 @@ const UpdateVenue = () => {
                             </Form.Group>
 
                             <Form.Group controlId="venueLocation" className="mb-3 d-flex justify-content-around align-items-center">
-                                <Form.Label>Venue Location:</Form.Label>
+                                <Form.Label className='text-dark'>Venue Location:</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="venueLocation"
@@ -130,7 +130,7 @@ const UpdateVenue = () => {
                                     required />
                             </Form.Group>
 
-                            <Form.Group controlId="venueRegNo" className="mb-3">
+                            <Form.Group controlId="venueRegNo" className="mb-3 d-flex justify-content-around align-items-center">
                                 <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -141,7 +141,7 @@ const UpdateVenue = () => {
                                     required />
                             </Form.Group>
 
-                            <Form.Group controlId="venuePrice" className="mb-3">
+                            <Form.Group controlId="venuePrice" className="mb-3 d-flex justify-content-around align-items-center">
                                 <Form.Label className='text-dark'>Venue Price:</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -153,7 +153,7 @@ const UpdateVenue = () => {
                             </Form.Group>
 
                             <Form.Group controlId="venueCapacity" className="mb-3 d-flex justify-content-around align-items-center">
-                                <Form.Label>Venue Capacity:</Form.Label>
+                                <Form.Label className='text-dark'>Venue Capacity:</Form.Label>
                                 <Form.Control
                                     type="number"
                                     name="venueCapacity"
@@ -164,7 +164,7 @@ const UpdateVenue = () => {
                             </Form.Group>
 
                             <Form.Group controlId="venueSize" className="mb-3 d-flex justify-content-around align-items-center">
-                                <Form.Label>Venue Size:</Form.Label>
+                                <Form.Label className='text-dark'>Venue Size:</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="venueSize"
@@ -175,7 +175,7 @@ const UpdateVenue = () => {
                             </Form.Group>
 
                             <Form.Group controlId="venueAmenities" className="mb-3 d-flex justify-content-around align-items-center">
-                                <Form.Label>Venue Amenities:</Form.Label>
+                                <Form.Label className='text-dark'>Venue Amenities:</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="venueAmenities"
@@ -186,8 +186,8 @@ const UpdateVenue = () => {
                             </Form.Group>
 
 
-                            <Form.Group controlId="venueImgLink" className="mb-3">
-                                <Form.Label>Venue Image Link:</Form.Label>
+                            <Form.Group controlId="venueImgLink" className="mb-3 d-flex justify-content-around align-items-center">
+                                <Form.Label className='text-dark'>Venue Image Link:</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="venueImgLink"
@@ -205,7 +205,7 @@ const UpdateVenue = () => {
                                     <div key={index}>
                                         <div className='d-flex justify-content-center align-items-center'>
                                             <Form.Group className='pe-3' controlId={`startTime-${index}`}>
-                                                <Form.Label>Start Time</Form.Label>
+                                                <Form.Label className='text-dark'>Start Time</Form.Label>
                                                 <Form.Control
                                                     type="time"
                                                     name="startTime"
@@ -216,7 +216,7 @@ const UpdateVenue = () => {
                                             </Form.Group>
 
                                             <Form.Group controlId={`endTime-${index}`}>
-                                                <Form.Label>End Time</Form.Label>
+                                                <Form.Label className='text-dark'>End Time</Form.Label>
                                                 <Form.Control
                                                     type="time"
                                                     name="endTime"
