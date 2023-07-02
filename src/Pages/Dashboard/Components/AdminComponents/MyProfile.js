@@ -11,9 +11,9 @@ const MyProfile = () => {
 
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
-    const selectedVenues = users
-        ?.filter(item => item.role === 'owner')
-        .map(item => item.venues.filter(venue => venue.status === 'accepted'))[0];
+    let selectedVenues = users
+        ?.filter((item) => item.role === 'owner')
+        .flatMap((item) => item.venues.filter((venue) => venue.status === 'accepted'));
 
     const bookedVenues = selectedVenues?.filter(vn => vn.booked === true);
 

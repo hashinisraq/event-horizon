@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../../Shared/Header/Header';
 import Footer from '../../Shared/Footer/Footer';
-import { Button, Dropdown, Form } from 'react-bootstrap';
+import { Button, Container, Dropdown, Form } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router';
 import useUsers from '../../../hooks/useUsers';
@@ -86,205 +86,207 @@ const GoogleRegister = () => {
         <div>
             <Header />
             <div >
-                <div className='text-white pt-3'>
-                    <h3>Provide Details 🙋 </h3>
+                <Container className='text-dark py-3'>
+                    <h3 className='text-center'>Provide Details 🙋 </h3>
 
-                    <Form>
-                        <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
-                            <Form.Label>Your Profile Image Link</Form.Label>
-                            <Form.Control
-                                type="test"
-                                name="profileImageLink"
-                                onBlur={handleOnBlur}
-                                placeholder="Profile Image Link"
-                                required />
-                        </Form.Group>
-
-
-                        <Form.Group className="mb-3" controlId="formGroupAddress">
-                            <Form.Label className='text-dark'>Address</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="address"
-                                onBlur={handleOnBlur}
-                                placeholder="Address"
-                                required />
-                        </Form.Group>
+                    <Container>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
+                                <Form.Label>Your Profile Image Link</Form.Label>
+                                <Form.Control
+                                    type="test"
+                                    name="profileImageLink"
+                                    onBlur={handleOnBlur}
+                                    placeholder="Profile Image Link"
+                                    required />
+                            </Form.Group>
 
 
-                        <Form.Group className='pt-2'>
-                            <Dropdown className='py-2' onSelect={handleOptionChange}>
-                                <Dropdown.Toggle variant="dark" id="registration-dropdown">
-                                    Set Role
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item eventKey="owner">Owner</Dropdown.Item>
-                                    <Dropdown.Item eventKey="customer">Customer</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-
-                            {selectedOption === 'owner' && (
-                                <div className='pb-4'>
-                                    <h5 className='text-center'>Owner Venue Info</h5>
-                                    <Form.Group controlId="venueName" className='py-3'>
-                                        <Form.Label>Venue Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venueName"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Name'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venueImgLink" className="mb-3">
-                                        <Form.Label>Venue Image Link:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venueImgLink"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Image Link'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venueRegNo" className="mb-3">
-                                        <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venueRegNo"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Registration No'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venuePrice" className="mb-3">
-                                        <Form.Label className='text-dark'>Venue Price:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venuePrice"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Price'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venueLocation" className='py-3'>
-                                        <Form.Label>Venue Location:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venueLocation"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Location'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venueCapacity" className='py-3'>
-                                        <Form.Label>Venue Capacity:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="venueCapacity"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Capacity'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venueSize" className="mb-3">
-                                        <Form.Label>Venue Size:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venueSize"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Big/Small/Medium'
-                                            required />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="venueAmenities" className='py-3'>
-                                        <Form.Label>Venue Amenities:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="venueAmenities"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Venue Amenities'
-                                            required />
-                                    </Form.Group>
+                            <Form.Group className="mb-3" controlId="formGroupAddress">
+                                <Form.Label className='text-dark'>Address</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="address"
+                                    onBlur={handleOnBlur}
+                                    placeholder="Address"
+                                    required />
+                            </Form.Group>
 
 
-                                    <Form.Label>Venue Availablity:</Form.Label>
-                                    {availability.map((timeSlot, index) => (
-                                        <div key={index}>
-                                            <div className='d-flex'>
-                                                <Form.Group className='pe-3' controlId={`startTime-${index}`}>
-                                                    <Form.Label>Start Time</Form.Label>
-                                                    <Form.Control
-                                                        type="time"
-                                                        name="startTime"
-                                                        value={timeSlot.startTime}
-                                                        onChange={(e) => handleChange(e, index)}
-                                                        required
-                                                    />
-                                                </Form.Group>
+                            <Form.Group className='pt-2'>
+                                <Dropdown className='py-2' onSelect={handleOptionChange}>
+                                    <Dropdown.Toggle variant="dark" id="registration-dropdown">
+                                        Set Role
+                                    </Dropdown.Toggle>
 
-                                                <Form.Group controlId={`endTime-${index}`}>
-                                                    <Form.Label>End Time</Form.Label>
-                                                    <Form.Control
-                                                        type="time"
-                                                        name="endTime"
-                                                        value={timeSlot.endTime}
-                                                        onChange={(e) => handleChange(e, index)}
-                                                        required
-                                                    />
-                                                </Form.Group>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item eventKey="owner">Owner</Dropdown.Item>
+                                        <Dropdown.Item eventKey="customer">Customer</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
+                                {selectedOption === 'owner' && (
+                                    <div className='pb-4'>
+                                        <h5 className='text-center'>Owner Venue Info</h5>
+                                        <Form.Group controlId="venueName" className='py-3'>
+                                            <Form.Label>Venue Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venueName"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Name'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venueImgLink" className="mb-3">
+                                            <Form.Label>Venue Image Link:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venueImgLink"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Image Link'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venueRegNo" className="mb-3">
+                                            <Form.Label className='text-dark'>Venue Registration No:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venueRegNo"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Registration No'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venuePrice" className="mb-3">
+                                            <Form.Label className='text-dark'>Venue Price:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venuePrice"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Price'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venueLocation" className='py-3'>
+                                            <Form.Label>Venue Location:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venueLocation"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Location'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venueCapacity" className='py-3'>
+                                            <Form.Label>Venue Capacity:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="venueCapacity"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Capacity'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venueSize" className="mb-3">
+                                            <Form.Label>Venue Size:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venueSize"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Big/Small/Medium'
+                                                required />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="venueAmenities" className='py-3'>
+                                            <Form.Label>Venue Amenities:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="venueAmenities"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Venue Amenities'
+                                                required />
+                                        </Form.Group>
+
+
+                                        <Form.Label>Venue Availablity:</Form.Label>
+                                        {availability.map((timeSlot, index) => (
+                                            <div key={index}>
+                                                <div className='d-flex'>
+                                                    <Form.Group className='pe-3' controlId={`startTime-${index}`}>
+                                                        <Form.Label>Start Time</Form.Label>
+                                                        <Form.Control
+                                                            type="time"
+                                                            name="startTime"
+                                                            value={timeSlot.startTime}
+                                                            onChange={(e) => handleChange(e, index)}
+                                                            required
+                                                        />
+                                                    </Form.Group>
+
+                                                    <Form.Group controlId={`endTime-${index}`}>
+                                                        <Form.Label>End Time</Form.Label>
+                                                        <Form.Control
+                                                            type="time"
+                                                            name="endTime"
+                                                            value={timeSlot.endTime}
+                                                            onChange={(e) => handleChange(e, index)}
+                                                            required
+                                                        />
+                                                    </Form.Group>
+                                                </div>
+
+                                                {index > 0 && (
+                                                    <Button className='my-2' variant="danger" onClick={() => handleRemoveSlot(index)}>
+                                                        Remove
+                                                    </Button>
+                                                )}
+
+                                                <hr />
                                             </div>
+                                        ))}
 
-                                            {index > 0 && (
-                                                <Button className='my-2' variant="danger" onClick={() => handleRemoveSlot(index)}>
-                                                    Remove
-                                                </Button>
-                                            )}
+                                        <Button className='mb-3' variant="dark" onClick={handleAddSlot}>
+                                            Add Time Slot
+                                        </Button>
 
-                                            <hr />
+                                        <Form.Group controlId="phoneNo">
+                                            <Form.Label>Phone No:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="phoneNo"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Phone No'
+                                                required />
+                                        </Form.Group>
+
+                                        <div className='text-center py-3'>
+                                            <Button variant='dark' onClick={handleInfoSubmit}>Submit</Button>
                                         </div>
-                                    ))}
-
-                                    <Button className='mb-3' variant="dark" onClick={handleAddSlot}>
-                                        Add Time Slot
-                                    </Button>
-
-                                    <Form.Group controlId="phoneNo">
-                                        <Form.Label>Phone No:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="phoneNo"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Phone No'
-                                            required />
-                                    </Form.Group>
-
-                                    <div className='text-center py-3'>
-                                        <Button variant='dark' onClick={handleInfoSubmit}>Submit</Button>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
-                            {selectedOption === 'customer' && (
-                                <div className='pb-4'>
-                                    <h5 className='text-center'>Customer Info</h5>
-                                    <Form.Group controlId="phoneNo" className='py-3'>
-                                        <Form.Label>Phone No:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="phoneNo"
-                                            onBlur={handleOnBlur}
-                                            placeholder='Phone No'
-                                            required />
-                                    </Form.Group>
-                                    <div className='text-center py-3'>
-                                        <Button variant='dark' onClick={handleInfoSubmit}>Submit</Button>
+                                {selectedOption === 'customer' && (
+                                    <div className='pb-4'>
+                                        <h5 className='text-center'>Customer Info</h5>
+                                        <Form.Group controlId="phoneNo" className='py-3'>
+                                            <Form.Label>Phone No:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="phoneNo"
+                                                onBlur={handleOnBlur}
+                                                placeholder='Phone No'
+                                                required />
+                                        </Form.Group>
+                                        <div className='text-center py-3'>
+                                            <Button variant='dark' onClick={handleInfoSubmit}>Submit</Button>
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                        </Form.Group>
-                    </Form>
-                </div>
+                                )}
+                            </Form.Group>
+                        </Form>
+                    </Container>
+                </Container>
             </div>
             <Footer />
         </div>

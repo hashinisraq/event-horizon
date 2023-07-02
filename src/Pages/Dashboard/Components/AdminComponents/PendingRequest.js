@@ -52,13 +52,15 @@ const PendingRequest = () => {
                                 {vn.status === "pending" ? <> <Button variant="dark" className='mx-2' onClick={e => {
                                     handleAction(vn.name, "accepted");
                                     e.preventDefault();
-                                }}>Accept</Button>
+                                }}>✅</Button>
+                                    <span className='mx-1'>|</span>
                                     <Button variant="dark" onClick={e => {
                                         handleAction(vn.name, "rejected");
                                         e.preventDefault();
-                                    }}>Reject</Button> </> : <>
-                                    <Button variant="danger" className='mx-2' disabled >Accept</Button>
-                                    <Button variant="danger" disabled >Reject</Button>
+                                    }}>❌</Button> </> : <>
+                                    <Button className='bg-transparent' style={{ border: "none" }} disabled>
+                                        🏴󠁧󠁢󠁷󠁬󠁳󠁿
+                                    </Button>
                                 </>}
                             </td>
                         </tr>)}

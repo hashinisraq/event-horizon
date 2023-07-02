@@ -16,10 +16,9 @@ const VenueDetails = () => {
 
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
-
-    const selectedVenues = users
-        ?.filter(item => item.role === 'owner')
-        .map(item => item.venues.filter(venue => venue.status === 'accepted'))[0];
+    let selectedVenues = users
+        ?.filter((item) => item.role === 'owner')
+        .flatMap((item) => item.venues.filter((venue) => venue.status === 'accepted'));
 
 
     const selectedVenue = selectedVenues?.filter(vn => vn.name === venueTitle.venueTitle)[0];
@@ -27,7 +26,6 @@ const VenueDetails = () => {
     const selectedVenueOwner = users?.find(user => user.venues?.includes(selectedVenue));
 
     const formattedDate = selectedDate ? new Date(selectedDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
-
 
     const isDateBooked = selectedVenue?.bookedInfo.some(info => info.Day === formattedDate);
 
@@ -57,7 +55,7 @@ const VenueDetails = () => {
                     .then(res => res.json())
                     .then(result => {
                         if (result.acknowledged === true && result.insertedId !== "") {
-                            navigate("/dashboard")
+                            navigate("/home")
                         }
                     })
                 alert('Successfully placed your booking. We will confrim you soon!');
@@ -102,7 +100,7 @@ const VenueDetails = () => {
                             <div>
                                 <h5 className="text-warning pt-4">{selectedVenue?.name}</h5>
                                 <h6 className="text-dark pt-3">
-                                    <img className='pb-1' width="14px" src="https://i.ibb.co/w4cRFqk/location.png" alt="location" srcset="" /> {selectedVenue?.location}
+                                    <img className='pb-1' width="14px" src="https://i.ibb.co/w4cRFqk/location.png" alt="location" srcSet="" /> {selectedVenue?.location}
                                 </h6>
                                 <h6 className="text-dark pt-3">
                                     🏠 Amenity: <br />
@@ -117,7 +115,7 @@ const VenueDetails = () => {
                             </div>
                         </Col>
                         <Col sm={6}>
-                            <img src={`${selectedVenue?.venueImgLink}`} alt="venue logo" srcset="" />
+                            <img src={`${selectedVenue?.venueImgLink}`} width="100%" alt="venue logo" srcSet="" />
                         </Col>
                     </Row>
                 </Container>

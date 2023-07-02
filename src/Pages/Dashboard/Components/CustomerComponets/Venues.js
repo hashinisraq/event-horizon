@@ -11,7 +11,8 @@ const Venues = () => {
 
     let selectedVenues = users
         ?.filter((item) => item.role === 'owner')
-        .map((item) => item.venues.filter((venue) => venue.status === 'accepted'))[0];
+        .flatMap((item) => item.venues.filter((venue) => venue.status === 'accepted'));
+
 
 
     const [selectedSize, setSelectedSize] = useState('');
@@ -20,7 +21,7 @@ const Venues = () => {
     const [selectedAvailability, setSelectedAvailability] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1);
-    const venuesPerPage = 5;
+    const venuesPerPage = 6;
 
 
     const handleSizeChange = (event) => {

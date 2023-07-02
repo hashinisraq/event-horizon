@@ -218,7 +218,7 @@ const SetupVenue = () => {
                     </div>
 
                     <Form.Group controlId="phoneNo" className="mb-3 d-flex justify-content-around align-items-center">
-                        <Form.Label>Phone No:</Form.Label>
+                        <Form.Label className='text-dark'>Phone No:</Form.Label>
                         <Form.Control
                             type="text"
                             name="phoneNo"

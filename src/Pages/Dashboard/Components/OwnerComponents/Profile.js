@@ -19,14 +19,24 @@ const Profile = () => {
         setprofileData(newprofileData);
     }
 
-    const handleSubmit = (email, name, phone) => {
+    const setEmail = email => {
+        const field = "emailAddress"
+        const value = email;
+        const newprofileData = { ...profileData };
+        newprofileData[field] = value;
+        setprofileData(newprofileData);
+    }
+
+    const handleSubmit = (email, g_name, phone, g_address) => {
         const field = "emailAddress"
         const value = email;
         const newprofileData = { ...profileData };
         newprofileData[field] = value;
         setprofileData(newprofileData);
 
-        if (profileData.name === "" && profileData.phoneNo === "" && profileData.address === "") {
+        console.log(profileData)
+
+        if (email === "" && g_name === "" && phone === "" && g_address === "" || profileData === {}) {
             alert("Please complete all the field or type previous data!")
         }
         else {
@@ -42,6 +52,7 @@ const Profile = () => {
                     .then(result => {
                     })
                 handleClose(); // Close the modal
+                setprofileData({});
             }
         }
 
@@ -55,7 +66,7 @@ const Profile = () => {
 
     return (
         <>
-            <div style={{ height: "100vh" }}>
+            <div>
                 <div
                     style={{
                         backgroundImage: 'linear-gradient(to right, #000000, #ffffff)'
@@ -75,7 +86,10 @@ const Profile = () => {
                         </Col>
                     </Row>
                     <div className="text-center">
-                        <Button variant="warning" onClick={handleShow}>Update Profile</Button>
+                        <Button variant="warning" onClick={e => {
+                            handleShow();
+                            setEmail(selectedUser?.email);
+                        }}>Update Profile</Button>
                     </div>
                 </div>
 
@@ -87,7 +101,7 @@ const Profile = () => {
                             <div className='p-3 text-start' style={{ border: "1px solid grey", borderRadius: "12px" }}>
                                 <h6 className='text-warning py-2'>{venue?.name}</h6>
                                 <Container className='text-dark'>
-                                    <p><img className='pb-1' width="14px" src="https://i.ibb.co/w4cRFqk/location.png" alt="location" srcset="" /> {venue?.location}</p>
+                                    <p><img className='pb-1' width="14px" src="https://i.ibb.co/w4cRFqk/location.png" alt="location" srcSet="" /> {venue?.location}</p>
                                     <p>🏠 Amenity: <br />
                                         <span className='ps-5'>
                                             {venue?.amenities}
@@ -124,7 +138,7 @@ const Profile = () => {
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                                 <Form.Label className="text-dark">Name</Form.Label>
                                 <Form.Control
-                                    type="name"
+                                    type="text"
                                     name="name"
                                     onBlur={handleOnBlur}
                                     placeholder={`${selectedUser?.name}`}
@@ -135,7 +149,7 @@ const Profile = () => {
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                                 <Form.Label className="text-dark">Email</Form.Label>
                                 <Form.Control
-                                    type="email"
+                                    type="text"
                                     name="email"
                                     placeholder={`${selectedUser?.email}`}
                                     style={{ width: "50%" }}
@@ -145,7 +159,7 @@ const Profile = () => {
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                                 <Form.Label className="text-dark">Phone</Form.Label>
                                 <Form.Control
-                                    type="phoneNo"
+                                    type="text"
                                     name="phoneNo"
                                     onBlur={handleOnBlur}
                                     placeholder={`${selectedUser?.phoneNo}`}
@@ -156,7 +170,7 @@ const Profile = () => {
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                                 <Form.Label className="text-dark">Role </Form.Label>
                                 <Form.Control
-                                    type="role"
+                                    type="text"
                                     name="role"
                                     placeholder={`${selectedUser?.role}`}
                                     style={{ width: "50%" }}
@@ -167,8 +181,9 @@ const Profile = () => {
                             <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
                                 <Form.Label className="text-dark">Address </Form.Label>
                                 <Form.Control
-                                    type="address"
+                                    type="text"
                                     name="address"
+                                    onBlur={handleOnBlur}
                                     placeholder={`${selectedUser?.address}`}
                                     style={{ width: "50%" }}
                                     required />
@@ -178,7 +193,7 @@ const Profile = () => {
                         <div className="text-center">
                             <Button variant="warning" onClick={e => {
                                 e.preventDefault();
-                                handleSubmit(selectedUser?.email, selectedUser?.name, selectedUser?.phoneNo);
+                                handleSubmit(selectedUser?.email, selectedUser?.name, selectedUser?.phoneNo, selectedUser?.address);
                             }}>Submit</Button>
                         </div>
                     </Modal.Body>

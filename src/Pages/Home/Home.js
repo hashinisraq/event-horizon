@@ -176,13 +176,13 @@ const Home = () => {
                 <h3 style={{ fontWeight: "bold" }} className="text-warning text-center">Our Partners</h3>
                 <div className='d-flex justify-content-center align-items-center'>
                     <div>
-                        <img src="https://i.ibb.co/93zFJF5/Bkash.png" alt="bkash" className='p-2' width="120px" srcset="" />
+                        <img src="https://i.ibb.co/93zFJF5/Bkash.png" alt="bkash" className='p-2' width="120px" srcSet="" />
                     </div>
                     <div>
-                        <img src="https://i.ibb.co/k00q02z/nagad.png" alt="nagad" className='p-2' width="120px" srcset="" />
+                        <img src="https://i.ibb.co/k00q02z/nagad.png" alt="nagad" className='p-2' width="120px" srcSet="" />
                     </div>
                     <div>
-                        <img src="https://i.ibb.co/PTtf5QG/rocket.png" alt="rocket" className='p-2' width="120px" srcset="" />
+                        <img src="https://i.ibb.co/PTtf5QG/rocket.png" alt="rocket" className='p-2' width="120px" srcSet="" />
                     </div>
                 </div>
             </div>

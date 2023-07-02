@@ -4,7 +4,7 @@ import useUsers from '../../../../hooks/useUsers';
 import useAuth from '../../../../hooks/useAuth';
 import useOrders from '../../../../hooks/useOrders';
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 6;
 
 const Approval = () => {
     const { user } = useAuth();
@@ -70,7 +70,7 @@ const Approval = () => {
                 }
 
 
-                fetch('http://localhost:5000/add_booking', {
+                fetch('https://event-horizon-8f3s.onrender.com/add_booking', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -83,6 +83,7 @@ const Approval = () => {
             }
         }
     }
+
 
     return (
         <Container style={{ height: "100vh" }}>
@@ -111,7 +112,11 @@ const Approval = () => {
                             <td style={{ border: "1px solid grey" }}>{order.venueName}</td>
                             <td style={{ border: "1px solid grey" }}>{order.Day}</td>
                             <td style={{ border: "1px solid grey" }}>
-                                Start time: {order?.Slot.startTime} - End time: {order?.Slot.endTime}
+                                {
+                                    order.Slot?.map(tm => <span key={tm.startTime}>
+                                        Start time: {tm.startTime} - End time: {tm.endTime}
+                                    </span>)
+                                }
                             </td>
                             <td style={{ border: "1px solid grey" }}>{order.status}</td>
                             <td style={{ border: "1px solid grey" }}>

@@ -5,19 +5,21 @@ import { useParams } from 'react-router';
 import useUsers from '../../../../hooks/useUsers';
 import { Button, Col, Container, Row, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../../hooks/useAuth';
 
 const VenueOwnerDetails = () => {
     const venueTitle = useParams();
     const [users] = useUsers();
+    const { user } = useAuth();
 
-    const selectedVenues = users
+    const selectedUser = users?.filter(usr => usr.email === user.email);
+
+    const selectedVenues = selectedUser
         ?.filter(item => item.role === 'owner')
         .map(item => item.venues.filter(venue => venue.status === 'accepted'))[0];
 
 
     const selectedVenue = selectedVenues?.filter(vn => vn.name === venueTitle.venueTitle)[0];
-
-    console.log(selectedVenue?.bookedInfo)
 
     return (
         <div>
