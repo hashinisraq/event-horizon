@@ -27,22 +27,6 @@ const Home = () => {
     };
 
     return (
-        // <div className={styles.bgStyle}>
-        //     <Header />
-        //     <div className={styles.contentStyle}>
-        //         <div className='text-center text-white pt-5'>
-        //             <div className='pb-3'>
-        //                 <h3>Creating Memories! 🙋 </h3>
-        //                 <h3>One Event at a Time 😇 </h3>
-        //             </div>
-        //             <Link to='/dashboard'>
-        //                 <Button variant='dark'>Let's Start</Button>
-        //             </Link>
-        //         </div>
-        //     </div>
-        //     <Footer />
-        // </div>
-
         <div>
             <Header />
 
@@ -138,31 +122,6 @@ const Home = () => {
                         <Row>
                             {selectedVenues?.slice(3).map((venue, index) => (
                                 <Col key={index} sm={12} md={4} lg={4} className='py-3'>
-                                    {/* <Link to="">
-                                        <div
-                                            style={{
-                                                backgroundImage: `url(${venue.venueImgLink})`,
-                                                height: '400px',
-                                                borderRadius: '10px',
-                                                position: 'relative',
-                                            }}
-                                        >
-                                            <div
-                                                style={{
-                                                    position: 'absolute',
-                                                    bottom: '0',
-                                                    left: '0',
-                                                    padding: '10px',
-                                                    background: 'rgba(0, 0, 0, 0.7)',
-                                                    color: 'white',
-                                                    borderRadius: '0 0 10px 10px',
-                                                }}
-                                            >
-                                                <h4>{venue.name}</h4>
-                                                <p> {venue.location}</p>
-                                            </div>
-                                        </div>
-                                    </Link> */}
                                     <Button>
                                         <div
                                             style={{

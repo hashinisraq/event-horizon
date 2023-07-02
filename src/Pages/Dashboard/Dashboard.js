@@ -27,7 +27,6 @@ const Dashboard = () => {
     const role = selectedUser[0]?.role;
 
     const verification = selectedUser[0]?.venues?.filter(venue => venue.status === "accepted")[0];
-    // console.log(verification?.status)
 
 
     return (
@@ -122,34 +121,6 @@ const Dashboard = () => {
                             }
                             {role === "customer" ?
                                 <CustomerDashboard />
-                                // <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                                //     <Row>
-                                //         <Col sm={12} lg={2} className='my-3'>
-                                //             <Nav variant="pills" className="flex-column" >
-                                //                 {/* <Nav.Item>
-                                //                     <Nav.Link className="nav_link" eventKey="first">
-                                //                         Venues
-                                //                     </Nav.Link>
-                                //                 </Nav.Item> */}
-                                //                 <Nav.Item>
-                                //                     <Nav.Link className="nav_link" eventKey="first">
-                                //                         Dashboard
-                                //                     </Nav.Link>
-                                //                 </Nav.Item>
-                                //             </Nav>
-                                //         </Col>
-                                //         <Col sm={12} lg={10}>
-                                //             <Tab.Content>
-                                //                 {/* <Tab.Pane eventKey="first">
-                                //                     <Venues />
-                                //                 </Tab.Pane> */}
-                                //                 <Tab.Pane eventKey="first">
-                                //                     <CustomerDashboard />
-                                //                 </Tab.Pane>
-                                //             </Tab.Content>
-                                //         </Col>
-                                //     </Row>
-                                // </Tab.Container>
                                 :
                                 <></>
                             }

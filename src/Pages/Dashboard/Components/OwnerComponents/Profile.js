@@ -56,64 +56,6 @@ const Profile = () => {
     return (
         <>
             <div style={{ height: "100vh" }}>
-                {/* <h5 className='text-center pb-3'>Profile Information</h5>
-                <Container className='text-start'>
-                    <Form>
-                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
-                                type="name"
-                                name="name"
-                                placeholder={`${selectedUser?.name}`}
-                                style={{ width: "50%" }}
-                                disabled />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                name="email"
-                                placeholder={`${selectedUser?.email}`}
-                                style={{ width: "50%" }}
-                                disabled />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                            <Form.Label>Phone</Form.Label>
-                            <Form.Control
-                                type="phoneNo"
-                                name="phoneNo"
-                                placeholder={`${selectedUser?.phoneNo}`}
-                                style={{ width: "50%" }}
-                                disabled />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                            <Form.Label>Role </Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="role"
-                                placeholder={`${selectedUser?.role}`}
-                                style={{ width: "50%" }}
-                                disabled />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3 d-flex align-items-center justify-content-around">
-                            <Form.Label>Address </Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="address"
-                                placeholder={`${selectedUser?.address}`}
-                                style={{ width: "50%" }}
-                                disabled />
-                        </Form.Group>
-                    </Form>
-                    <div className="text-center">
-                        <Button variant="dark" onClick={handleShow}>Update</Button>
-                    </div>
-                </Container> */}
-
                 <div
                     style={{
                         backgroundImage: 'linear-gradient(to right, #000000, #ffffff)'

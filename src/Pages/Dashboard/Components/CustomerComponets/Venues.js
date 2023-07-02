@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Pagination, Row } from 'react-bootstrap';
-import useUsers from '../../../../hooks/useUsers';
 import { Link } from 'react-router-dom';
+import useUsers from '../../../../hooks/useUsers';
 import Header from '../../../Shared/Header/Header';
 import Footer from '../../../Shared/Footer/Footer';
 
@@ -161,44 +161,6 @@ const Venues = () => {
                             </Col>
                         )}
                     </Row>
-
-                    {/* <Table responsive>
-                        <thead>
-                            <tr>
-                                <th style={{ color: "white", background: "transparent" }}>Name</th>
-                                <th style={{ color: "white", background: "transparent" }}>Price</th>
-                                <th style={{ color: "white", background: "transparent" }}>Location</th>
-                                <th style={{ color: "white", background: "transparent" }}>Size</th>
-                                <th style={{ color: "white", background: "transparent" }}>Availability</th>
-                                <th style={{ color: "white", background: "transparent" }}>Action</th>
-                            </tr>
-                        </thead>
-                        <>
-                            <tbody>
-                                {currentVenues?.map(venue => (
-                                    <tr key={venue.name}>
-                                        <td style={{ color: "white", background: "transparent" }}>{venue.name}</td>
-                                        <td style={{ color: "white", background: "transparent" }}>{venue.venuePrice} BDT</td>
-                                        <td style={{ color: "white", background: "transparent" }}>{venue.location}</td>
-                                        <td style={{ color: "white", background: "transparent" }}>{venue.size}</td>
-                                        <td style={{ color: "white", background: "transparent" }}>
-                                            {
-                                                venue?.availability.map(vn =>
-                                                    <div key={vn.startTime}>
-                                                        <span>Start Time: {vn.startTime} - End Time: {vn.endTime} <br /></span>
-                                                    </div>
-                                                )
-                                            }
-                                        </td>
-                                        <td className='d-flex justify-content-center align-items-center' style={{ color: "white", background: "transparent" }}>
-                                            <Link to={`/venueDetails/${venue.name}`}><Button variant="dark" className='my-2 mx-2'>See Details</Button></Link>
-                                            <Link to={`/venueDetails/${venue.name}`}><Button variant="dark" className='my-2 mx-2'>Book Now</Button></Link>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </>
-                    </Table> */}
 
                     {/* Pagination */}
                     <Row className='pt-5'>

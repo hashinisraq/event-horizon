@@ -137,12 +137,12 @@ const Register = () => {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
-                                    <Form.Label className='text-dark'>Profile Banner Link</Form.Label>
+                                    <Form.Label className='text-dark'>Profile Image Link</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="profileImageLink"
                                         onBlur={handleOnBlur}
-                                        placeholder="Profile Banner Link"
+                                        placeholder="Profile Image Link"
                                         required />
                                 </Form.Group>
 
@@ -344,12 +344,6 @@ const Register = () => {
                                         Sign in with Google
                                     </Button>
                                 </div>
-
-                                {/* <div className='text-center pt-3 pb-5'>
-                                    <Link to="/login">
-                                        <Button className='w-100' variant="light">Already A User? Please Login</Button>
-                                    </Link>
-                                </div> */}
                             </Form>
                             {isLoading && <div className="d-flex justify-content-center align-items-center"><Spinner animation="border" variant="dark" /></div>}
                         </Col>

@@ -7,7 +7,6 @@
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
-    /* Optional: Add background color to the captions */
     padding: 20px;
     color: white;
 }

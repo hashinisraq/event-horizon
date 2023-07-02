@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from '../../../Assets/Styles/styles.module.css';
 import Header from '../../Shared/Header/Header';
 import Footer from '../../Shared/Footer/Footer';
 import { Button, Dropdown, Form } from 'react-bootstrap';
@@ -84,20 +83,20 @@ const GoogleRegister = () => {
     }
 
     return (
-        <div className={styles.bgStyle}>
+        <div>
             <Header />
-            <div className={styles.contentStyle}>
+            <div >
                 <div className='text-white pt-3'>
                     <h3>Provide Details 🙋 </h3>
 
                     <Form>
                         <Form.Group className="mb-3" controlId="formGroupProfileImageLink">
-                            <Form.Label>Your Profile Banner Link</Form.Label>
+                            <Form.Label>Your Profile Image Link</Form.Label>
                             <Form.Control
                                 type="test"
                                 name="profileImageLink"
                                 onBlur={handleOnBlur}
-                                placeholder="Profile Banner Link"
+                                placeholder="Profile Image Link"
                                 required />
                         </Form.Group>
 
