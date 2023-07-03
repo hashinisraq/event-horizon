@@ -49,7 +49,7 @@ const CustomerDashboard = () => {
     return (
         <div>
             <Header />
-            <Container style={{ height: "100vh" }}>
+            <Container>
                 <Container className='py-5 px-5'>
                     <Row>
                         <Col sm={12} md={6} className='px-5'>

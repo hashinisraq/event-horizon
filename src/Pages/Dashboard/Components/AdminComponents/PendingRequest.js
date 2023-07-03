@@ -23,7 +23,7 @@ const PendingRequest = () => {
     }
 
     return (
-        <Container style={{ height: "100vh" }}>
+        <Container>
             <h5 className='text-center pb-3'>Owner Pending Requests</h5>
             <Table responsive>
                 <thead>

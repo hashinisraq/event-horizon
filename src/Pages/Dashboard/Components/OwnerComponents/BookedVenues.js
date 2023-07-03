@@ -10,7 +10,7 @@ const BookedVenues = () => {
     const selectedUser = users?.filter(usr => usr.email === user.email)[0];
 
     return (
-        <Container style={{ height: "100vh" }}>
+        <Container>
             <h5 className='text-center text-dark pb-3'>Currently  Booked Venues</h5>
             <Table responsive>
                 <thead>
