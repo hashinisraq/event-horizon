@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import useUsers from '../../../../hooks/useUsers';
@@ -30,35 +30,39 @@ const VenueDetails = () => {
     const isDateBooked = selectedVenue?.bookedInfo.some(info => info.Day === formattedDate);
 
 
-    const navigate = useNavigate();
-
     const handleOnClick = e => {
-        const order = {
-            venueName: selectedVenue?.name,
-            customerName: selectedUser?.name,
-            customerEmail: selectedUser?.email,
-            customerPhone: selectedUser?.phoneNo,
-            Slot: selectedSlots,
-            Day: formattedDate,
-            status: 'pending',
-        };
+        const paymentPrice = selectedSlots?.length * parseInt(selectedVenue?.venuePrice);
+        const info = {
+            product_name: selectedVenue?.name,
+            product_profile: selectedVenue?.amenities,
+            product_image: selectedVenue?.venueImgLink,
+            total_amount: paymentPrice,
+            cus_name: selectedUser?.name,
+            cus_email: selectedUser?.email,
+            order: {
+                venueName: selectedVenue?.name,
+                customerName: selectedUser?.name,
+                customerEmail: selectedUser?.email,
+                customerPhone: selectedUser?.phoneNo,
+                Slot: selectedSlots,
+                Day: formattedDate,
+                status: 'pending',
+            }
+        }
 
-        if (order.Slot.length > 0 && order.Day !== "") {
+        if (selectedSlots?.length > 0 && formattedDate !== "") {
             if (window.confirm("Are you sure to place this booking?")) {
-                fetch('https://event-horizon-8f3s.onrender.com/orders', {
+                fetch('http://localhost:5000/init', {
                     method: 'POST',
                     headers: {
-                        'content-type': 'application/json'
+                        "content-type": "application/json"
                     },
-                    body: JSON.stringify(order)
+                    body: JSON.stringify(info)
                 })
                     .then(res => res.json())
-                    .then(result => {
-                        if (result.acknowledged === true && result.insertedId !== "") {
-                            navigate("/home")
-                        }
+                    .then(data => {
+                        window.location.replace(data)
                     })
-                alert('Successfully placed your booking. We will confrim you soon!');
             }
         }
         else {

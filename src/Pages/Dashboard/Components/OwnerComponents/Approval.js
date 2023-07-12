@@ -4,7 +4,7 @@ import useUsers from '../../../../hooks/useUsers';
 import useAuth from '../../../../hooks/useAuth';
 import useOrders from '../../../../hooks/useOrders';
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 2;
 
 const Approval = () => {
     const { user } = useAuth();
@@ -93,9 +93,10 @@ const Approval = () => {
                 <thead>
                     <tr>
                         <th style={{ border: "1px solid grey" }}>Name</th>
-                        <th style={{ border: "1px solid grey" }}>Email</th>
-                        <th style={{ border: "1px solid grey" }}>Phone</th>
+                        <th style={{ border: "1px solid grey" }}>Email & Phone</th>
                         <th style={{ border: "1px solid grey" }}>Venue</th>
+                        <th style={{ border: "1px solid grey" }}>TxID</th>
+                        <th style={{ border: "1px solid grey" }}>Custerm TxID</th>
                         <th style={{ border: "1px solid grey" }}>Day</th>
                         <th style={{ border: "1px solid grey" }}>Slot</th>
                         <th style={{ border: "1px solid grey" }}>Status</th>
@@ -107,9 +108,10 @@ const Approval = () => {
                     {currentItems?.map(order => (
                         <tr className='py-5' key={order._id}>
                             <td style={{ border: "1px solid grey" }}>{order.customerName}</td>
-                            <td style={{ border: "1px solid grey" }}>{order.customerEmail}</td>
-                            <td style={{ border: "1px solid grey" }}>{order.customerPhone}</td>
+                            <td style={{ border: "1px solid grey" }}>{order.customerEmail} <br /> {order.customerPhone}</td>
                             <td style={{ border: "1px solid grey" }}>{order.venueName}</td>
+                            <td style={{ border: "1px solid grey" }}>{order?.tran_id}</td>
+                            <td style={{ border: "1px solid grey" }}>{order?.customerTran_id}</td>
                             <td style={{ border: "1px solid grey" }}>{order.Day}</td>
                             <td style={{ border: "1px solid grey" }}>
                                 {

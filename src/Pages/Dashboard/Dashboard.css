@@ -3,12 +3,13 @@
 }
 
 .nav_link:hover {
-    color: yellow;
-    border: 1px solid yellow;
+    color: black;
+    border: 1px solid black;
     cursor: pointer;
 }
 
 .nav_link.active {
-    color: yellow !important;
+    color: black !important;
     background-color: transparent !important;
+    border: 1px solid black;
 }

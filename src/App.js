@@ -13,6 +13,7 @@ import ContactUs from "./Pages/ContactUs/ContactUs";
 import Venues from "./Pages/Dashboard/Components/CustomerComponets/Venues";
 import CustomerDashboard from "./Pages/Dashboard/Components/CustomerComponets/CustomerDashboard";
 import VenueOwnerDetails from "./Pages/Dashboard/Components/OwnerComponents/VenueOwnerDetails";
+import PaymentSuccess from "./Pages/Dashboard/Components/CustomerComponets/PaymentSuccess";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/googleRegister" element={<PrivateRoute><GoogleRegister /></PrivateRoute>}> </Route>
             <Route path="/venueDetails/:venueTitle" element={<PrivateRoute><VenueDetails /></PrivateRoute>}></Route>
             <Route path="/venueOwnerDetails/:venueTitle" element={<PrivateRoute><VenueOwnerDetails /></PrivateRoute>}></Route>
+            <Route path="/success/:id" element={<PrivateRoute><PaymentSuccess /></PrivateRoute>}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </Router>

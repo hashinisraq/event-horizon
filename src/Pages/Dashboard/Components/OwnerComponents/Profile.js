@@ -34,7 +34,6 @@ const Profile = () => {
         newprofileData[field] = value;
         setprofileData(newprofileData);
 
-        console.log(profileData)
 
         if (email === "" && g_name === "" && phone === "" && g_address === "" || profileData === {}) {
             alert("Please complete all the field or type previous data!")
