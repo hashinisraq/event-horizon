@@ -52,8 +52,7 @@ const VenueDetails = () => {
 
         if (selectedSlots?.length > 0 && formattedDate !== "") {
             if (window.confirm("Are you sure to place this booking?")) {
-                // fetch('http://localhost:5000/init', {
-                fetch('https://event-horizon-8f3s.onrender.com/init', {
+                fetch('http://localhost:5000/init', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

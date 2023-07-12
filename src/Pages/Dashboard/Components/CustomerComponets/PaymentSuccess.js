@@ -25,8 +25,7 @@ const PaymentSuccess = () => {
         }
 
         if (provideData.customerTran_id !== undefined) {
-            // fetch('http://localhost:5000/validate', {
-            fetch('https://event-horizon-8f3s.onrender.com/validate', {
+            fetch('http://localhost:5000/validate', {
                 method: 'PUT',
                 headers: {
                     "content-type": "application/json"
